@@ -35,23 +35,8 @@ class Server {
         // CORS
         this.app.use( cors() );
 
-        //call to this api  example
-
-        this.app.get('/test',(req,res)=>{
-            const requestParam = req.query.parametro.split(" ");
-
-            if(requestParam.length <2)
-            {
-                res.status(500).send("compa su request tiene que ser de más de 1 palabra");
-            }
-
-
-            res.json({
-                status:"ok",
-                mensaje:"hola niconi, soy una api qeu sirve jejes",
-                SegundaPalabra:requestParam[1]
-            });
-        });
+        //routing to handle api calls
+        this.app.use( '/api/teams', require('../router/teams') );
     }
 
     // Esta configuración se puede tener aquí o como propieda de clase
