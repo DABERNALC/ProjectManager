@@ -21,12 +21,12 @@ class Server {
         
        
 
-        // Configuraciones de sockets
-        this.io = socketio( this.server, { /* configuraciones */ } );
+        // socket configuration: realtime messages
+        this.io = socketio( this.server, { /* configs */ } );
     }
 
     middlewares() {
-        // Desplegar el directorio público
+        // this deploys the public directory
         this.app.use( express.static( path.resolve( __dirname, '../public' ) ) );
 
 
@@ -36,13 +36,22 @@ class Server {
         this.app.use( cors() );
 
         //call to this api  example
-        /*this.app.get('/getOrder',(req,res)=>{
+
+        this.app.get('/test',(req,res)=>{
+            const requestParam = req.query.parametro.split(" ");
+
+            if(requestParam.length <2)
+            {
+                res.status(500).send("compa su request tiene que ser de más de 1 palabra");
+            }
+
+
             res.json({
                 status:"ok",
-                orderInfo: this.OrdersList.getOrderByNum(req.query.orderNumber)
+                mensaje:"hola niconi, soy una api qeu sirve jejes",
+                SegundaPalabra:requestParam[1]
             });
-        });*/
-
+        });
     }
 
     // Esta configuración se puede tener aquí o como propieda de clase
