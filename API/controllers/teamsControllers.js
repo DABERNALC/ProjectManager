@@ -4,7 +4,7 @@
 const { Router } = require('express');
 const { check }  = require('express-validator');
 const { validate } = require('../middlewares/validate');
-
+const teamsControllerSingleton = require("../components/teamsComponent/teamsComponent");
 // import  Controlers
 
 
@@ -45,20 +45,8 @@ router.get('/create',[
     check("teamName","you should send the team name to create a team").not().isEmpty()
     , validate
 ],(req,res)=>{
-        //getting the parameters from the request
-        const liderId = req.query.liderId;
-        const teamName = req.query.teamName;
-
-        
-        //logic to create a team
-
-        //todo: llamar a la base de datos
-        
-        //regresar respuesta
-        res.json({
-            status:"ok",
-            message:`i created the team "${teamName}""`
-        });
+    const teamsComponent = new teamsControllerSingleton;
+    teamsComponent.createTeam(req,res);
 });
 
 
