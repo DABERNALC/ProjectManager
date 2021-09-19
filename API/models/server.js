@@ -18,7 +18,7 @@ class Server {
 
         // Http server
         this.server = http.createServer( this.app );
-        
+        this.app.use(express.urlencoded({extended: true}));
        
 
         // socket configuration: realtime messages
@@ -36,7 +36,7 @@ class Server {
         this.app.use( cors() );
 
         //routing to handle api calls
-        this.app.use( '/api/teams', require('../controllers/teamsControllers') );
+        this.app.use( '/api/teams', require('../controllers/teamsController/router/teamsRouter') );
     }
 
     // Esta configuración se puede tener aquí o como propieda de clase

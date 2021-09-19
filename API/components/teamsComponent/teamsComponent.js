@@ -19,7 +19,7 @@ class teamsControllerSingleton {
         //logic to create a team
         this.teams.addTeam(liderId,teamName);
         //todo: llamar a la base de datos
-        
+
         //regresar respuesta
         res.json({
             status:"ok",

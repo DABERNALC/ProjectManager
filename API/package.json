@@ -17,7 +17,12 @@
     "express": "^4.17.1",
     "express-validator": "^6.12.1",
     "ftp": "^0.3.10",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.12",
+    "object-mapper": "^6.2.0",
     "socket.io": "^3.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.3"
   }
 }
