@@ -1,13 +1,15 @@
 var mysql = require('mysql');
-class DbConnection {
+export  class DbConnection {
+  instance: any;
+  conectionPool: any;
     constructor()
     {
         //singleton implementation
-        const instance = this.constructor.instance;
+        const instance = this.instance;
         if (instance) {
           return instance;
         }
-        this.constructor.instance = this;
+        this.instance = this;
 
         //connectuion poool initialization
         this.conectionPool = mysql.createPool({
@@ -18,10 +20,10 @@ class DbConnection {
             database: process.env.DB_NAME
           });
     }
-    async makeQuery(query)
+    async makeQuery(query: any)
     {
         return new Promise((resolve, reject) => {
-            this.conectionPool.query(query, (err,rows) => {
+            this.conectionPool.query(query, (err: any,rows: unknown) => {
              if (err) {
               return reject(err)
              }
@@ -31,4 +33,3 @@ class DbConnection {
     }
 
 } 
-module.exports = DbConnection

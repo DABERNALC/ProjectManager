@@ -1,11 +1,12 @@
 var objectMapper = require('object-mapper');
 const ParticipanteDto = require('../DtoObjects/ParticipanteDto');
-class ParticipantMapper {
+export default class ParticipantMapper {
+    objectMapper: any;
     constructor()
     {
         this.objectMapper = objectMapper;
     }
-    getDto(participantVo)
+    getDto(participantVo: any)
     {
         const participantDto =new  ParticipanteDto();
         const map = participantDto.map;
@@ -14,4 +15,3 @@ class ParticipantMapper {
     }
 }
 
-module.exports = ParticipantMapper;

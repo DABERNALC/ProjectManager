@@ -1,15 +1,18 @@
 // Servidor de Express
-const express  = require('express');
+import express from "express";
 const http     = require('http');
-const socketio = require('socket.io');
+import * as socketio from 'socket.io';
 const path     = require('path');
 const cors     = require('cors');
 const Sockets  = require('./sockets');
-const { runInThisContext } = require('vm');
+import {router}  from "../controllers/teamsController/router/teamsRouter";
 
 
-
-class Server {
+export class Server {
+    app: any;
+    port: string;
+    server: any;
+    io: any;
 
     constructor() {
 
@@ -22,7 +25,7 @@ class Server {
        
 
         // socket configuration: realtime messages
-        this.io = socketio( this.server, { /* configs */ } );
+        // this.io = socketio( this.server );
     }
 
     middlewares() {
@@ -36,7 +39,7 @@ class Server {
         this.app.use( cors() );
 
         //routing to handle api calls
-        this.app.use( '/api/teams', require('../controllers/teamsController/router/teamsRouter') );
+         this.app.use( '/api/teams', router );
     }
 
     // Esta configuración se puede tener aquí o como propieda de clase
@@ -51,7 +54,7 @@ class Server {
         this.middlewares();
 
         // Inicializar sockets
-        this.configurarSockets();
+        // this.configurarSockets();
 
         // Inicializar Server
         this.server.listen( this.port, () => {
@@ -62,4 +65,3 @@ class Server {
 }
 
 
-module.exports = Server;

@@ -1,4 +1,5 @@
-class ParticipanteDto {
+export default class ParticipanteDto {
+    map: any;
     constructor()
     {
         this.map = {
@@ -14,4 +15,3 @@ class ParticipanteDto {
     }
 }
 
-module.exports = ParticipanteDto;

@@ -1,5 +1,9 @@
-class TeamDto {
-    constructor(idTeam, name, liderId,Participants)
+export default class TeamDto {
+    idTeam: any;
+    name: any;
+    liderId: any;
+    Participants: any;
+    constructor(idTeam: any, name: any, liderId: any,Participants: any)
     {
         this.idTeam = idTeam;
         this.name = name;
@@ -9,4 +13,3 @@ class TeamDto {
     }
 }
 
-module.exports = TeamDto;

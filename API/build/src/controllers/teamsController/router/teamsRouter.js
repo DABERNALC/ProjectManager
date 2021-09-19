@@ -1,22 +1,23 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
 /*
     path: api/teams
 */
-const { Router } = require('express');
-const { check }  = require('express-validator');
-const { validate } = require('../../../middlewares/validate');
+const express_1 = require("express");
+const express_validator_1 = require("express-validator");
+const validate_1 = require("../../../middlewares/validate");
 const ParticipantMapper = require('../mappers/ParticipantMapper');
 const DbConnection = require('../../../components/DbConnection');
-const TeamsController = require('../TeamsController');
+const TeamsController_1 = require("../TeamsController");
 // import  Controlers
-
-
-const router = Router();
-
+const router = (0, express_1.Router)();
+exports.router = router;
 // Crear nuevos usuarios
 /* plantilla de un post:
 objeto de routeo
-  !    tipo de llamado 
-  !      !      path para llamar 
+  !    tipo de llamado
+  !      !      path para llamar
   !      !       !
   v      v       v
 router.post( '/new', //validaciones
@@ -27,13 +28,12 @@ router.post( '/new', //validaciones
     validarCampos
 ], //controller );
 */
-router.get('/test',async (req,res)=>{
+router.get('/test', (req, res) => {
     const participantMapper = new ParticipantMapper();
     const db = new DbConnection();
-    db.makeQuery("show tables").then((rows)=>{
-      console.log("response", rows)
+    db.makeQuery("show tables").then((rows) => {
+        console.log("response", rows);
     });
-    
     var src = {
         "name": "12345",
         "idFirebase": "99999912345X",
@@ -43,21 +43,19 @@ router.get('/test',async (req,res)=>{
         "width": 2,
         "height": 8,
         "inventory": {
-          "onHandQty": 12
+            "onHandQty": 12
         }
-      };
+    };
     res.json({
-        status:"ok",
+        status: "ok",
         currentTeams: participantMapper.getDto(src)
     });
 });
-
-router.post('/create',[
-    check("teamName","you should send the team name to create a team").not().isEmpty()
-    ,validate
-],(req,res)=>{
-    let teamsController = new TeamsController();
-    teamsController.createTeam(req,res);
+router.post('/create', [
+    (0, express_validator_1.check)("teamName", "you should send the team name to create a team").not().isEmpty(),
+    validate_1.validate
+], (req, res) => {
+    let teamsController = new TeamsController_1.TeamsController();
+    teamsController.createTeam(req, res);
 });
-
-module.exports = router;
+//# sourceMappingURL=teamsRouter.js.map

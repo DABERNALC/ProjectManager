@@ -1,8 +1,9 @@
 
 
-class Sockets {
+export default class Sockets {
+    io: any;
 
-    constructor( io ) {
+    constructor( io: any ) {
 
         this.io = io;
 
@@ -11,10 +12,10 @@ class Sockets {
 
     socketEvents() {
         // On connection
-        this.io.on('connection', ( socket ) => {
+        this.io.on('connection', ( socket:any ) => {
 
             // Escuchar evento: mensaje-to-server
-            socket.on('mensaje-to-server', ( data ) => {
+            socket.on('mensaje-to-server', ( data: any ) => {
                 console.log( data );
                 
                 this.io.emit('mensaje-from-server', data );
@@ -28,4 +29,3 @@ class Sockets {
 }
 
 
-module.exports = Sockets;
