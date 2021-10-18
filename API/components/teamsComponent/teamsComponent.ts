@@ -4,6 +4,7 @@ import { DbConnection } from "../DbConnection";
 import Teams from "../teamsComponent/Teams";
 
 export default class teamsControllerSingleton {
+  
   instance: any;
   teams: any;
   dbConection: IDbConection;
@@ -16,6 +17,8 @@ export default class teamsControllerSingleton {
     this.instance = this;
     this.dbConection = DbConection;
   }
+
+  //this method creates a team and adds its first participant who should be the creator
   async createTeam(req: any):Promise<String> {
     //getting the parameters from the request
     const liderId = req.body.liderId;
@@ -37,11 +40,11 @@ export default class teamsControllerSingleton {
       });
     })
 
-
-  }
-  async createParticipant(req: any): Promise<string> {
-
     
+  }
+
+  //this method creates a participant
+  async createParticipant(req: any): Promise<string> {
 
     //getting the parameters from the request
     const firebaseId = req.body.id;
@@ -63,4 +66,33 @@ export default class teamsControllerSingleton {
       });
     })
   }
+  addParticipantToTeam(req: any):Promise<String> {
+   //getting the parameters from the request
+   const teamId = req.body.teamId;
+   var example  = "['102983','190238']";
+   const participantsIds = req.body.participants.split("[")[1].split("]")[0].split(",");
+   
+    
+  
+   //sql statement
+   let sqlStatement = `insert into participanteequipo (IDParticipante,IDEquipo) values `;
+   participantsIds.forEach((participant: String, index: number) => {
+     index != (participantsIds.length -1) ? sqlStatement += `(${participant},${teamId}),`: sqlStatement += `(${participant},${teamId});`
+  });
+  console.log(sqlStatement);
+  
+   return new Promise<string>((resolve, reject) => {
+     this.dbConection
+     .makeQuery(sqlStatement)
+     .then((response) => {
+       console.log(response);
+       resolve("ok");
+     })
+     .catch((error) => {
+       
+       reject(error.sqlMessage);
+     });
+   })
+}
+
 }

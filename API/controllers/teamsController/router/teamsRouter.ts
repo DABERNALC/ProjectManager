@@ -71,4 +71,12 @@ router.post('/createParticipant',[
   teamsController.createParticipant(req,res);
 });
 
+router.post('/addParticipant',[
+  check("teamId","you should send the id of the team").not().isEmpty(),
+  check("participants","you should send the participantsIds you are trying to add").not().isEmpty()
+  ,validate
+],(req: any,res: any)=>{
+  let teamsController = new TeamsController();
+  teamsController.addParticipantToTeam(req,res);
+});
 export {router};
