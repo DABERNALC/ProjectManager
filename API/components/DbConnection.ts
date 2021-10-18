@@ -1,9 +1,13 @@
+import { IDbConection } from "./IDbConection";
+
 var mysql = require('mysql');
-export  class DbConnection {
+
+export  class DbConnection implements IDbConection {
   instance: any;
   conectionPool: any;
     constructor()
     {
+      
         //singleton implementation
         const instance = this.instance;
         if (instance) {
@@ -20,10 +24,10 @@ export  class DbConnection {
             database: process.env.DB_NAME
           });
     }
-    async makeQuery(query: any)
+    async makeQuery(query: any):Promise<String>
     {
         return new Promise((resolve, reject) => {
-            this.conectionPool.query(query, (err: any,rows: unknown) => {
+            this.conectionPool.query(query, (err: any,rows: string) => {
              if (err) {
               return reject(err)
              }

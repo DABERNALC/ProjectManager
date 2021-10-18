@@ -58,4 +58,14 @@ router.post('/create', [
     let teamsController = new TeamsController_1.TeamsController();
     teamsController.createTeam(req, res);
 });
+router.post('/createParticipant', [
+    (0, express_validator_1.check)("id", "you should send the firebase id in order to create a participant").not().isEmpty(),
+    (0, express_validator_1.check)("correo", "you should send the participants email in order to create a participant").isEmail(),
+    (0, express_validator_1.check)("Nombre", "you should send the participants name in order to create a participant").not().isEmpty(),
+    (0, express_validator_1.check)("color", "you should send the participants color in order to create a participant").not().isEmpty(),
+    validate_1.validate
+], (req, res) => {
+    let teamsController = new TeamsController_1.TeamsController();
+    teamsController.createTeam(req, res);
+});
 //# sourceMappingURL=teamsRouter.js.map

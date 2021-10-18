@@ -39,7 +39,7 @@ export class Server {
         this.app.use( cors() );
 
         //routing to handle api calls
-         this.app.use( '/api/teams', router );
+        this.app.use( '/api/teams', router );
     }
 
     // Esta configuración se puede tener aquí o como propieda de clase

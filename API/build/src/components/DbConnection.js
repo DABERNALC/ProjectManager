@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DbConnection = void 0;
 var mysql = require('mysql');
 class DbConnection {
     constructor() {
@@ -40,5 +41,5 @@ class DbConnection {
         });
     }
 }
-exports.default = DbConnection;
+exports.DbConnection = DbConnection;
 //# sourceMappingURL=DbConnection.js.map

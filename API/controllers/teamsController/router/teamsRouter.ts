@@ -53,11 +53,22 @@ router.get('/test', (req: any,res: any)=>{
 });
 
 router.post('/create',[
-    check("teamName","you should send the team name to create a team").not().isEmpty()
+    check("teamName","you should send the team name to create a team").not().isEmpty(),
+    check("liderId","you should send the lider id to create a team").not().isEmpty()
     ,validate
 ],(req: any,res: any)=>{
     let teamsController = new TeamsController();
     teamsController.createTeam(req,res);
+});
+router.post('/createParticipant',[
+  check("id","you should send the firebase id in order to create a participant").not().isEmpty(),
+  check("correo","you should send the participants email in order to create a participant").isEmail(),
+  check("nombre","you should send the participants name in order to create a participant").not().isEmpty(),
+  check("color","you should send the participants color in order to create a participant").not().isEmpty()
+  ,validate
+],(req: any,res: any)=>{
+  let teamsController = new TeamsController();
+  teamsController.createParticipant(req,res);
 });
 
 export {router};
