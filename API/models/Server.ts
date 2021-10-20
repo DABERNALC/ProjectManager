@@ -1,4 +1,5 @@
 // Servidor de Express
+import { ProjectsRouter } from "../controllers/teamsController/router/ProjectsRouter";
 import express from "express";
 const http     = require('http');
 import * as socketio from 'socket.io';
@@ -40,6 +41,7 @@ export class Server {
 
         //routing to handle api calls
         this.app.use( '/api/teams', router );
+        this.app.use( '/api/projects', ProjectsRouter );
     }
 
     // Esta configuración se puede tener aquí o como propieda de clase

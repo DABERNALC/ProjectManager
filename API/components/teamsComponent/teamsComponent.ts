@@ -1,9 +1,9 @@
-import { arrowFunctionExpression } from "@babel/types";
 import { IDbConection } from "../IDbConection";
 import { DbConnection } from "../DbConnection";
 import Teams from "../teamsComponent/Teams";
 
 export default class teamsControllerSingleton {
+  
   
   instance: any;
   teams: any;
@@ -42,7 +42,25 @@ export default class teamsControllerSingleton {
 
     
   }
+  async getTeam(req: any): Promise<Object> {
 
+    //getting the parameters from the request
+    const teamID= req.query.TeamId;
+    //sql statement
+    const sqlStatement = `SELECT * FROM EQUIPO WHERE id="${teamID}"`;
+    return new Promise<Object>((resolve, reject) => {
+      this.dbConection
+      .makeQuery(sqlStatement)
+      .then((response:Object) => {
+        console.log(response);
+        resolve(response);
+      })
+      .catch((error) => {
+        
+        reject(error.sqlMessage);
+      });
+    })
+  }
   //this method creates a participant
   async createParticipant(req: any): Promise<string> {
 

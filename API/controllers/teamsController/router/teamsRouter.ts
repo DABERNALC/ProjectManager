@@ -60,6 +60,13 @@ router.post('/create',[
     let teamsController = new TeamsController();
     teamsController.createTeam(req,res);
 });
+router.get('/getTeam',[
+  check("TeamId","you should send the id of the team you whant to get").not().isEmpty(),
+  validate
+],(req: any,res: any)=>{
+  let teamsController = new TeamsController();
+  teamsController.getTeam(req,res);
+});
 router.post('/createParticipant',[
   check("id","you should send the firebase id in order to create a participant").not().isEmpty(),
   check("correo","you should send the participants email in order to create a participant").isEmail(),

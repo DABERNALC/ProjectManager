@@ -2,6 +2,7 @@ import { DbConnection } from "../../components/DbConnection";
 import TeamsControllerSingleton from "../../components/teamsComponent/teamsComponent";
 
 export class TeamsController {
+  
   async createParticipant(req: any, res: any) {
     const firebaseId = req.body.id;
     const dbConection = new DbConnection();
@@ -59,6 +60,29 @@ export class TeamsController {
         res.json({
           ok: true,
           message: `i created a team named: ${teamName} `,
+        });
+      })
+      .catch((error) => {
+        res.json({
+          ok: false,
+          message: error,
+        });
+      });
+  }
+  getTeam(req: any, res: any) {
+    const teamId = req.query.TeamId;
+
+    const dbConection = new DbConnection();
+    const teamsComponent = new TeamsControllerSingleton(dbConection);
+
+    //manage api response
+    teamsComponent
+      .getTeam(req)
+      .then((team) => {
+        res.json({
+          ok: true,
+          message: `here is the team with id : ${teamId} `,
+          team: team
         });
       })
       .catch((error) => {
