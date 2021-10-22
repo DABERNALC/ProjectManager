@@ -87,7 +87,7 @@ export default class teamsControllerSingleton {
   addParticipantToTeam(req: any):Promise<String> {
    //getting the parameters from the request
    const teamId = req.body.teamId;
-   var example  = "['102983','190238']";
+
    const participantsIds = req.body.participants.split("[")[1].split("]")[0].split(",");
    
     
