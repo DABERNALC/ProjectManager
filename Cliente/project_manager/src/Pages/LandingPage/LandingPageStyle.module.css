@@ -1,0 +1,81 @@
+.upperContainer {
+    margin-top: 20px;
+    display: inline-flex;
+    width: 100%;
+}
+
+.rightUpperPart {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: 50px;
+}
+
+.leftUpperPart {
+    display: flex;
+    justify-content: start;
+    width: 300px;
+    margin-left: 50px;
+}
+
+.inlinePart {
+    display: inline-flex;
+}
+
+.tittleName {
+    font-family: Sansita;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #000000;
+    margin-right: 10px;
+}
+
+.logInText {
+    font-family: Sansita;
+    font-style: normal;
+    font-size: 25px;
+    margin: 0 auto;
+    padding-top: 15px;
+    line-height: 20px;
+    margin-right: 50px;
+    cursor: pointer;
+}
+
+.welcomeText {
+    height: fit-content;
+    margin: 0 auto;
+    font-family: Sansita;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 77px;
+    text-align: center;
+    color: #000000;
+    margin-top: 150px;
+}
+
+.welcomeInfo {
+    position: relative;
+    width: 486px;
+    height: fit-content;
+    margin: 0 auto;
+    font-family: Sansita;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    margin-top: 15px;
+    color: #424242;
+}
+
+.bottomButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

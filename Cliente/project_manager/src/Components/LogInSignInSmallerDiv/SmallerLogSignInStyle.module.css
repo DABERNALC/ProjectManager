@@ -1,0 +1,39 @@
+.leftDiv {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h2 {
+    font-family: Sansita;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: 0.03em;
+    color: #ffffff;
+}
+
+.button {
+    width: 174px;
+    height: 47px;
+    background: #ffffff;
+    border: 2px solid #4262ff;
+    border-radius: 10px;
+    font-family: Sansita;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    color: #4262ff;
+}
+.button:hover{
+    cursor: pointer;
+    border: 2px solid #2643D1;
+    color: #2643D1;
+}
+
