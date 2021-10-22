@@ -1,17 +1,18 @@
 
-
+.container{
+    width: 100%;
+    height: 100%;
+}
 .leftMenu {
-    position: absolute;
-    width: 17%;
-    height: 78%;
-    left: 1%;
-    top: 20%;
+    width: 95%;
+    height: 90%;
+    margin-left: 5%;
+    margin-top: 10%;
     background: #1b183d;
     backdrop-filter: blur(4px);
     border-radius: 5px;
 }
 hr{
-    margin-top: 10%;
     border: 1px solid #ADB3D0;
 }
 

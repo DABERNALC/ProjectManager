@@ -1,12 +1,25 @@
 .App {
+  position: absolute;
+  top: 0;
+  left: 0;
   text-align: center;
+  display: grid;
+  grid-template-areas: "header header"
+                  "sidebar app";
+  grid-template-columns: 15vw 85vw;
+  grid-template-rows: 15vh 85vh;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
+.Header{
+  grid-area: header;
+}
+.SideBar{
+  grid-area: sidebar;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
