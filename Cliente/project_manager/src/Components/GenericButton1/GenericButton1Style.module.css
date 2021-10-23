@@ -1,21 +1,21 @@
 .estiloBoton {
-    display: flex;
-    width: 224px;
+    width: 174px;
     height: 47px;
     background: #4262ff;
-    border-radius: 60px;
+    border-radius: 10px;
     font-family: Sansita;
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     letter-spacing: 0.03em;
-    color: #ffffff;
-    cursor: pointer;
     border: none;
-
+    color: #ffffff;
+    margin-top: 50px;
 }
 
 .estiloBoton:hover{

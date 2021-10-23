@@ -1,0 +1,13 @@
+.estiloBoton {
+    width: 156px;
+    height: 33px;
+    background: #4262ff;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Sansita', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.03em;
+    color: #ffffff;
+}
