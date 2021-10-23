@@ -1,17 +1,13 @@
 export default class ParticipanteDto {
     map: any;
-    constructor()
+    id: String;
+    name: String;
+    color: String;
+    constructor(id:String,name:String,color:String)
     {
-        this.map = {
-            "idFirebase": "participantData.idIFirebase",
-            "name": "participantData.name",
-            "title": "Envelope.Request.Item.ShortTitle",
-            "description": "Envelope.Request.Item.ShortDescription",
-            "length": "Envelope.Request.Item.Dimensions.Length",
-            "width": "Envelope.Request.Item.Dimensions.Width",
-            "height": "Envelope.Request.Item.Dimensions.Height",
-            "inventory.onHandQty": "Envelope.Request.Item.Inventory"
-        };
+        this.id = id
+        this.name = name
+        this.color = color
     }
 }
 

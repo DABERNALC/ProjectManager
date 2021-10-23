@@ -1,5 +1,6 @@
 import { DbConnection } from "../../components/DbConnection";
 import TeamsControllerSingleton from "../../components/teamsComponent/teamsComponent";
+import teamsMapper from "./mappers/teamsMapper";
 
 export class TeamsController {
   
@@ -76,15 +77,16 @@ export class TeamsController {
     const dbConection = DbConnection.getInstance();
 
     const teamsComponent = new TeamsControllerSingleton(dbConection);
-
+    const teamsMappers = new teamsMapper();
     //manage api response
     teamsComponent
       .getTeam(req)
       .then((team) => {
+        
         res.json({
           ok: true,
           message: `here is the team with id : ${teamId} `,
-          team: team
+          team: teamsMappers.getDto(team)
         });
       })
       .catch((error) => {

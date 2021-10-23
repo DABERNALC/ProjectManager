@@ -47,7 +47,7 @@ export default class teamsControllerSingleton {
     //getting the parameters from the request
     const teamID= req.query.TeamId;
     //sql statement
-    const sqlStatement = `SELECT * FROM EQUIPO WHERE id="${teamID}"`;
+    const sqlStatement = `Call getEquipoDetails(${185})`;
     return new Promise<Object>((resolve, reject) => {
       this.dbConection
       .makeQuery(sqlStatement)
