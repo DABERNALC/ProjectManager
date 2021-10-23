@@ -5,7 +5,7 @@ export class TeamsController {
   
   async createParticipant(req: any, res: any) {
     const firebaseId = req.body.id;
-    const dbConection = new DbConnection();
+    const dbConection = DbConnection.getInstance();
     const teamsComponent = new TeamsControllerSingleton(dbConection);
     let sqlStatus: string;
 
@@ -28,7 +28,7 @@ export class TeamsController {
   createTeam(req: any, res: any) {
     const teamName = req.body.teamName;
 
-    const dbConection = new DbConnection();
+    const dbConection = DbConnection.getInstance();
     const teamsComponent = new TeamsControllerSingleton(dbConection);
 
     //manage api response
@@ -50,7 +50,8 @@ export class TeamsController {
   addParticipantToTeam(req: any, res: any) {
     const teamName = req.body.teamName;
 
-    const dbConection = new DbConnection();
+    const dbConection = DbConnection.getInstance();
+
     const teamsComponent = new TeamsControllerSingleton(dbConection);
 
     //manage api response
@@ -72,7 +73,8 @@ export class TeamsController {
   getTeam(req: any, res: any) {
     const teamId = req.query.TeamId;
 
-    const dbConection = new DbConnection();
+    const dbConection = DbConnection.getInstance();
+
     const teamsComponent = new TeamsControllerSingleton(dbConection);
 
     //manage api response

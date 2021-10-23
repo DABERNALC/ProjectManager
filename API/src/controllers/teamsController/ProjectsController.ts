@@ -6,7 +6,7 @@ export class ProjectsController {
   createProject(req: any, res: any) {
     const name = req.body.Name;
 
-    const dbConection = new DbConnection();
+    const dbConection = DbConnection.getInstance();
     const projectComponent = new ProjectsControllerSingleton(dbConection);
 
     //manage api response

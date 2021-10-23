@@ -27,30 +27,30 @@ router.post( '/new', //validaciones
     validarCampos
 ], //controller );
 */
-router.get('/test', (req: any,res: any)=>{
-    const participantMapper = new ParticipantMapper();
-    const db = new DbConnection();
-    db.makeQuery("show tables").then((rows:any)=>{
-      console.log("response", rows)
-    });
+// router.get('/test', (req: any,res: any)=>{
+//     const participantMapper = new ParticipantMapper();
+//     const db = new DbConnection();
+//     db.makeQuery("show tables").then((rows:any)=>{
+//       console.log("response", rows)
+//     });
     
-    var src = {
-        "name": "12345",
-        "idFirebase": "99999912345X",
-        "title": "Test Item",
-        "description": "Description of test item",
-        "length": 5,
-        "width": 2,
-        "height": 8,
-        "inventory": {
-          "onHandQty": 12
-        }
-      };
-    res.json({
-        status:"ok",
-        currentTeams: participantMapper.getDto(src)
-    });
-});
+//     var src = {
+//         "name": "12345",
+//         "idFirebase": "99999912345X",
+//         "title": "Test Item",
+//         "description": "Description of test item",
+//         "length": 5,
+//         "width": 2,
+//         "height": 8,
+//         "inventory": {
+//           "onHandQty": 12
+//         }
+//       };
+//     res.json({
+//         status:"ok",
+//         currentTeams: participantMapper.getDto(src)
+//     });
+// });
 
 router.post('/create',[
     check("teamName","you should send the team name to create a team").not().isEmpty(),
