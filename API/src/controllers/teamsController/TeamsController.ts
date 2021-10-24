@@ -1,8 +1,34 @@
 import { DbConnection } from "../../components/DbConnection";
 import TeamsControllerSingleton from "../../components/teamsComponent/teamsComponent";
+import ParticipantMapper from "./mappers/ParticipantMapper";
 import teamsMapper from "./mappers/teamsMapper";
 
 export class TeamsController {
+  logIn(req: any, res: any) {
+    const dbConection = DbConnection.getInstance();
+    const teamsComponent = new TeamsControllerSingleton(dbConection);
+    const participantMapper = new ParticipantMapper();
+    const participantId = req.query.participantId;
+    teamsComponent
+      .getTeamsParticipant(req)
+      .then((status) => {
+        
+        // console.log(status);
+        
+        res.json({
+          ok: true,
+          message: "todo ok",
+          data: participantMapper.getDto(status,participantId)
+        });
+      })
+      .catch((error) => {
+        res.json({
+          ok: false,
+          message: error,
+        });
+      });
+      
+  }
   
   async createParticipant(req: any, res: any) {
     const firebaseId = req.body.id;
@@ -49,7 +75,7 @@ export class TeamsController {
       });
   }
   addParticipantToTeam(req: any, res: any) {
-    const teamName = req.body.teamName;
+    const teamId = req.body.teamId;
 
     const dbConection = DbConnection.getInstance();
 
@@ -61,7 +87,7 @@ export class TeamsController {
       .then((status) => {
         res.json({
           ok: true,
-          message: `i created a team named: ${teamName} `,
+          message: `i added the participant to the : ${teamId} `,
         });
       })
       .catch((error) => {
@@ -82,11 +108,10 @@ export class TeamsController {
     teamsComponent
       .getTeam(req)
       .then((team) => {
-        
         res.json({
           ok: true,
           message: `here is the team with id : ${teamId} `,
-          team: teamsMappers.getDto(team)
+          team: teamsMappers.getDto(team),
         });
       })
       .catch((error) => {

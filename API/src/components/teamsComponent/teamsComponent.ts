@@ -3,12 +3,10 @@ import { DbConnection } from "../DbConnection";
 import Teams from "../teamsComponent/Teams";
 
 export default class teamsControllerSingleton {
-  
-  
   instance: any;
   teams: any;
   dbConection: IDbConection;
-  constructor(DbConection:IDbConection) {
+  constructor(DbConection: IDbConection) {
     const instance = this.instance;
     if (instance) {
       return instance;
@@ -17,53 +15,98 @@ export default class teamsControllerSingleton {
     this.instance = this;
     this.dbConection = DbConection;
   }
+  getTeamsParticipant(req: any): Promise<any> {
+    return new Promise<String[]>((resolve, reject) => {
+      const participantId = req.query.participantId;
+      const sqlStatement: String = `select participanteequipo.IDEquipo, proyecto.IDProyecto, proyecto.Nombre as nombreProyecto,proyecto.Descripcion,equipo.tag from participanteequipo INNER JOIN proyecto on proyecto.IDEquipo = participanteequipo.IDEquipo INNER JOIN equipo ON participanteequipo.IDEquipo = equipo.id where participanteequipo.IDParticipante = ${participantId}; 
+      `;
 
+      let answer: any = { participants: [] };
+      this.dbConection
+        .makeQuery(sqlStatement)
+        .then(async (response: any) => {
+          answer.proyectos = response;
+          response = response.map((item: { IDEquipo: any }) => item.IDEquipo);
+          var unique = response.filter(this.onlyUnique);
+
+          await unique.forEach((row: number, index: number) => {
+            this.getTeamsParticipantsInfo(row).then((status) => {
+              answer.participants = answer.participants.concat(status);
+              if (unique.length - 1 == index) {
+                console.log(index);
+                
+                resolve(answer);
+              }
+            });
+            
+          });
+
+          
+          
+        })
+        .catch((error) => {
+          reject(error.sqlMessage);
+        });
+    });
+  }
+
+  onlyUnique(value: any, index: any, self: any) {
+    return self.indexOf(value) === index;
+  }
+
+  getTeamsParticipantsInfo(teamId: any): Promise<String[]> {
+    return new Promise<String[]>((resolve, reject) => {
+      const sqlStatement: String = `select * from  participanteequipo inner JOIN participante ON participanteequipo.IDParticipante = participante.ID where participanteequipo.IDEquipo = ${teamId}`;
+      this.dbConection
+        .makeQuery(sqlStatement)
+        .then((response: any) => {
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error.sqlMessage);
+        });
+    });
+  }
   //this method creates a team and adds its first participant who should be the creator
-  async createTeam(req: any):Promise<String> {
+  async createTeam(req: any): Promise<String> {
     //getting the parameters from the request
     const liderId = req.body.liderId;
     const teamName = req.body.teamName;
-    const sqlStatement:String = `call createTeam('${teamName}',${liderId})`;
+    const sqlStatement: String = `call createTeam('${teamName}',${liderId})`;
     //logic to create a team
     this.teams.addTeam(liderId, teamName);
     console.log(this.teams);
     //todo: llamar a la base de datos
     return new Promise<String>((resolve, reject) => {
       this.dbConection
-      .makeQuery(sqlStatement)
-      .then((response) => {
-        resolve("ok");
-      })
-      .catch((error) => {
-        
-        reject(error.sqlMessage);
-      });
-    })
-
-    
+        .makeQuery(sqlStatement)
+        .then((response) => {
+          resolve("ok");
+        })
+        .catch((error) => {
+          reject(error.sqlMessage);
+        });
+    });
   }
   async getTeam(req: any): Promise<Object> {
-
     //getting the parameters from the request
-    const teamID= req.query.TeamId;
+    const teamID = req.query.TeamId;
     //sql statement
     const sqlStatement = `Call getEquipoDetails(${185})`;
     return new Promise<Object>((resolve, reject) => {
       this.dbConection
-      .makeQuery(sqlStatement)
-      .then((response:Object) => {
-        console.log(response);
-        resolve(response);
-      })
-      .catch((error) => {
-        
-        reject(error.sqlMessage);
-      });
-    })
+        .makeQuery(sqlStatement)
+        .then((response: Object) => {
+          console.log(response);
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error.sqlMessage);
+        });
+    });
   }
   //this method creates a participant
   async createParticipant(req: any): Promise<string> {
-
     //getting the parameters from the request
     const firebaseId = req.body.id;
     const email = req.body.correo;
@@ -73,44 +116,35 @@ export default class teamsControllerSingleton {
     const sqlStatement = `INSERT INTO participante (id, Correo, Nombre, Color) VALUES (${firebaseId}, '${email}', '${name}', '${color}')`;
     return new Promise<string>((resolve, reject) => {
       this.dbConection
-      .makeQuery(sqlStatement)
-      .then((response) => {
-        console.log(response);
-        resolve("ok");
-      })
-      .catch((error) => {
-        
-        reject(error.sqlMessage);
-      });
-    })
+        .makeQuery(sqlStatement)
+        .then((response) => {
+          console.log(response);
+          resolve("ok");
+        })
+        .catch((error) => {
+          reject(error.sqlMessage);
+        });
+    });
   }
-  addParticipantToTeam(req: any):Promise<String> {
-   //getting the parameters from the request
-   const teamId = req.body.teamId;
+  addParticipantToTeam(req: any): Promise<String> {
+    //getting the parameters from the request
+    const teamId = req.body.teamId;
 
-   const participantsIds = req.body.participants.split("[")[1].split("]")[0].split(",");
-   
-    
-  
-   //sql statement
-   let sqlStatement = `insert into participanteequipo (IDParticipante,IDEquipo) values `;
-   participantsIds.forEach((participant: String, index: number) => {
-     index != (participantsIds.length -1) ? sqlStatement += `(${participant},${teamId}),`: sqlStatement += `(${participant},${teamId});`
-  });
-  console.log(sqlStatement);
-  
-   return new Promise<string>((resolve, reject) => {
-     this.dbConection
-     .makeQuery(sqlStatement)
-     .then((response) => {
-       console.log(response);
-       resolve("ok");
-     })
-     .catch((error) => {
-       
-       reject(error.sqlMessage);
-     });
-   })
-}
+    const participantId = req.body.participant;
 
+    //sql statement
+    let sqlStatement = `insert into participanteequipo (IDParticipante,IDEquipo) values (${participantId},${teamId});`;
+
+    return new Promise<string>((resolve, reject) => {
+      this.dbConection
+        .makeQuery(sqlStatement)
+        .then((response) => {
+          console.log(response);
+          resolve("ok");
+        })
+        .catch((error) => {
+          reject(error.sqlMessage);
+        });
+    });
+  }
 }
