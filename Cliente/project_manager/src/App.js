@@ -9,8 +9,9 @@ function App() {
     
     <div>
       <div className="App">
-    
-        <LandingPage></LandingPage>
+      <Header></Header>
+      <SideBar></SideBar>
+        <NewProject></NewProject>
       </div>
 
     </div>

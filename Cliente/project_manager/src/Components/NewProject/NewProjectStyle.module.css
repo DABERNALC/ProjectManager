@@ -1,0 +1,31 @@
+.container{
+    background-color: rgba(174, 174, 174, 0.4);
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+.miniContainer{
+    background-color: white;
+    position: absolute;
+    width: 20%;
+    height: 60%;
+    top: 20%;
+    left: 40%;
+}
+.nContainer{
+    background-color: #050038;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    width: 70%;
+    margin-top: 5%;
+    padding-left: 10%;
+}
+.miniContainer h3, input{
+    margin-left: 3%;
+}
+.GenericButton2{
+    margin-left: 10%;
+}
