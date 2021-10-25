@@ -3,7 +3,7 @@ import LandingPageStyle from "./LandingPageStyle.module.css"
     
 const LandingPage = () => {
     return (
-        <div>
+        <div className="landing">
             <div className={LandingPageStyle.upperContainer}>
                 <div className={LandingPageStyle.leftUpperPart}>
                     <p className={LandingPageStyle.tittleName}>Gestor de proyectos</p>
