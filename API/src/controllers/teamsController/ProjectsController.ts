@@ -2,6 +2,28 @@ import ProjectsControllerSingleton from "../../components/ProjectComponent/proje
 import { DbConnection } from "../../components/DbConnection";
 
 export class ProjectsController {
+  addTask(req: any, res: any) {
+    const name = req.body.Name;
+
+    const dbConection = DbConnection.getInstance();
+    const projectComponent = new ProjectsControllerSingleton(dbConection);
+
+    //manage api response
+    projectComponent
+      .addTask(req)
+      .then((status) => {
+        res.json({
+          ok: true,
+          message: `i created a task named: ${name} `,
+        });
+      })
+      .catch((error) => {
+        res.json({
+          ok: false,
+          message: error,
+        });
+      });
+  }
 
   createProject(req: any, res: any) {
     const name = req.body.Name;

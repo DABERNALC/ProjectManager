@@ -40,4 +40,17 @@ ProjectsRouter.post('/create',[
     let teamsController = new ProjectsController();
     teamsController.createProject(req,res);
 });
+ProjectsRouter.post('/addTask',[
+    check("Name","you should send the task name to create a task").not().isEmpty(),
+    check("Description","you should send the task description to create a task").not().isEmpty(),
+    check("participantId","you should send the Id of the participant that works on this task").not().isEmpty(),
+    check("relevance","you should send the relevance of the task").isBoolean(),
+    check("priority","you should send the priority of the task").not().isEmpty(),
+    check("proyectId","you should send the proyect id that this task belongs").not().isEmpty()
+    ,validate
+],(req: any,res: any)=>{
+    let teamsController = new ProjectsController();
+    teamsController.addTask(req,res);
+    
+});
 export {ProjectsRouter};

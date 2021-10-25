@@ -4,6 +4,7 @@ import Teams from "../teamsComponent/Teams";
 
 export default class ProjectsControllerSingleton {
   
+  
   instance: any;
   teams: any;
   dbConection: IDbConection;
@@ -44,5 +45,34 @@ export default class ProjectsControllerSingleton {
 
     
   }
+  addTask(req: any):Promise<String> {
+    //getting the parameters from the request
+    const name = req.body.Name;
+    const description = req.body.Description;
+    const proyectId = req.body.proyectId;
+    const priority = req.body.priority;
+    const participantId = req.body.participantId;
+    const relevance = req.body.relevance;
 
+
+
+    const sqlStatement:String = `INSERT INTO proyecto (nombre,descripcion,nombreCliente,idEquipo) VALUES ('${name}',
+                                '${description}', '${CustomerName}',${idTeam});`;
+
+  
+    //todo: llamar a la base de datos
+    return new Promise<String>((resolve, reject) => {
+      this.dbConection
+      .makeQuery(sqlStatement)
+      .then((response) => {
+        resolve("ok");
+      })
+      .catch((error) => {
+        
+        reject(error.sqlMessage);
+      });
+    })
+
+    
+  } 
 }
