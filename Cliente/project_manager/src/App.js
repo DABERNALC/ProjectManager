@@ -9,11 +9,10 @@ function App() {
     
     <div>
       <div className="App">
-        <Header className={AppStyle.Header}></Header>
-        <SideBar className={AppStyle.SideBar}></SideBar>
-        
+    
+        <LandingPage></LandingPage>
       </div>
-      <NewProject/>
+
     </div>
   );
 }
