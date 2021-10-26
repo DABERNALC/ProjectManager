@@ -1,0 +1,36 @@
+body {
+    background-color: #f4f4f4;
+}
+.title {
+    text-align: start;
+    margin-left: 10px;
+}
+
+h3 {
+    margin-top: -15px;
+    text-align: start;
+    margin-left: 10px;
+}
+
+.kanbanContainerCentered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.kanbanContainer {
+    height: fit-content;
+    background: white;
+    border-radius: 5px;
+}
+
+.columnsContainers {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.buttonStyle {
+    display: flex;
+    justify-content: end;
+}
