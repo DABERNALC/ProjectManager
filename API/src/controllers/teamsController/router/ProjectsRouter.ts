@@ -75,6 +75,33 @@ ProjectsRouter.post('/deleteTask',[
 ],(req: any,res: any)=>{
     let teamsController = new ProjectsController();
     teamsController.deleteTask(req,res);
-    
+    //to do delete all subtask 
 });
+
+ProjectsRouter.post('/addSubtask',[
+    check("taskId","you should send the id of the task will hold this subtask").not().isEmpty(),
+    check("description","you should send the description of the subtask").not().isEmpty()
+    ,validate
+],(req: any,res: any)=>{
+    let teamsController = new ProjectsController();
+    teamsController.addSubtask(req,res);
+});
+ProjectsRouter.post('/checkSubtask',[
+    check("subTaskId","you should send the id of the subtask will check").not().isEmpty()
+    
+    ,validate
+],(req: any,res: any)=>{
+    let teamsController = new ProjectsController();
+    teamsController.checkSubtask(req,res);
+});
+ProjectsRouter.post('/deleteSubtask',[
+    check("subTaskId","you should send the id of the subtask will delete").not().isEmpty()
+    
+    ,validate
+],(req: any,res: any)=>{
+    let teamsController = new ProjectsController();
+    teamsController.deleteSubtask(req,res);
+});
+
+
 export {ProjectsRouter};

@@ -1,32 +1,33 @@
-import ProjectsControllerSingleton from "../../components/ProjectComponent/projectsComponent";
+import ProjectsComponent from "../../components/ProjectComponent/projectsComponent";
 import { DbConnection } from "../../components/DbConnection";
 
 export class ProjectsController {
   
- 
   addTask(req: any, res: any) {
     const description = req.body.Description;
 
     const dbConection = DbConnection.getInstance();
-    const projectComponent = new ProjectsControllerSingleton(dbConection);
-    const mensaje = "se te ha agregado una tarea verifica tus responsabilidades";
-    const participant  = req.body.participantId;
+    const projectComponent = new ProjectsComponent(dbConection);
+    const mensaje =
+      "se te ha agregado una tarea verifica tus responsabilidades";
+    const participant = req.body.participantId;
     //manage api response
     projectComponent
       .addTask(req)
       .then((status) => {
-        this.createNotification(mensaje,participant).then(()=>{
-          res.json({
-            ok: true,
-            message: `i created the task: ${description} `,
+        this.createNotification(mensaje, participant)
+          .then(() => {
+            res.json({
+              ok: true,
+              message: `i created the task: ${description} `,
+            });
+          })
+          .catch((error) => {
+            res.json({
+              ok: false,
+              message: error,
+            });
           });
-        }).catch((error)=>{
-          res.json({
-            ok: false,
-            message: error,
-          });
-        });
-        
       })
       .catch((error) => {
         res.json({
@@ -39,7 +40,7 @@ export class ProjectsController {
     const taskId = req.body.taskId;
 
     const dbConection = DbConnection.getInstance();
-    const projectComponent = new ProjectsControllerSingleton(dbConection);
+    const projectComponent = new ProjectsComponent(dbConection);
 
     //manage api response
     projectComponent
@@ -61,7 +62,7 @@ export class ProjectsController {
     const taskId = req.body.taskId;
 
     const dbConection = DbConnection.getInstance();
-    const projectComponent = new ProjectsControllerSingleton(dbConection);
+    const projectComponent = new ProjectsComponent(dbConection);
 
     //manage api response
     projectComponent
@@ -69,7 +70,7 @@ export class ProjectsController {
       .then((status) => {
         res.json({
           ok: true,
-          message: `i deleted the project with id: ${taskId} `,
+          message: `i deleted the task with id: ${taskId} `,
         });
       })
       .catch((error) => {
@@ -78,13 +79,34 @@ export class ProjectsController {
           message: error,
         });
       });
-  } 
+  }
+  addSubtask(req: any, res: any) {
+    const taskId = req.body.taskId;
 
+    const dbConection = DbConnection.getInstance();
+    const projectComponent = new ProjectsComponent(dbConection);
+
+    //manage api response
+    projectComponent
+      .addSubtask(req)
+      .then((status) => {
+        res.json({
+          ok: true,
+          message: `i added a subtask to the task with id: ${taskId} `,
+        });
+      })
+      .catch((error) => {
+        res.json({
+          ok: false,
+          message: error,
+        });
+      });
+  }
   createProject(req: any, res: any) {
     const name = req.body.Name;
 
     const dbConection = DbConnection.getInstance();
-    const projectComponent = new ProjectsControllerSingleton(dbConection);
+    const projectComponent = new ProjectsComponent(dbConection);
 
     //manage api response
     projectComponent
@@ -102,7 +124,51 @@ export class ProjectsController {
         });
       });
   }
-  createNotification(message:string,participant:string) {
+  checkSubtask(req: any, res: any) {
+    const id = req.body.subTaskId;
+
+    const dbConection = DbConnection.getInstance();
+    const projectComponent = new ProjectsComponent(dbConection);
+
+    //manage api response
+    projectComponent
+      .checkTask(req)
+      .then((status) => {
+        res.json({
+          ok: true,
+          message: `i checked the task with id: ${id} `,
+        });
+      })
+      .catch((error) => {
+        res.json({
+          ok: false,
+          message: error,
+        });
+      });
+  }
+  deleteSubtask(req: any, res: any) {
+    const id = req.body.subTaskId;
+
+    const dbConection = DbConnection.getInstance();
+    const projectComponent = new ProjectsComponent(dbConection);
+
+    //manage api response
+    projectComponent
+      .deleteSubTask(req)
+      .then((status) => {
+        res.json({
+          ok: true,
+          message: `i deleted the subtask with id: ${id} `,
+        });
+      })
+      .catch((error) => {
+        res.json({
+          ok: false,
+          message: error,
+        });
+      });
+}
+  createNotification(message: string, participant: string) {
     const dbConection = DbConnection.getInstance();
     const sqlStatement = `INSERT INTO notificacion (Descripcion,IDParticipante,Estado)VALUES ("${message}",${participant},0);	`;
     return new Promise<string>((resolve, reject) => {
@@ -117,4 +183,5 @@ export class ProjectsController {
         });
     });
   }
+  
 }
