@@ -1,8 +1,34 @@
 import { DbConnection } from "../../components/DbConnection";
 import TeamsControllerSingleton from "../../components/teamsComponent/teamsComponent";
+import ParticipantMapper from "./mappers/ParticipantMapper";
 import teamsMapper from "./mappers/teamsMapper";
 
 export class TeamsController {
+  logIn(req: any, res: any) {
+    const dbConection = DbConnection.getInstance();
+    const teamsComponent = new TeamsControllerSingleton(dbConection);
+    const participantMapper = new ParticipantMapper();
+    const participantId = req.query.participantId;
+    teamsComponent
+      .getTeamsParticipant(req)
+      .then((status) => {
+        
+        // console.log(status);
+        
+        res.json({
+          ok: true,
+          message: "todo ok",
+          data: participantMapper.getDto(status,participantId)
+        });
+      })
+      .catch((error) => {
+        res.json({
+          ok: false,
+          message: error,
+        });
+      });
+      
+  }
   
   async createParticipant(req: any, res: any) {
     const firebaseId = req.body.id;
@@ -49,20 +75,30 @@ export class TeamsController {
       });
   }
   addParticipantToTeam(req: any, res: any) {
-    const teamName = req.body.teamName;
+    const teamId = req.body.teamId;
 
     const dbConection = DbConnection.getInstance();
 
     const teamsComponent = new TeamsControllerSingleton(dbConection);
-
+    const mensaje = "Se te ha agregó a un equipo, porfavor mira tus lista de equipos"
+    const participant = req.body.participant;
     //manage api response
     teamsComponent
       .addParticipantToTeam(req)
       .then((status) => {
-        res.json({
-          ok: true,
-          message: `i created a team named: ${teamName} `,
+        this.createNotification(mensaje,participant).then(()=>{
+          res.json({
+            ok: true,
+            message: `i added the participant to the : ${teamId} `,
+          });
+        }).catch((error)=>{
+          res.json({
+            ok: false,
+            message: error,
+          });
         });
+
+        
       })
       .catch((error) => {
         res.json({
@@ -71,6 +107,7 @@ export class TeamsController {
         });
       });
   }
+  
   getTeam(req: any, res: any) {
     const teamId = req.query.TeamId;
 
@@ -82,11 +119,10 @@ export class TeamsController {
     teamsComponent
       .getTeam(req)
       .then((team) => {
-        
         res.json({
           ok: true,
           message: `here is the team with id : ${teamId} `,
-          team: teamsMappers.getDto(team)
+          team: teamsMappers.getDto(team),
         });
       })
       .catch((error) => {
@@ -95,5 +131,20 @@ export class TeamsController {
           message: error,
         });
       });
+  }
+  createNotification(message:string,participant:string) {
+    const dbConection = DbConnection.getInstance();
+    const sqlStatement = `INSERT INTO notificacion (Descripcion,IDParticipante,Estado)VALUES ("${message}",${participant},0);	`;
+    return new Promise<string>((resolve, reject) => {
+      dbConection
+        .makeQuery(sqlStatement)
+        .then((response) => {
+          console.log(response);
+          resolve("ok");
+        })
+        .catch((error) => {
+          reject(error.sqlMessage);
+        });
+    });
   }
 }

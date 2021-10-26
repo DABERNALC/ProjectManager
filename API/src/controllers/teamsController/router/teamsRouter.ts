@@ -2,15 +2,14 @@
     path: api/teams
 */
 import { Router } from "express";
-import { check }  from 'express-validator'
-import {validate } from '../../../middlewares/validate'
-const ParticipantMapper = require('../mappers/ParticipantMapper');
-const DbConnection = require('../../../components/DbConnection');
-import {TeamsController} from '../TeamsController'
+import { check } from "express-validator";
+import { validate } from "../../../middlewares/validate";
+const ParticipantMapper = require("../mappers/ParticipantMapper");
+const DbConnection = require("../../../components/DbConnection");
+import { TeamsController } from "../TeamsController";
 // import  Controlers
 
-
-const  router = Router();
+const router = Router();
 
 // Crear nuevos usuarios
 /* plantilla de un post:
@@ -33,7 +32,7 @@ router.post( '/new', //validaciones
 //     db.makeQuery("show tables").then((rows:any)=>{
 //       console.log("response", rows)
 //     });
-    
+
 //     var src = {
 //         "name": "12345",
 //         "idFirebase": "99999912345X",
@@ -51,39 +50,96 @@ router.post( '/new', //validaciones
 //         currentTeams: participantMapper.getDto(src)
 //     });
 // });
-
-router.post('/create',[
-    check("teamName","you should send the team name to create a team").not().isEmpty(),
-    check("liderId","you should send the lider id to create a team").not().isEmpty()
-    ,validate
-],(req: any,res: any)=>{
+router.get(
+  "/logIn",
+  [
+    check("participantId", "you should send the firebase id to login")
+      .not()
+      .isEmpty(),
+    validate,
+  ],
+  (req: any, res: any) => {
     let teamsController = new TeamsController();
-    teamsController.createTeam(req,res);
-});
-router.get('/getTeam',[
-  check("TeamId","you should send the id of the team you whant to get").not().isEmpty(),
-  validate
-],(req: any,res: any)=>{
-  let teamsController = new TeamsController();
-  teamsController.getTeam(req,res);
-});
-router.post('/createParticipant',[
-  check("id","you should send the firebase id in order to create a participant").not().isEmpty(),
-  check("correo","you should send the participants email in order to create a participant").isEmail(),
-  check("nombre","you should send the participants name in order to create a participant").not().isEmpty(),
-  check("color","you should send the participants color in order to create a participant").not().isEmpty()
-  ,validate
-],(req: any,res: any)=>{
-  let teamsController = new TeamsController();
-  teamsController.createParticipant(req,res);
-});
+    teamsController.logIn(req, res);
+  }
+);
+router.post(
+  "/create",
+  [
+    check("teamName", "you should send the team name to create a team")
+      .not()
+      .isEmpty(),
+    check("liderId", "you should send the lider id to create a team")
+      .not()
+      .isEmpty(),
+    validate,
+  ],
+  (req: any, res: any) => {
+    let teamsController = new TeamsController();
+    teamsController.createTeam(req, res);
+  }
+);
+router.get(
+  "/getTeam",
+  [
+    check("TeamId", "you should send the id of the team you whant to get")
+      .not()
+      .isEmpty(),
+    validate,
+  ],
+  (req: any, res: any) => {
+    let teamsController = new TeamsController();
+    teamsController.getTeam(req, res);
+  }
+);
+router.post(
+  "/createParticipant",
+  [
+    check(
+      "id",
+      "you should send the firebase id in order to create a participant"
+    )
+      .not()
+      .isEmpty(),
+    check(
+      "correo",
+      "you should send the participants email in order to create a participant"
+    ).isEmail(),
+    check(
+      "nombre",
+      "you should send the participants name in order to create a participant"
+    )
+      .not()
+      .isEmpty(),
+    check(
+      "color",
+      "you should send the participants color in order to create a participant"
+    )
+      .not()
+      .isEmpty(),
+    validate,
+  ],
+  (req: any, res: any) => {
+    let teamsController = new TeamsController();
+    teamsController.createParticipant(req, res);
+  }
+);
 
-router.post('/addParticipant',[
-  check("teamId","you should send the id of the team").not().isEmpty(),
-  check("participants","you should send the participantsIds you are trying to add").not().isEmpty()
-  ,validate
-],(req: any,res: any)=>{
-  let teamsController = new TeamsController();
-  teamsController.addParticipantToTeam(req,res);
-});
-export {router};
+router.post(
+  "/addParticipant",
+  [
+    check("teamId", "you should send the id of the team").not().isEmpty(),
+    check(
+      "participant",
+      "you should send the participantId you are trying to add"
+    )
+      .not()
+      .isEmpty(),
+    validate,
+  ],
+  (req: any, res: any) => {
+    let teamsController = new TeamsController();
+    teamsController.addParticipantToTeam(req, res);
+  }
+);
+export { router };
