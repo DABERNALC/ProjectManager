@@ -1,0 +1,35 @@
+.nameContainer{
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.personContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 60%;
+    align-items: center;
+}
+.container{
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 300px;
+    height: 120px;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+}
+.nameContainer h3{
+    font-size: larger;
+    margin-top: 15px;
+}

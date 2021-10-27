@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <div className={HeaderStyle.headerDiv}>
             <div>
-                <img className={HeaderStyle.Logo} src="https://pbs.twimg.com/profile_images/1242209432395821056/4oXFs5fd.jpg"></img>
+                <img className={HeaderStyle.Logo} src="https://cdn140.picsart.com/290106207032211.png?type=webp&to=min&r=640"></img>
                 <h1>Gestor de proyectos</h1>
             </div>
             <div>
