@@ -6,6 +6,7 @@ import NewProject from './Pages/NewProject/NewProject';
 import Kanban from './Pages/Kanban/Kanban';
 import Projects from "./Pages/Projects/Projects"
 import Teams from './Pages/Teams/Teams';
+import LogIn from './Pages/LogIn/LogIn';
 function App() {
   return (
     
@@ -14,8 +15,13 @@ function App() {
       <Header></Header>
       <SideBar></SideBar>
       <Teams></Teams>
-      </div>
+      {/* <Kanban/> */}
+      {/* <LogIn/> */}
+      
+      
 
+      </div>
+      {/* <LandingPage/> */}
     </div>
   );
 }

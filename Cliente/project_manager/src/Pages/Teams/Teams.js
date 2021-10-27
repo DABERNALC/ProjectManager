@@ -233,8 +233,11 @@ function Teams() {
 
   return (
     <div>
-        <h2>Mis Proyectos</h2>
-        <GenericButton2 text="Agregar Proyecto"/>
+        <h2 className={TeamsStyle.title}>Mis Proyectos</h2>
+        <div className={TeamsStyle.buttonContainer}>
+            <GenericButton2 text="Agregar Proyecto"/>
+        </div>
+        
         <div className= {TeamsStyle.teamsContainer}>
         { 
             Teams.length>0?

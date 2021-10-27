@@ -7,7 +7,13 @@ const KanbanColumn = (props) => {
         <div className={KanbanColumnStyle.container}>
             <h1 className={KanbanColumnStyle.title}>{props.title}</h1>
             <div>
-                <p className={KanbanColumnStyle.add}>+ Añadir una tarjeta</p>
+                {
+                    props.title == "TO DO" ?
+                        <p className={KanbanColumnStyle.add}>+ Añadir una tarjeta</p>
+                        :
+                        null
+                }
+                
             </div>
 
         </div>

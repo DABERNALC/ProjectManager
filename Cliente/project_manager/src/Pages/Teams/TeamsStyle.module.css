@@ -8,3 +8,13 @@
     margin-right: 100px;
     margin-bottom: 100px;
 }
+.buttonContainer{
+    display: flex;
+    justify-content: flex-start;
+} 
+.buttonContainer > *{
+    margin-left: 20px;
+} 
+.title{ 
+    margin-left: 20px;
+}

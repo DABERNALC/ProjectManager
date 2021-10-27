@@ -7,7 +7,8 @@
     justify-content: center;
     align-items: center;
 }
-.formStyle {
+.formStyle div  {
+    margin-bottom: 30px;
 }
 
 h3 {

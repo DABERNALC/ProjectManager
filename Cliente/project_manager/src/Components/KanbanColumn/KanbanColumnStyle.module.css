@@ -58,6 +58,8 @@ h3 {
     padding-bottom: 5px;
     cursor: pointer;
     border-radius: 5px;
+    text-align: left;
+    padding: 10px;
 }
 
 .add:hover{

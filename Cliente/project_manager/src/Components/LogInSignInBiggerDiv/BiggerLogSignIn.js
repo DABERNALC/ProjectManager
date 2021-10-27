@@ -7,10 +7,15 @@ const BiggerLogSignIn = () => {
         <div className={BiggerLogSignInStyle.container}>
             <form>
                 <div className={BiggerLogSignInStyle.formStyle}>
-                    <h3>Email:</h3>
-                    <input></input>
-                    <h3>Contraseña:</h3>
-                    <input type="password"></input>
+                    <div>
+                        <h3>Email:</h3>
+                        <input></input>
+                    </div>
+                    <div>
+                        <h3>Contraseña:</h3>
+                        <input type="password"></input>
+                    </div>
+                   
                 </div>
                 <div className={BiggerLogSignInStyle.buttonDiv}>
                     <button className={BiggerLogSignInStyle.LogInButton}>iniciar sesión</button>

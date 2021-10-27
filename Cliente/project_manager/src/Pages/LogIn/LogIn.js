@@ -5,7 +5,7 @@ import BiggerLogSignIn from "../../Components/LogInSignInBiggerDiv/BiggerLogSign
 
 const LogIn = () => {
     return (
-        <div className={LogInStyle.centered}>
+        <div className={LogInStyle.centered + " center-fullScreen"}>
             <div className={LogInStyle.container}>
                 <SmallerLogSignIn/>
                 <BiggerLogSignIn/>

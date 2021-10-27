@@ -3,10 +3,10 @@ import LandingPageStyle from "./LandingPageStyle.module.css"
     
 const LandingPage = () => {
     return (
-        <div className="landing">
+        <div className="center-fullScreen">
             <div className={LandingPageStyle.upperContainer}>
                 <div className={LandingPageStyle.leftUpperPart}>
-                    <p className={LandingPageStyle.tittleName}>Gestor de proyectos</p>
+                    <p className={LandingPageStyle.tittleName}>P.A.T.O</p>
                 </div>
                 <div className={LandingPageStyle.rightUpperPart}>
                     <div className={LandingPageStyle.inlinePart}>
@@ -17,7 +17,7 @@ const LandingPage = () => {
                     </div>
                 </div>
             </div>
-            <h1 className={LandingPageStyle.welcomeText}>Realiza tus proyectos con <br />‘Gestor de proyectos’</h1>
+            <h1 className={LandingPageStyle.welcomeText}>Realiza tus proyectos con <br />‘P.A.T.O’</h1>
             <p className={LandingPageStyle.welcomeInfo}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
             <div className={LandingPageStyle.bottomButton}>
                 <div className={LandingPageStyle.estiloBotonDiv}>
