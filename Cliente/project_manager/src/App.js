@@ -9,7 +9,6 @@ import Teams from './Pages/Teams/Teams';
 import LogIn from './Pages/LogIn/LogIn';
 function App() {
   return (
-    
     <div>
       <div className="App">
       <Header></Header>
