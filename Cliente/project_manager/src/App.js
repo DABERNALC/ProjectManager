@@ -15,7 +15,7 @@ function App() {
       <Header></Header>
       <SideBar></SideBar>
       <Teams></Teams>
-      {/* <Kanban/> */}
+      <Kanban/>
       {/* <LogIn/> */}
       
       

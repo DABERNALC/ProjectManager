@@ -23,11 +23,11 @@ hr{
     display: flex;
     flex-direction: column;
     height: 22vh;
-    justify-content: space-between;
+    justify-content: space-around;
     font-family: Sansita;
     font-style: normal;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 26px;
     line-height: 40px;
     letter-spacing: 0.02em;
     color: #ffffff;
@@ -37,4 +37,16 @@ hr{
     cursor: pointer;
     background: #adb3d0;
     border-radius: 2px;
+}
+.list li{
+    display: flex;
+    align-items: center;
+}
+.list li > *{
+    margin-right: 20px;
+}
+.ListIcon
+{
+    font-size: 2em;
+    
 }
