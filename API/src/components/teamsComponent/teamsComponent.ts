@@ -1,8 +1,8 @@
 import { IDbConection } from "../IDbConection";
 import { DbConnection } from "../DbConnection";
-import Teams from "../teamsComponent/Teams";
+import Teams from "./Teams";
 
-export default class teamsControllerSingleton {
+export default class TeamsComponent {
   instance: any;
   teams: any;
   dbConection: IDbConection;
@@ -97,7 +97,6 @@ export default class teamsControllerSingleton {
       this.dbConection
         .makeQuery(sqlStatement)
         .then((response: Object) => {
-          console.log(response);
           resolve(response);
         })
         .catch((error) => {

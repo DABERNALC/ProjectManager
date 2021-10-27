@@ -2,7 +2,11 @@ import { IDbConection } from "../IDbConection";
 import { DbConnection } from "../DbConnection";
 import Teams from "../teamsComponent/Teams";
 
-export default class ProjectsControllerSingleton {
+export default class ProjectsComponent {
+  
+ 
+  
+
   
  
   
@@ -160,5 +164,106 @@ export default class ProjectsControllerSingleton {
          reject(error.sqlMessage);
        });
      })
+  }
+  addSubtask(req: any) {
+   //getting the parameters from the request
+   const taskId = req.body.taskId;
+   const description = req.body.description;
+   
+ 
+   const sqlStatement:String = `INSERT INTO subtarea (descripcion,idTarea,estado) VALUES ('${description}',${taskId},0);`;
+ 
+   //todo: llamar a la base de datos
+   return new Promise<String>((resolve, reject) => {
+     this.dbConection
+     .makeQuery(sqlStatement)
+     .then((response) => {
+       resolve("ok");
+     })
+     .catch((error) => {
+       
+       reject(error.sqlMessage);
+     });
+   })
+  }
+  checkTask(req: any) {
+    //getting the parameters from the request
+   const subTaskId = req.body.subTaskId;
+   
+   
+ 
+   const sqlStatement:String = `update subTarea SET  Estado =1 WHERE   subtarea.ID = ${subTaskId}    ; `;
+ 
+   //todo: llamar a la base de datos
+   return new Promise<String>((resolve, reject) => {
+     this.dbConection
+     .makeQuery(sqlStatement)
+     .then((response) => {
+       resolve("ok");
+     })
+     .catch((error) => {
+       
+       reject(error.sqlMessage);
+     });
+   })
+  }
+  deleteSubTask(req: any) {
+     //getting the parameters from the request
+     const subTaskId = req.body.subTaskId;
+     
+ 
+     const sqlStatement:String = `DELETE FROM subtarea WHERE ID = ${subTaskId};`;
+   
+     //todo: llamar a la base de datos
+     return new Promise<String>((resolve, reject) => {
+       this.dbConection
+       .makeQuery(sqlStatement)
+       .then((response) => {
+         resolve("ok");
+       })
+       .catch((error) => {
+         
+         reject(error.sqlMessage);
+       });
+     })
+  }
+  getKanban(req: any) {
+    //getting the parameters from the request
+    const projectId = req.query.projectId;
+     
+ 
+    const sqlStatement:String = `Select tarea.id,tarea.Descripcion,tarea.prioridad,tarea.FechaTarea,participante.Color,participante.ID from tarea INNER JOIN participante on tarea.IDParticipante = participante.ID WHERE tarea.IDProyecto = ${35};`;
+  
+    //todo: llamar a la base de datos
+    return new Promise<String>((resolve, reject) => {
+      this.dbConection
+      .makeQuery(sqlStatement)
+      .then((response) => {
+        resolve(response);
+      })
+      .catch((error) => {
+        
+        reject(error.sqlMessage);
+      });
+    })
+  }
+  getSubtarea(idTarea:number) {
+    //getting the parameters from the request
+     
+ 
+    const sqlStatement:String = `select * from subtarea where subtarea.IDTarea = ${idTarea};`;
+  
+    //todo: llamar a la base de datos
+    return new Promise<String>((resolve, reject) => {
+      this.dbConection
+      .makeQuery(sqlStatement)
+      .then((response) => {
+        resolve(response);
+      })
+      .catch((error) => {
+        
+        reject(error.sqlMessage);
+      });
+    })
   }
 }

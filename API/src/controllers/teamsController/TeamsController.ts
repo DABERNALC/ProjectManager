@@ -1,12 +1,12 @@
 import { DbConnection } from "../../components/DbConnection";
-import TeamsControllerSingleton from "../../components/teamsComponent/teamsComponent";
+import TeamsComponent from "../../components/teamsComponent/TeamsComponent";
 import ParticipantMapper from "./mappers/ParticipantMapper";
 import teamsMapper from "./mappers/teamsMapper";
 
 export class TeamsController {
   logIn(req: any, res: any) {
     const dbConection = DbConnection.getInstance();
-    const teamsComponent = new TeamsControllerSingleton(dbConection);
+    const teamsComponent = new TeamsComponent(dbConection);
     const participantMapper = new ParticipantMapper();
     const participantId = req.query.participantId;
     teamsComponent
@@ -33,7 +33,7 @@ export class TeamsController {
   async createParticipant(req: any, res: any) {
     const firebaseId = req.body.id;
     const dbConection = DbConnection.getInstance();
-    const teamsComponent = new TeamsControllerSingleton(dbConection);
+    const teamsComponent = new TeamsComponent(dbConection);
     let sqlStatus: string;
 
     //manage api response
@@ -56,7 +56,7 @@ export class TeamsController {
     const teamName = req.body.teamName;
 
     const dbConection = DbConnection.getInstance();
-    const teamsComponent = new TeamsControllerSingleton(dbConection);
+    const teamsComponent = new TeamsComponent(dbConection);
 
     //manage api response
     teamsComponent
@@ -79,7 +79,7 @@ export class TeamsController {
 
     const dbConection = DbConnection.getInstance();
 
-    const teamsComponent = new TeamsControllerSingleton(dbConection);
+    const teamsComponent = new TeamsComponent(dbConection);
     const mensaje = "Se te ha agregó a un equipo, porfavor mira tus lista de equipos"
     const participant = req.body.participant;
     //manage api response
@@ -113,7 +113,7 @@ export class TeamsController {
 
     const dbConection = DbConnection.getInstance();
 
-    const teamsComponent = new TeamsControllerSingleton(dbConection);
+    const teamsComponent = new TeamsComponent(dbConection);
     const teamsMappers = new teamsMapper();
     //manage api response
     teamsComponent
