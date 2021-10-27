@@ -7,10 +7,23 @@
     flex-direction: row;
     justify-content: space-between;
     text-align: center;
+    
 }
 .headerDiv div{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     text-align: center;
+    align-items: center;
+    width: fit-content;
+    margin-right: 1%;
 }
+.userContainer h3
+{
+    font-size: 1.6em;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    margin-left: 40px;
+}
+

@@ -8,11 +8,11 @@ const BiggerLogSignIn = () => {
             <form>
                 <div className={BiggerLogSignInStyle.formStyle}>
                     <div>
-                        <h3>Email:</h3>
+                        <h3 className={BiggerLogSignInStyle.h3}>Email:</h3>
                         <input></input>
                     </div>
                     <div>
-                        <h3>Contraseña:</h3>
+                        <h3 className={BiggerLogSignInStyle.h3}>Contraseña:</h3>
                         <input type="password"></input>
                     </div>
                    

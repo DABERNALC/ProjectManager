@@ -6,14 +6,14 @@ import {BsPersonFill} from  "react-icons/bs"
 const Header = () => {
     return (
         <div className={HeaderStyle.headerDiv}>
-            <div>
-                <img className={HeaderStyle.Logo} src="https://cdn140.picsart.com/290106207032211.png?type=webp&to=min&r=640"></img>
-                <h1>Gestor de proyectos</h1>
+            <div className={HeaderStyle.userContainer}>
+                <img className={HeaderStyle.Logo} src="https://i.ytimg.com/an/6e4DSZENXmj9JIKy1klERw/featured_channel.jpg?v=5f041405"></img>
+                <h3>Gestor de proyectos</h3>
             </div>
-            <div>
-                <MdOutlineNotificationsActive/>
+            <div className={HeaderStyle.userContainer}>
+                <MdOutlineNotificationsActive className="ListIcon"/>
                 <h3>juan medina</h3>
-                <BsPersonFill></BsPersonFill>
+                <BsPersonFill className="ListIcon"></BsPersonFill>
             </div>
         </div>
     )
