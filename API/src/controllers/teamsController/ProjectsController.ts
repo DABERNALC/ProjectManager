@@ -1,8 +1,8 @@
 import ProjectsComponent from "../../components/ProjectComponent/projectsComponent";
 import { DbConnection } from "../../components/DbConnection";
+import KanbanMapper from "./mappers/KanbanMapper";
 
 export class ProjectsController {
-  
   addTask(req: any, res: any) {
     const description = req.body.Description;
 
@@ -167,7 +167,42 @@ export class ProjectsController {
           message: error,
         });
       });
-}
+  }
+  async getKanban(req: any, res: any) {
+    const id = req.query.projectId;
+
+    const dbConection = DbConnection.getInstance();
+    const projectComponent = new ProjectsComponent(dbConection);
+    const kanbanMapper = new KanbanMapper();
+    //manage api response
+    projectComponent
+      .getKanban(req)
+      .then(async (response) => {
+        res.json({
+          ok: true,
+          message: `here is the kanban for the project with id: ${id} `,
+          data: await kanbanMapper.getDto(response,id)
+        });
+      })
+      .catch((error) => {
+        res.json({
+          ok: false,
+          message: error,
+        });
+      });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
   createNotification(message: string, participant: string) {
     const dbConection = DbConnection.getInstance();
     const sqlStatement = `INSERT INTO notificacion (Descripcion,IDParticipante,Estado)VALUES ("${message}",${participant},0);	`;
@@ -183,5 +218,4 @@ export class ProjectsController {
         });
     });
   }
-  
 }

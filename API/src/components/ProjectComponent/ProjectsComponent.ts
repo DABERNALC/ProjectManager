@@ -3,6 +3,7 @@ import { DbConnection } from "../DbConnection";
 import Teams from "../teamsComponent/Teams";
 
 export default class ProjectsComponent {
+  
  
   
 
@@ -225,5 +226,44 @@ export default class ProjectsComponent {
          reject(error.sqlMessage);
        });
      })
+  }
+  getKanban(req: any) {
+    //getting the parameters from the request
+    const projectId = req.query.projectId;
+     
+ 
+    const sqlStatement:String = `Select tarea.id,tarea.Descripcion,tarea.prioridad,tarea.FechaTarea,participante.Color,participante.ID from tarea INNER JOIN participante on tarea.IDParticipante = participante.ID WHERE tarea.IDProyecto = ${35};`;
+  
+    //todo: llamar a la base de datos
+    return new Promise<String>((resolve, reject) => {
+      this.dbConection
+      .makeQuery(sqlStatement)
+      .then((response) => {
+        resolve(response);
+      })
+      .catch((error) => {
+        
+        reject(error.sqlMessage);
+      });
+    })
+  }
+  getSubtarea(idTarea:number) {
+    //getting the parameters from the request
+     
+ 
+    const sqlStatement:String = `select * from subtarea where subtarea.IDTarea = ${idTarea};`;
+  
+    //todo: llamar a la base de datos
+    return new Promise<String>((resolve, reject) => {
+      this.dbConection
+      .makeQuery(sqlStatement)
+      .then((response) => {
+        resolve(response);
+      })
+      .catch((error) => {
+        
+        reject(error.sqlMessage);
+      });
+    })
   }
 }
