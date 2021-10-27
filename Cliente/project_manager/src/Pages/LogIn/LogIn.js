@@ -25,7 +25,9 @@ const LogIn = (props) => {
                             <SmallerLogSignIn title={title}
                                 buttonText={buttonText}
                             />
-                            <BiggerLogSignIn />
+                            <BiggerLogSignIn 
+                            mode="signIn"
+                            />
                         </> :
                         <>
 
