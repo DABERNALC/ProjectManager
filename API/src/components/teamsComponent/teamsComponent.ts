@@ -112,7 +112,7 @@ export default class TeamsComponent {
     const name = req.body.nombre;
     const color = req.body.color;
     //sql statement
-    const sqlStatement = `INSERT INTO participante (id, Correo, Nombre, Color) VALUES (${firebaseId}, '${email}', '${name}', '${color}')`;
+    const sqlStatement = `INSERT INTO participante (id, Correo, Nombre, Color) VALUES ("${firebaseId}", '${email}', '${name}', '${color}')`;
     return new Promise<string>((resolve, reject) => {
       this.dbConection
         .makeQuery(sqlStatement)
