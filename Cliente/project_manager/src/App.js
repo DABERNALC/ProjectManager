@@ -16,7 +16,7 @@ function App() {
       / muestra la landing page
       /signIn es el formulario para entrar a una cuenta
 
-      
+
       /app/etc muestra el header y el sidebar
       /app/teams muestra la vista de todos los equipos
       
@@ -29,7 +29,10 @@ function App() {
             <LandingPage />
           </Route>
           <Route path="/signIn" exact >
-            <LogIn/>
+            <LogIn mode="signIn"/>
+          </Route>
+          <Route path="/signUp" exact >
+            <LogIn mode="signUp"/>
           </Route>
           <Route path="/app"  >
             <Header></Header>
