@@ -1,0 +1,10 @@
+.teamsContainer{ 
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+.teamsContainer > * {
+    margin-right: 100px;
+    margin-bottom: 100px;
+}

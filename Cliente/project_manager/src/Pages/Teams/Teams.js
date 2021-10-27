@@ -1,6 +1,7 @@
 import NoTeams from "../../Components/NoTeams/NoTeams";
 import GenericButton2 from "../../Components/GenericButton2/GenericButton2";
 import Team from "../../Components/Team/Team"
+import TeamsStyle from "./TeamsStyle.module.css"
 function Teams() {
 
   const Teams = [
@@ -14,7 +15,7 @@ function Teams() {
                   "ID": 2,
                   "Correo": "ihy@gmail.com",
                   "Nombre": "Isaac",
-                  "Color": "#ffffffff"
+                  "Color": "purple"
               },
               {
                   "IDParticipante": 3,
@@ -22,7 +23,7 @@ function Teams() {
                   "ID": 3,
                   "Correo": "ihy@gmail.com",
                   "Nombre": "Isaac",
-                  "Color": "#ffffffff"
+                  "Color": "red"
               },
               {
                   "IDParticipante": 4,
@@ -30,7 +31,7 @@ function Teams() {
                   "ID": 4,
                   "Correo": "ihy@gmail.com",
                   "Nombre": "Isaac",
-                  "Color": "#ffffffff"
+                  "Color": "blue"
               },
               {
                   "IDParticipante": 123,
@@ -38,7 +39,7 @@ function Teams() {
                   "ID": 123,
                   "Correo": "ihy704@hotmail.com",
                   "Nombre": "Isaac",
-                  "Color": "#fffff"
+                  "Color": "green"
               }
           ]
       },
@@ -52,7 +53,7 @@ function Teams() {
                   "ID": 2,
                   "Correo": "ihy@gmail.com",
                   "Nombre": "Isaac",
-                  "Color": "#ffffffff"
+                  "Color": "orange"
               },
               {
                   "IDParticipante": 3,
@@ -60,7 +61,7 @@ function Teams() {
                   "ID": 3,
                   "Correo": "ihy@gmail.com",
                   "Nombre": "Isaac",
-                  "Color": "#ffffffff"
+                  "Color": "blue"
               },
               {
                   "IDParticipante": 4,
@@ -68,7 +69,7 @@ function Teams() {
                   "ID": 4,
                   "Correo": "ihy@gmail.com",
                   "Nombre": "Isaac",
-                  "Color": "#ffffffff"
+                  "Color": "grey"
               },
               {
                   "IDParticipante": 123,
@@ -79,20 +80,170 @@ function Teams() {
                   "Color": "#fffff"
               }
           ]
-      }
+      },{
+        "idTeam": 195,
+        "name": "maguriPa",
+        "Participants": [
+            {
+                "IDParticipante": 2,
+                "IDEquipo": 195,
+                "ID": 2,
+                "Correo": "ihy@gmail.com",
+                "Nombre": "Isaac",
+                "Color": "orange"
+            },
+            {
+                "IDParticipante": 3,
+                "IDEquipo": 195,
+                "ID": 3,
+                "Correo": "ihy@gmail.com",
+                "Nombre": "Isaac",
+                "Color": "blue"
+            },
+            {
+                "IDParticipante": 4,
+                "IDEquipo": 195,
+                "ID": 4,
+                "Correo": "ihy@gmail.com",
+                "Nombre": "Isaac",
+                "Color": "grey"
+            },
+            {
+                "IDParticipante": 123,
+                "IDEquipo": 195,
+                "ID": 123,
+                "Correo": "ihy704@hotmail.com",
+                "Nombre": "Isaac",
+                "Color": "#fffff"
+            }
+        ]
+    },{
+        "idTeam": 195,
+        "name": "maguriPa",
+        "Participants": [
+            {
+                "IDParticipante": 2,
+                "IDEquipo": 195,
+                "ID": 2,
+                "Correo": "ihy@gmail.com",
+                "Nombre": "Isaac",
+                "Color": "orange"
+            },
+            {
+                "IDParticipante": 3,
+                "IDEquipo": 195,
+                "ID": 3,
+                "Correo": "ihy@gmail.com",
+                "Nombre": "Isaac",
+                "Color": "blue"
+            },
+            {
+                "IDParticipante": 4,
+                "IDEquipo": 195,
+                "ID": 4,
+                "Correo": "ihy@gmail.com",
+                "Nombre": "Isaac",
+                "Color": "grey"
+            },
+            {
+                "IDParticipante": 123,
+                "IDEquipo": 195,
+                "ID": 123,
+                "Correo": "ihy704@hotmail.com",
+                "Nombre": "Isaac",
+                "Color": "#fffff"
+            }
+        ]
+    },{
+        "idTeam": 195,
+        "name": "maguriPa",
+        "Participants": [
+            {
+                "IDParticipante": 2,
+                "IDEquipo": 195,
+                "ID": 2,
+                "Correo": "ihy@gmail.com",
+                "Nombre": "Isaac",
+                "Color": "orange"
+            },
+            {
+                "IDParticipante": 3,
+                "IDEquipo": 195,
+                "ID": 3,
+                "Correo": "ihy@gmail.com",
+                "Nombre": "Isaac",
+                "Color": "blue"
+            },
+            {
+                "IDParticipante": 4,
+                "IDEquipo": 195,
+                "ID": 4,
+                "Correo": "ihy@gmail.com",
+                "Nombre": "Isaac",
+                "Color": "grey"
+            },
+            {
+                "IDParticipante": 123,
+                "IDEquipo": 195,
+                "ID": 123,
+                "Correo": "ihy704@hotmail.com",
+                "Nombre": "Isaac",
+                "Color": "#fffff"
+            }
+        ]
+    },{
+        "idTeam": 195,
+        "name": "maguriPa",
+        "Participants": [
+            {
+                "IDParticipante": 2,
+                "IDEquipo": 195,
+                "ID": 2,
+                "Correo": "ihy@gmail.com",
+                "Nombre": "Isaac",
+                "Color": "orange"
+            },
+            {
+                "IDParticipante": 3,
+                "IDEquipo": 195,
+                "ID": 3,
+                "Correo": "ihy@gmail.com",
+                "Nombre": "Isaac",
+                "Color": "blue"
+            },
+            {
+                "IDParticipante": 4,
+                "IDEquipo": 195,
+                "ID": 4,
+                "Correo": "ihy@gmail.com",
+                "Nombre": "Isaac",
+                "Color": "grey"
+            },
+            {
+                "IDParticipante": 123,
+                "IDEquipo": 195,
+                "ID": 123,
+                "Correo": "ihy704@hotmail.com",
+                "Nombre": "Isaac",
+                "Color": "#fffff"
+            }
+        ]
+    }
   ];
 
   return (
     <div>
         <h2>Mis Proyectos</h2>
         <GenericButton2 text="Agregar Proyecto"/>
-        {
-        <Team name={Teams[0].name} TeamMembers={Teams[0].Participants}></Team>
-        /*true?
-          Teams.map(Team => (<Team name={Team.name} TeamMembers={Team.Participants}></Team>))
-        :
-          <NoTeams></NoTeams>*/
+        <div className= {TeamsStyle.teamsContainer}>
+        { 
+            Teams.length>0?
+                Teams.map(  theTeam => (<Team name={theTeam.name} TeamMembers={theTeam.Participants}/>))
+            :
+                <NoTeams/>
         }
+        </div>
+        
     </div>
   );
 }

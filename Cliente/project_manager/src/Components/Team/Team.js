@@ -8,7 +8,7 @@ export const Team = (props) => {
         <div className={TeamStyle.container}>
             <div className={TeamStyle.personContainer}>
                 {props.TeamMembers.map((TeamMembers)=>(
-                    <BsPersonFill color={TeamMembers.Color} size="40px"></BsPersonFill>
+                    <BsPersonFill color={TeamMembers.Color} size="60px"></BsPersonFill>
                 ))}
             </div>
             <div className={TeamStyle.nameContainer}>
