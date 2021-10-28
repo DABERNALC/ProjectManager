@@ -59,10 +59,50 @@ const BiggerLogSignIn = (props) => {
 
             });
 
+    }
+    const logIn = () => {
+        let data = {
+            email: email,
+            password: contra,
+            returnSecureToken: true
+        }
+        setLoading(true);
+        axiosFirebaseAuth.post(":signInWithPassword", data)
+            .then((response) => {
+                const participantId = response.data.localId
+                
 
 
+                
+                
+                // console.log("response: ", response.data.localId);
+                //solicitud a la api
+                axiosApi.get(`/teams/logIn?participantId=${participantId}`).then((resp)=>{
+                    setLoading(false);
+                    console.log("ok");
+                    console.log(resp.data);
+                    //se guardo correctamente en la bd
+                    //history.push('/signIn');
+                }).catch((e)=>{
+                    setLoading(false);
+                    console.log('error pa');
+                    console.log('error', Object.getOwnPropertyNames(e) );
+                })
+                
+            })
+            .catch((e) => {
+                setLoading(false);
+                let error = e.response.data.error.message;
+                setError(error)
+                console.log(e.response.data.error.message);
+
+            });
 
     }
+
+
+
+
     return (
         <div className={BiggerLogSignInStyle.container}>
 
@@ -121,16 +161,26 @@ const BiggerLogSignIn = (props) => {
 
                 </div>
                 <div className={BiggerLogSignInStyle.buttonDiv}>
+                    
                     {
-                        loading ?
-                            <Spinner />
-                            :
-                            <button className={BiggerLogSignInStyle.LogInButton}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    createFirebaseUser()
-                                }}
-                            >iniciar sesión</button>
+                            loading ?
+                                <Spinner />
+                                :
+                                <button className={BiggerLogSignInStyle.LogInButton}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        if(props.mode == "signUp")
+                                        {
+                                            createFirebaseUser()
+                                        }
+                                        else
+                                        {
+                                            logIn();
+                                        }
+                                    }}
+                                >Registrarse</button>
+                            
+
 
                     }
 

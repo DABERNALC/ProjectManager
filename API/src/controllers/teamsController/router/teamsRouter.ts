@@ -59,6 +59,8 @@ router.get(
     validate,
   ],
   (req: any, res: any) => {
+    console.log("router ");
+    
     let teamsController = new TeamsController();
     teamsController.logIn(req, res);
   }

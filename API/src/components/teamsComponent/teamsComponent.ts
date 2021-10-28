@@ -18,28 +18,45 @@ export default class TeamsComponent {
   getTeamsParticipant(req: any): Promise<any> {
     return new Promise<String[]>((resolve, reject) => {
       const participantId = req.query.participantId;
-      const sqlStatement: String = `select participanteequipo.IDEquipo, proyecto.IDProyecto, proyecto.Nombre as nombreProyecto,proyecto.Descripcion,equipo.tag from participanteequipo INNER JOIN proyecto on proyecto.IDEquipo = participanteequipo.IDEquipo INNER JOIN equipo ON participanteequipo.IDEquipo = equipo.id where participanteequipo.IDParticipante = ${participantId}; 
-      `;
-
+      
+      const sqlStatement: String = `select participanteequipo.IDEquipo, proyecto.IDProyecto, proyecto.Nombre as nombreProyecto,proyecto.Descripcion,equipo.tag from participanteequipo INNER JOIN proyecto on proyecto.IDEquipo = participanteequipo.IDEquipo INNER JOIN equipo ON participanteequipo.IDEquipo = equipo.id where participanteequipo.IDParticipante = '${participantId}'; `;
+      
+      
       let answer: any = { participants: [] };
       this.dbConection
         .makeQuery(sqlStatement)
         .then(async (response: any) => {
+          
+          
           answer.proyectos = response;
           response = response.map((item: { IDEquipo: any }) => item.IDEquipo);
           var unique = response.filter(this.onlyUnique);
-
-          await unique.forEach((row: number, index: number) => {
-            this.getTeamsParticipantsInfo(row).then((status) => {
-              answer.participants = answer.participants.concat(status);
-              if (unique.length - 1 == index) {
-                console.log(index);
-                
-                resolve(answer);
-              }
+          
+          
+          if(unique.length > 0)
+          {
+           
+            console.log(unique.length);
+            await unique.forEach((row: number, index: number) => {
+              this.getTeamsParticipantsInfo(row).then((status) => {
+                answer.participants = answer.participants.concat(status);
+                if (unique.length - 1 == index) {
+                  console.log(index);
+                  
+                  resolve(answer);
+                }
+              });
+              
             });
+          }else
+          {
             
-          });
+            
+            
+            answer.participants = [];
+            resolve(answer);
+          }
+          
 
           
           

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import LandingPageStyle from "./LandingPageStyle.module.css"
-    
+import {Link, link} from "react-router-dom"
 const LandingPage = () => {
     return (
         <div className="center-fullScreen">
@@ -10,9 +10,9 @@ const LandingPage = () => {
                 </div>
                 <div className={LandingPageStyle.rightUpperPart}>
                     <div className={LandingPageStyle.inlinePart}>
-                        <p className={LandingPageStyle.logInText}>Inicia sesión</p>
+                        <Link to="signIn"><p className={LandingPageStyle.logInText}>Inicia sesión</p></Link>   
                         <div className={LandingPageStyle.estiloBotonDiv}>
-                            <button className={LandingPageStyle.estiloBoton}>Regístrate</button>
+                            <Link className={LandingPageStyle.estiloBoton} to="/signUp">Regístrate</Link>
                         </div>
                     </div>
                 </div>

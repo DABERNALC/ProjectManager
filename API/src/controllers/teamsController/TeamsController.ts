@@ -9,19 +9,26 @@ export class TeamsController {
     const teamsComponent = new TeamsComponent(dbConection);
     const participantMapper = new ParticipantMapper();
     const participantId = req.query.participantId;
+    
     teamsComponent
       .getTeamsParticipant(req)
-      .then((status) => {
-        
-        // console.log(status);
-        
+      .then(async (status) => {
+        let dataMapped;
+        await participantMapper.getDto(status,participantId).then((data)=> {
+          dataMapped = data;
+          
+        }).catch(()=> {
+
+        });
+        console.log('vacio',);
         res.json({
           ok: true,
           message: "todo ok",
-          data: participantMapper.getDto(status,participantId)
+          data: dataMapped
         });
       })
       .catch((error) => {
+        
         res.json({
           ok: false,
           message: error,
