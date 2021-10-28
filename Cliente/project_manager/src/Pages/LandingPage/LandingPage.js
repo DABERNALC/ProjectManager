@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import LandingPageStyle from "./LandingPageStyle.module.css"
 import {Link, link} from "react-router-dom"
+import imagen from './images/PatoLogo.png'
+
 const LandingPage = () => {
     return (
         <div className="center-fullScreen">
             <div className={LandingPageStyle.upperContainer}>
                 <div className={LandingPageStyle.leftUpperPart}>
-                    
-                    <p className={LandingPageStyle.tittleName}>P.A.T.O</p>
+                <img className={LandingPageStyle.logo} src={imagen}></img>
                 </div>
                 <div className={LandingPageStyle.rightUpperPart}>
                     <div className={LandingPageStyle.inlinePart}>

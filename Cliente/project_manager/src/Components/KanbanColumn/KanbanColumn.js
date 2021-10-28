@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AddTask from '../AddTask/AddTask';
 import KanbanColumnStyle from "./KanbanColumnStyle.module.css";
 
 const KanbanColumn = (props) => {
+    const [addTask,setAddTask]=useState(false)
 
     return (
         <div className={KanbanColumnStyle.container}>
@@ -10,11 +11,14 @@ const KanbanColumn = (props) => {
             <div>
                 {
                     props.title == "TO DO" ?
-                        <p className={KanbanColumnStyle.add}>+ Añadir una tarjeta</p>
+                        addTask ?
+                            <AddTask setAddTask = {setAddTask}></AddTask>
+                        :
+                            <p className={KanbanColumnStyle.add} onClick={()=>setAddTask(!addTask)}>+ Añadir una tarjeta</p>
                         :
                         null
                 }
-                <AddTask></AddTask>
+                
             </div>
 
         </div>

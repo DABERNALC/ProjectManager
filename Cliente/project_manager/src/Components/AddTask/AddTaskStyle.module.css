@@ -38,6 +38,58 @@
 }
 
 select {
-    width: 45%;
+    margin-top: 6px;
+    width: 47%;
+    height: 25px;
+    background: #f5f5f5;
+    border: 1px solid #050038;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
 
+.selectDiv {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.calendarStyle {
+    width: 50%;
+    height: 25px;
+    font-size: 15px;
+}
+
+.checkwithtext {
+    display: flex;
+    flex-direction: row;
+}
+
+.checkStyle {
+    width: 20px;
+    height: 20px;
+}
+
+.dateAndCheck {
+    display: flex;
+    flex-direction: row;
+    margin-top: 6px;
+}
+
+.buttonCancel {
+    display: flex;
+    align-items: flex-start;
+}
+
+.buttonStyle {
+    width: 61.59px;
+    height: 23px;
+    font-family: Sansita;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.03em;
+    color: #ffffff;
+    background: #4262ff;
+    border-radius: 5px;
+    border: none;
 }

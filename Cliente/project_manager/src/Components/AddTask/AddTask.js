@@ -1,6 +1,6 @@
 import React from 'react'
 import AddTaskStyle from "./AddTaskStyle.module.css";
-import {GiCancel} from  "react-icons/gi"
+import { GiCancel } from "react-icons/gi"
 
 const AddTask = (props) => {
     return (
@@ -8,11 +8,21 @@ const AddTask = (props) => {
             <p>Descripción</p>
             <form>
                 <textarea className={AddTaskStyle.descInput}></textarea>
-                <select></select>
-                <select></select>
-                <input type="checkbox"></input>
-                <button></button>
-                <GiCancel></GiCancel>
+                <div className={AddTaskStyle.selectDiv}>
+                    <select></select>
+                    <select></select>
+                </div>
+                <div className={AddTaskStyle.dateAndCheck}>
+                    <input type="date" className={AddTaskStyle.calendarStyle}></input>
+                    <div className={AddTaskStyle.checkwithtext}>
+                        <input type="checkbox" className={AddTaskStyle.checkStyle}></input>
+                        <p>Relevante para cliente</p>
+                    </div>
+                </div>
+                <div className={AddTaskStyle.buttonCancel}>
+                <button className={AddTaskStyle.buttonStyle}>Aceptar</button>
+                <GiCancel onClick={()=> props.setAddTask(false)}></GiCancel>
+                </div>   
             </form>
         </div>
     )
