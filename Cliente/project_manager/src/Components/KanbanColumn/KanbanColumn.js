@@ -1,4 +1,5 @@
 import React from 'react'
+import AddTask from '../AddTask/AddTask';
 import KanbanColumnStyle from "./KanbanColumnStyle.module.css";
 
 const KanbanColumn = (props) => {
@@ -13,7 +14,7 @@ const KanbanColumn = (props) => {
                         :
                         null
                 }
-                
+                <AddTask></AddTask>
             </div>
 
         </div>

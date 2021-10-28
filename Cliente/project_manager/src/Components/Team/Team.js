@@ -1,5 +1,5 @@
 import React from 'react'
-import {BsPersonFill} from  "react-icons/bs"
+import {FaUserAlt} from  "react-icons/fa"
 import TeamStyle from "./TeamStyle.module.css"
 import {FaTrashAlt} from "react-icons/fa"
 
@@ -8,7 +8,7 @@ export const Team = (props) => {
         <div className={TeamStyle.container}>
             <div className={TeamStyle.personContainer}>
                 {props.TeamMembers.map((TeamMembers)=>(
-                    <BsPersonFill color={TeamMembers.Color} size="60px"></BsPersonFill>
+                    <FaUserAlt color={TeamMembers.Color} size="45px"></FaUserAlt>
                 ))}
             </div>
             <div className={TeamStyle.nameContainer}>

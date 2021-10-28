@@ -1,3 +1,17 @@
+body {
+    overflow-x: hidden;
+}
+
+.logoName {
+    margin-left: 5px;
+    font-size: 16px;   
+}
+
+.userName{
+    font-size: 19px;
+    margin-left: 15px;
+}
+
 .headerDiv {
     grid-area: header;
     width: 100%;
@@ -7,9 +21,8 @@
     flex-direction: row;
     justify-content: space-between;
     text-align: center;
-    
 }
-.headerDiv div{
+.headerDiv div {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -18,12 +31,20 @@
     width: fit-content;
     margin-right: 1%;
 }
-.userContainer h3
-{
+.userContainer h3 {
     font-size: 1.6em;
     display: flex;
     align-items: center;
     margin-bottom: 0;
     margin-left: 40px;
+}
+
+.logo {
+    height: 100%;
+    margin-left: 50px;
+}
+
+.listIcon{
+    background-color:aqua;
 }
 

@@ -3,6 +3,7 @@
     width: 100%;
     height: 100%;
 }
+
 .leftMenu {
     width: 95%;
     height: 90%;
@@ -13,7 +14,8 @@
     border-radius: 5px;
 }
 hr{
-    border: 1px solid #ADB3D0;
+    border: 10px solid #ADB3D0;
+    margin-top: 50px;
 }
 
 .list {
@@ -41,12 +43,24 @@ hr{
 .list li{
     display: flex;
     align-items: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
 }
 .list li > *{
     margin-right: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 .ListIcon
 {
     font-size: 1.5em;
-    
 }
+.ListName{
+    font-size: 20px;
+}
+
+.ListIcon:hover{
+    background-color: #1b183d;
+}
+

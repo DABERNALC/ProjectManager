@@ -1,19 +1,20 @@
 import React from 'react'
 import HeaderStyle from "./HeaderStyle.module.css";
 import {MdOutlineNotificationsActive} from "react-icons/md"
-import {BsPersonFill} from  "react-icons/bs"
+import {FaUserAlt} from  "react-icons/fa"
+import imagen from './images/PatoLogo.png'
 
 const Header = () => {
     return (
         <div className={HeaderStyle.headerDiv}>
             <div className={HeaderStyle.userContainer}>
-                <img className={HeaderStyle.Logo} src="https://i.ytimg.com/an/6e4DSZENXmj9JIKy1klERw/featured_channel.jpg?v=5f041405"></img>
-                <h3>Gestor de proyectos</h3>
+                <img className={HeaderStyle.logo} src={imagen}></img>
+                <h1 className={HeaderStyle.logoName}>Gestor de proyectos</h1>
             </div>
             <div className={HeaderStyle.userContainer}>
                 <MdOutlineNotificationsActive className="ListIcon"/>
-                <h3>juan medina</h3>
-                <BsPersonFill className="ListIcon"></BsPersonFill>
+                <h1 className={HeaderStyle.userName}>juan medina</h1>
+                <FaUserAlt className="ListIcon"></FaUserAlt>
             </div>
         </div>
     )

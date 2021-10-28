@@ -9,9 +9,8 @@ const SideBar = () => {
             <div className={SideBarStyle.leftMenu}>
                 <hr></hr>
                 <ul className={SideBarStyle.list}>
-                    
-                    <li><RiTeamFill className={SideBarStyle.ListIcon}/> Equipos  </li>
-                    <li><BsFolderFill className={SideBarStyle.ListIcon}/>Proyectos</li>
+                    <li className={SideBarStyle.ListName}><RiTeamFill className={SideBarStyle.ListIcon}/> Equipos  </li>
+                    <li className={SideBarStyle.ListName}><BsFolderFill className={SideBarStyle.ListIcon}/>Proyectos</li>
                 </ul>
             </div>
         </div>

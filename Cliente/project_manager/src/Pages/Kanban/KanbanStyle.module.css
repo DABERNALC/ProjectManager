@@ -18,7 +18,7 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70%;
+    height: 75%;
     width: 100%;
 }
 .kanbanContainer {
@@ -30,13 +30,16 @@ h3 {
 
 .columnsContainers {
     display: flex;
-    justify-content: space-between;
-    margin-left: 20px;
-    margin-right: 20px;
+    justify-content: space-evenly;
     height: 80%;
 }
 
 .buttonStyle {
+    margin-right: 20px;
     display: flex;
     justify-content: end;
+}
+
+GenericButton1{
+    margin-right: 20px;
 }

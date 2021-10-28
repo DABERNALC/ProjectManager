@@ -15,9 +15,9 @@
     letter-spacing: 0.03em;
     border: none;
     color: #ffffff;
-    margin-top: 50px;
 }
 
 .estiloBoton:hover{
     background: #2643D1;
+    cursor: pointer;
 }

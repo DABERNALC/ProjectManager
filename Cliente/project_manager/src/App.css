@@ -73,7 +73,8 @@ body{
 
 .ListIcon
 {
-    font-size: 3em; 
+    font-size: 2em; 
+    margin-right: 10px;
 }
 
 @keyframes App-logo-spin {
