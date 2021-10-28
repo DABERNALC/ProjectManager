@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import BiggerLogSignInStyle from "./BiggerLogSignInStyle.module.css";
 import axiosFirebaseAuth from "../../Axios/firebaseAuth"
 import axiosApi from "../../Axios/api"
-
+import { connect } from 'react-redux';
+import * as actionCreators from "../../Store/Actions/UserInfo";
 import axios from "axios"
 import Spinner from '../Spinner/Spinner';
 import {useHistory} from 'react-router-dom'
@@ -22,84 +23,23 @@ const BiggerLogSignIn = (props) => {
             returnSecureToken: true
         }
         setLoading(true);
-        axiosFirebaseAuth.post(":signUp", data)
-            .then((response) => {
-                const participantId = response.data.localId
-                const params = new URLSearchParams();
-                params.append('color', "purple");
-                params.append('correo', email);
-                params.append('id', participantId);
-                params.append('nombre', name);
-
-
-                const apiData = {
-                    body:{
-                        color:"purple",
-                        correo:email,
-                        id:participantId,
-                        nombre:name
-                    }
-                    
-                }
-                setLoading(false);
-                axiosApi.post("/teams/createParticipant",params).then((resp)=>{
-                    console.log(resp.data);
-                    //se guardo correctamente en la bd
-                    history.push('/signIn');
-                }).catch((e)=>{
-                    console.log(e.response.data);
-                })
-                console.log("response: ", response.data.localId);
-            })
-            .catch((e) => {
-                setLoading(false);
-                let error = e.response.data.error.message;
-                setError(error)
-                console.log(e.response.data.error.message);
-
-            });
-
+        
     }
-    const logIn = () => {
+    const logIn = async() => {
+        
         let data = {
             email: email,
             password: contra,
             returnSecureToken: true
         }
+
         setLoading(true);
-        axiosFirebaseAuth.post(":signInWithPassword", data)
-            .then((response) => {
-                const participantId = response.data.localId
-                
-
-
-                
-                
-                // console.log("response: ", response.data.localId);
-                //solicitud a la api
-                axiosApi.get(`/teams/logIn?participantId=${participantId}`).then((resp)=>{
-                    setLoading(false);
-                    console.log("ok");
-                    console.log(resp.data);
-                    //se guardo correctamente en la bd
-                    //history.push('/signIn');
-                }).catch((e)=>{
-                    setLoading(false);
-                    console.log('error pa');
-                    console.log('error', Object.getOwnPropertyNames(e) );
-                })
-                
-            })
-            .catch((e) => {
-                setLoading(false);
-                let error = e.response.data.error.message;
-                setError(error)
-                console.log(e.response.data.error.message);
-
-            });
-
+        await props.logIn(data);
     }
-
+    useEffect(()=>{
+        console.log("aaaaaaa",props.loading);
+        setLoading(props.loading)
+    });
 
 
 
@@ -190,4 +130,16 @@ const BiggerLogSignIn = (props) => {
         </div>
     )
 }
-export default BiggerLogSignIn;
+const mapStateToProps = (state) => {
+    return {
+        loading: state.UserInfo.loading
+    };
+  };
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+      logIn: (payload) => dispatch(actionCreators.loginRequest(payload)),
+      
+    };
+  };
+export default  connect(mapStateToProps,mapDispatchToProps)(BiggerLogSignIn) ;
