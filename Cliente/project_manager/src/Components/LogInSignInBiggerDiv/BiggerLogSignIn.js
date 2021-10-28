@@ -1,25 +1,28 @@
 import React, { useState } from 'react'
 import BiggerLogSignInStyle from "./BiggerLogSignInStyle.module.css";
+import axiosFirebaseAuth from "../../Axios/firebaseAuth"
+import axiosApi from "../../Axios/api"
+
 import axios from "axios"
 import Spinner from '../Spinner/Spinner';
+import {useHistory} from 'react-router-dom'
 const BiggerLogSignIn = (props) => {
     let [email, setEmail] = useState("nicoFake@gmail.com")
     let [contra, setContra] = useState("123123")
     let [error, setError] = useState("")
     let [name, setName] = useState("nico")
     let [loading, setLoading] = useState(false)
+    const history = useHistory();
 
-
-    const firebaseKey = "AIzaSyDSYos2UVRwavOb0PcSFrllKgqv5jR_GPw"
+    
     const createFirebaseUser = () => {
-        const apiRoute = "http://localhost:8080/api/teams/createParticipant"
         let data = {
             email: email,
             password: contra,
             returnSecureToken: true
         }
         setLoading(true);
-        axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDSYos2UVRwavOb0PcSFrllKgqv5jR_GPw", data)
+        axiosFirebaseAuth.post(":signUp", data)
             .then((response) => {
                 const participantId = response.data.localId
                 const params = new URLSearchParams();
@@ -39,8 +42,10 @@ const BiggerLogSignIn = (props) => {
                     
                 }
                 setLoading(false);
-                axios.post(apiRoute,params).then((resp)=>{
+                axiosApi.post("/teams/createParticipant",params).then((resp)=>{
                     console.log(resp.data);
+                    //se guardo correctamente en la bd
+                    history.push('/signIn');
                 }).catch((e)=>{
                     console.log(e.response.data);
                 })
