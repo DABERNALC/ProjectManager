@@ -9,7 +9,6 @@ const KanbanColumn = (props) => {
     return (
         <div className={KanbanColumnStyle.container}>
             <h1 className={KanbanColumnStyle.title}>{props.title}</h1>
-            <div>
                 {
                     props.title == "TO DO" ?
                         addTask ?
@@ -21,7 +20,6 @@ const KanbanColumn = (props) => {
                 }
                 <Task desc="Codificiar inicio de sesión"></Task>
                 <Task desc="Investigar motores de bases de datos para que todo esté muy bueno, bonito y barato"></Task>
-            </div>
         </div>
     )
 }

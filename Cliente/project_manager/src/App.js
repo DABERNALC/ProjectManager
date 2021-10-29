@@ -8,6 +8,7 @@ import Projects from "./Pages/Projects/Projects"
 import Teams from './Pages/Teams/Teams';
 import LogIn from './Pages/LogIn/LogIn';
 import { BrowserRouter, Route } from "react-router-dom"
+import SubTasks from './Pages/Subtasks/SubTasks';
 function App() {
   return (
     <div>
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route path="/app/project" exact >
             <Kanban/>
+          </Route>
+          <Route path="/app/subTasks" exact>
+          <SubTasks/>
           </Route>
         </div>
 
