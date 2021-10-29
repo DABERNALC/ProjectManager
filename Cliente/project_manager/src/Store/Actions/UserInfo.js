@@ -1,6 +1,7 @@
 import * as actionTypes from "./ActionTypes"
 import axiosFirebaseAuth from "../../Axios/firebaseAuth"
 import axiosApi from "../../Axios/api"
+import { useHistory } from "react-router";
 
 const { LOGIN, LOADING} = actionTypes;
 
@@ -43,6 +44,7 @@ export const loginRequest = (payload) => {
                     console.log("ok");
                     console.log("jeje",resp.data.data);
                     dispatch(login(resp.data.data));
+                    
                     //se guardo correctamente en la bd
                     //history.push('/signIn');
                 }).catch((e) => {

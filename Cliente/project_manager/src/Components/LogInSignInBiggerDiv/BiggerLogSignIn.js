@@ -15,7 +15,7 @@ const BiggerLogSignIn = (props) => {
     let [loading, setLoading] = useState(false)
     const history = useHistory();
 
-    
+
     const createFirebaseUser = () => {
         let data = {
             email: email,
@@ -35,6 +35,7 @@ const BiggerLogSignIn = (props) => {
 
         setLoading(true);
         await props.logIn(data);
+        history.push("/app/teams");
     }
     useEffect(()=>{
         console.log("aaaaaaa",props.loading);
@@ -116,6 +117,7 @@ const BiggerLogSignIn = (props) => {
                                         else
                                         {
                                             logIn();
+                                            
                                         }
                                     }}
                                 >Registrarse</button>
