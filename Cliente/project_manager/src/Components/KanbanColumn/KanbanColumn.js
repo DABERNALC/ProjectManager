@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import AddTask from '../AddTask/AddTask';
+import Task from '../Task/Task';
 import KanbanColumnStyle from "./KanbanColumnStyle.module.css";
 
 const KanbanColumn = (props) => {
@@ -18,9 +19,9 @@ const KanbanColumn = (props) => {
                         :
                         null
                 }
-                
+                <Task desc="Codificiar inicio de sesión"></Task>
+                <Task desc="Investigar motores de bases de datos para que todo esté muy bueno, bonito y barato"></Task>
             </div>
-
         </div>
     )
 }

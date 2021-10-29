@@ -20,9 +20,9 @@ const AddTask = (props) => {
                     </div>
                 </div>
                 <div className={AddTaskStyle.buttonCancel}>
-                <button className={AddTaskStyle.buttonStyle}>Aceptar</button>
-                <GiCancel onClick={()=> props.setAddTask(false)}></GiCancel>
-                </div>   
+                    <button className={AddTaskStyle.buttonStyle}>Aceptar</button>
+                    <GiCancel onClick={() => props.setAddTask(false)} className={AddTaskStyle.icon}></GiCancel>
+                </div>
             </form>
         </div>
     )

@@ -9,8 +9,9 @@
     background: #d6d6d6;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
-    margin-left: 8px;
-    margin-right: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 13px;
 }
 
 .container p {
@@ -76,7 +77,8 @@ select {
 
 .buttonCancel {
     display: flex;
-    align-items: flex-start;
+    align-items:center;
+    padding-bottom: 8px;
 }
 
 .buttonStyle {
@@ -92,4 +94,16 @@ select {
     background: #4262ff;
     border-radius: 5px;
     border: none;
+    margin-left: 8px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.icon{
+    height: 23px;
+    width: 23px;
+}
+
+.icon:hover{
+    cursor: pointer;
 }

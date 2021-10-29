@@ -1,0 +1,37 @@
+.colorDiv {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #a621c8;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.whiteDiv {
+    width: 96%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: 0;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.taskTextDiv {
+    width: 80%;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.taskTex {
+    text-align: start;
+}
+
+.exclamationIcon{
+    height: 25px;
+    width: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(218, 0, 0);
+}
