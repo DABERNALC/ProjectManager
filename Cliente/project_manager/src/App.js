@@ -13,6 +13,7 @@ import SubTasks from "./Pages/SubTasks/SubTasks";
 import PrivateRoute from "./Components/PrivateRoute";
 import ProjectZoomIn from "./Components/ProjectZoomIn/ProjectZoomIn";
 import ProjectProperties from "./Components/ProjectProperties/ProjectProperties";
+import Notification from "./Components/Notification/Notification";
 {
   /*import SubTasks from './Pages/Subtasks/SubTasks';*/
 }
@@ -62,12 +63,19 @@ function App() {
         </div>
       </BrowserRouter>
       /*}
-      {/* <AlertModal Text="¿Paco?"></AlertModal> */}
-      {/*<ProjectZoomIn NombreProjecto="Asistente virtual" 
+
+
+      {/*
+      <AlertModal Text="¿Paco?"></AlertModal>
+      <ProjectZoomIn NombreProjecto="Asistente virtual" 
       DescripcionProjecto="Lorem ipsum dolor sit amet consectetur adipiscing elit nisi faucibus vivamus montes proin congue hendrerit, torquent nisl"
       NombreCliente="Industrializados la 13"
-      NombreEquipo="WPT Team"></ProjectZoomIn>*/}
+      NombreEquipo="WPT Team"></ProjectZoomIn>
       <ProjectProperties></ProjectProperties>
+      */}
+
+        <Notification notifications={["Peticion de tarea de Nico","Peticion de tarea de Sebas"]}></Notification>
+
       </div>
   );
 }
