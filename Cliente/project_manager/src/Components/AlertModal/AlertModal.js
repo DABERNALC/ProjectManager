@@ -12,7 +12,7 @@ export const AlertModal = (props) => {
                     <h3>{props.Text}</h3>
                     <div className={AlertModalStyle.containerButton}>
                         <GenericButton2 text="Aceptar"></GenericButton2>
-                        <GenericButton2 text="Cancelar"></GenericButton2>
+                        <GenericButton2 text="Cancelar" ></GenericButton2>
                     </div>
             </div>
         </div>

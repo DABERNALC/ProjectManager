@@ -2,6 +2,7 @@ import React from 'react'
 import SideBarStyle from "./SideBarStyle.module.css"
 import {RiTeamFill} from "react-icons/ri"
 import {BsFolderFill} from "react-icons/bs"
+import { Link } from 'react-router-dom'
 
 const SideBar = () => {
     return (
@@ -10,7 +11,7 @@ const SideBar = () => {
                 <hr></hr>
                 <ul className={SideBarStyle.list}>
                     <li className={SideBarStyle.ListName}><RiTeamFill className={SideBarStyle.ListIcon}/> Equipos  </li>
-                    <li className={SideBarStyle.ListName}><BsFolderFill className={SideBarStyle.ListIcon}/>Proyectos</li>
+                    <Link style={{color:"white"}} to="/app/projects"><li className={SideBarStyle.ListName}><BsFolderFill className={SideBarStyle.ListIcon}/>Proyectos</li></Link>
                 </ul>
             </div>
         </div>

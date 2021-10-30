@@ -32,7 +32,7 @@ const BiggerLogSignIn = (props) => {
             password: contra,
             returnSecureToken: true
         }
-
+        alert("logeandote");
         setLoading(true);
         await props.logIn(data);
         history.push("/app/teams");

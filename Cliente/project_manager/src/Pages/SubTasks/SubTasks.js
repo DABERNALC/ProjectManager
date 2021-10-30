@@ -1,6 +1,7 @@
 import NoProjects from "../../Components/NoProjects/NoProjects";
 import GenericButton2 from "../../Components/GenericButton2/GenericButton2";
 import SubTaskStyle from "../../Components/SubTaskColumn/SubTaskColumn";
+import SubTaskColumn from "../../Components/SubTaskColumn/SubTaskColumn";
 function SubTasks() {
     return (
 

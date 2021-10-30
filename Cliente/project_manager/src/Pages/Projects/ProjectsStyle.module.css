@@ -1,0 +1,18 @@
+.ProjectsContainer
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+.ProjectsContainer >*
+{
+    margin-right: 54px;
+    margin-bottom: 46px;
+}
+.buttonContainer{
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 27px;
+}
+.container{
+    margin-left: 20px;
+}

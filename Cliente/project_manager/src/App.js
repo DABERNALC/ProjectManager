@@ -1,15 +1,18 @@
-import AppStyle from './App.css';
+import AppStyle from "./App.css";
 import LandingPage from "./Pages/LandingPage/LandingPage";
-import Header from './Components/Header/Header';
-import SideBar from "./Components/SideBar/SideBar"
-import NewProject from './Pages/NewProject/NewProject';
-import Kanban from './Pages/Kanban/Kanban';
-import Projects from "./Pages/Projects/Projects"
-import Teams from './Pages/Teams/Teams';
-import LogIn from './Pages/LogIn/LogIn';
-import AlertModal from './Components/AlertModal/AlertModal';
-import { BrowserRouter, Route } from "react-router-dom"
-{/*import SubTasks from './Pages/Subtasks/SubTasks';*/}
+import Header from "./Components/Header/Header";
+import SideBar from "./Components/SideBar/SideBar";
+import NewProject from "./Pages/NewProject/NewProject";
+import Kanban from "./Pages/Kanban/Kanban";
+import Projects from "./Pages/Projects/Projects";
+import Teams from "./Pages/Teams/Teams";
+import LogIn from "./Pages/LogIn/LogIn";
+import AlertModal from "./Components/AlertModal/AlertModal";
+import { BrowserRouter, Route } from "react-router-dom";
+import SubTasks from "./Pages/SubTasks/SubTasks";
+{
+  /*import SubTasks from './Pages/Subtasks/SubTasks';*/
+}
 function App() {
   return (
     <div>
@@ -24,39 +27,38 @@ function App() {
       
       
       */}
-      {/*}
+
       <BrowserRouter>
         <div className="App">
-          <Route path="/" exact >
+          <Route path="/" exact>
             <LandingPage />
           </Route>
-          <Route path="/signIn" exact >
-            <LogIn mode="signIn"/>
+          <Route path="/signIn" exact>
+            <LogIn mode="signIn" />
           </Route>
-          <Route path="/signUp" exact >
-            <LogIn mode="signUp"/>
+          <Route path="/signUp" exact>
+            <LogIn mode="signUp" />
           </Route>
-          <Route path="/app"  >
+          <Route path="/app">
             <Header></Header>
             <SideBar></SideBar>
           </Route>
-          <Route path="/app/teams" exact >
-            <Teams/>
+          <Route path="/app/teams" exact>
+            <Teams />
           </Route>
-          <Route path="/app/project" exact >
-            <Kanban/>
+          <Route path="/app/project" exact>
+            <Kanban />
           </Route>
           <Route path="/app/subTasks" exact>
-          <SubTasks/>
-        </Route>
+            <SubTasks />
+          </Route>
+          <Route path="/app/projects" exact>
+            <Projects/>
+          </Route>
         </div>
-
-
       </BrowserRouter>
-      <Projects projects={[{"TeamName":"Paco","ProjectName":"pepe"},{"TeamName":"Paco","ProjectName":"pepe"},{"TeamName":"Paco","ProjectName":"pepe"}]}></Projects>
-      */}
-      <AlertModal Text="¿Paco?"></AlertModal>
 
+      {/* <AlertModal Text="¿Paco?"></AlertModal> */}
     </div>
   );
 }
