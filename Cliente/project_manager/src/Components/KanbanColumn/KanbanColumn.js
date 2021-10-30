@@ -18,8 +18,12 @@ const KanbanColumn = (props) => {
                         :
                         null
                 }
-                <Task desc="Codificiar inicio de sesión"></Task>
-                <Task desc="Investigar motores de bases de datos para que todo esté muy bueno, bonito y barato"></Task>
+                {
+                    props.tasks.map((theTask)=>
+                        <Task desc={theTask.Descripcion}></Task>
+                    )
+                }
+                
         </div>
     )
 }

@@ -18,7 +18,7 @@ function Projects(props) {
         <div className= {ProjectsStyle.ProjectsContainer}>
         { 
             props.projects.length>0?
-                props.projects.map(  TheProject => (<Project ProjectName={TheProject.proyectName} TeamName={TheProject.teamName}/>))
+                props.projects.map(  TheProject => (<Project ProjectName={TheProject.proyectName} TeamName={TheProject.teamName} projectId={TheProject.proyectId}/>))
             :
                 <NoProjects/>
         }

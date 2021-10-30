@@ -91,7 +91,7 @@ export default class ParticipantMapper {
       (thing, index, self) =>
         index ===
         self.findIndex(
-          (t) => t.teamId === thing.teamId && t.teamName === thing.teamName
+          (t) => t.proyectId === thing.proyectId && t.proyectName === thing.proyectName
         )
     );
     

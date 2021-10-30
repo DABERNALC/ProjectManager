@@ -10,6 +10,7 @@ import LogIn from "./Pages/LogIn/LogIn";
 import AlertModal from "./Components/AlertModal/AlertModal";
 import { BrowserRouter, Route } from "react-router-dom";
 import SubTasks from "./Pages/SubTasks/SubTasks";
+import PrivateRoute from "./Components/PrivateRoute";
 {
   /*import SubTasks from './Pages/Subtasks/SubTasks';*/
 }
@@ -39,6 +40,7 @@ function App() {
           <Route path="/signUp" exact>
             <LogIn mode="signUp" />
           </Route>
+          
           <Route path="/app">
             <Header></Header>
             <SideBar></SideBar>
@@ -46,18 +48,18 @@ function App() {
           <Route path="/app/teams" exact>
             <Teams />
           </Route>
-          <Route path="/app/project" exact>
+          <Route path="/app/projects:projectId" exact>
             <Kanban />
           </Route>
           <Route path="/app/subTasks" exact>
-            <SubTasks />
+            <SubTasks/>
           </Route>
           <Route path="/app/projects" exact>
             <Projects/>
           </Route>
         </div>
       </BrowserRouter>
-
+    
       {/* <AlertModal Text="¿Paco?"></AlertModal> */}
     </div>
   );

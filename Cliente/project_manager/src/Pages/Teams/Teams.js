@@ -8,9 +8,9 @@ function Teams(props) {
 
   return (
     <div>
-        <h2 className={TeamsStyle.title}>Mis Proyectos</h2>
+        <h2 className={TeamsStyle.title}>Mis Equipos</h2>
         <div className={TeamsStyle.buttonContainer}>
-            <GenericButton2 text="Agregar Proyecto"/>
+            <GenericButton2 text="Agregar Equipo"/>
         </div>
         
         <div className= {TeamsStyle.teamsContainer}>
