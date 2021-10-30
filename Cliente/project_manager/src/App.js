@@ -11,6 +11,7 @@ import AlertModal from "./Components/AlertModal/AlertModal";
 import { BrowserRouter, Route } from "react-router-dom";
 import SubTasks from "./Pages/SubTasks/SubTasks";
 import PrivateRoute from "./Components/PrivateRoute";
+import ProjectZoomIn from "./Components/ProjectZoomIn/ProjectZoomIn";
 {
   /*import SubTasks from './Pages/Subtasks/SubTasks';*/
 }
@@ -28,7 +29,7 @@ function App() {
       
       
       */}
-
+      {/*
       <BrowserRouter>
         <div className="App">
           <Route path="/" exact>
@@ -59,8 +60,12 @@ function App() {
           </Route>
         </div>
       </BrowserRouter>
-    
+      /*}
       {/* <AlertModal Text="¿Paco?"></AlertModal> */}
+      <ProjectZoomIn NombreProjecto="Asistente virtual" 
+      DescripcionProjecto="Lorem ipsum dolor sit amet consectetur adipiscing elit nisi faucibus vivamus montes proin congue hendrerit, torquent nisl"
+      NombreCliente="Industrializados la 13"
+      NombreEquipo="WPT Team"></ProjectZoomIn>
     </div>
   );
 }
