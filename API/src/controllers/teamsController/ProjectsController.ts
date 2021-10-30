@@ -210,7 +210,6 @@ export class ProjectsController {
       dbConection
         .makeQuery(sqlStatement)
         .then((response) => {
-          console.log(response);
           resolve("ok");
         })
         .catch((error) => {

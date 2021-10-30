@@ -107,3 +107,8 @@ select {
 .icon:hover{
     cursor: pointer;
 }
+
+.notValid
+{
+    background-color: red;
+}

@@ -20,7 +20,6 @@ export class TeamsController {
         }).catch(()=> {
 
         });
-        console.log('vacio',);
         res.json({
           ok: true,
           message: "todo ok",
@@ -146,7 +145,6 @@ export class TeamsController {
       dbConection
         .makeQuery(sqlStatement)
         .then((response) => {
-          console.log(response);
           resolve("ok");
         })
         .catch((error) => {

@@ -36,12 +36,10 @@ export default class TeamsComponent {
           if(unique.length > 0)
           {
            
-            console.log(unique.length);
             await unique.forEach((row: number, index: number) => {
               this.getTeamsParticipantsInfo(row).then((status) => {
                 answer.participants = answer.participants.concat(status);
                 if (unique.length - 1 == index) {
-                  console.log(index);
                   
                   resolve(answer);
                 }
@@ -92,7 +90,6 @@ export default class TeamsComponent {
     const sqlStatement: String = `call createTeam('${teamName}',${liderId})`;
     //logic to create a team
     this.teams.addTeam(liderId, teamName);
-    console.log(this.teams);
     //todo: llamar a la base de datos
     return new Promise<String>((resolve, reject) => {
       this.dbConection
@@ -134,7 +131,6 @@ export default class TeamsComponent {
       this.dbConection
         .makeQuery(sqlStatement)
         .then((response) => {
-          console.log(response);
           resolve("ok");
         })
         .catch((error) => {
@@ -155,7 +151,6 @@ export default class TeamsComponent {
       this.dbConection
         .makeQuery(sqlStatement)
         .then((response) => {
-          console.log(response);
           resolve("ok");
         })
         .catch((error) => {

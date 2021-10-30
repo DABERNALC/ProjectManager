@@ -29,7 +29,6 @@ class teamsControllerSingleton {
             const teamName = req.body.teamName;
             //logic to create a team
             this.teams.addTeam(liderId, teamName);
-            console.log(this.teams);
             //todo: llamar a la base de datos
         });
     }

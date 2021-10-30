@@ -17,19 +17,21 @@ function Kanban(props) {
   const [loading, setloading] = useState(true);
   const [projectName, setprojectName] = useState("")
   const [teamName, setteamName] = useState("")
+  const [teamId,setTeamId] = useState(""); 
   let { projectId } = useParams();
   const getTeam = () => {
+
     axiosApi
       .get(`/projects/getKanban?projectId=${projectId}`)
       .then((project) => {
         setloading(false);
-        console.log("data",project.data.data);
         let proyectName = 
         props.projects.forEach(project => {
             if(project.proyectId == projectId)
             {
                 setprojectName(project.proyectName)
                 setteamName(project.teamName);
+                setTeamId(project.teamId)
             }
 
         });
@@ -58,9 +60,9 @@ function Kanban(props) {
             </div>
           ) : (
             <div className={KanbanStyle.columnsContainers}>
-              <KanbanColumn title="TO DO" tasks={projectData.toDo}></KanbanColumn>
-              <KanbanColumn title="DOING" tasks={projectData.doing}></KanbanColumn>
-              <KanbanColumn title="DONE" tasks={projectData.done}></KanbanColumn>
+              <KanbanColumn title="TO DO" tasks={projectData.toDo} teamId={teamId} refresh={()=>{getTeam()}}></KanbanColumn>
+              <KanbanColumn title="DOING" tasks={projectData.doing} teamId={teamId}></KanbanColumn>
+              <KanbanColumn title="DONE" tasks={projectData.done} teamId={teamId}></KanbanColumn>
             </div>
           )}
         </div>

@@ -12,7 +12,7 @@ const KanbanColumn = (props) => {
                 {
                     props.title == "TO DO" ?
                         addTask ?
-                            <AddTask setAddTask = {setAddTask}></AddTask>
+                            <AddTask setAddTask = {setAddTask} teamId={props.teamId} refresh={props.refresh}></AddTask>
                         :
                             <p className={KanbanColumnStyle.add} onClick={()=>setAddTask(!addTask)}>+ Añadir una tarjeta</p>
                         :

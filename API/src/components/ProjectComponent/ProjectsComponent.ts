@@ -95,7 +95,7 @@ export default class ProjectsComponent {
     }
       
     const sqlStatement:String = `INSERT INTO tarea (Descripcion,Estado,idParticipante,IDProyecto,Prioridad,FechaTarea) VALUES ('${description}',
-    'pendiente', '${participantId}',${proyectId},'${priority}','${date}');`;
+    ${relevance}, '${participantId}',${proyectId},'${priority}','${date}');`;
 
   
     //todo: llamar a la base de datos
@@ -239,7 +239,6 @@ export default class ProjectsComponent {
       this.dbConection
       .makeQuery(sqlStatement)
       .then((response) => {
-        console.log("tareas",response);
         
         resolve(response);
       })

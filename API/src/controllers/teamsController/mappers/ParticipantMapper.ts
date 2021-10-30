@@ -20,7 +20,6 @@ export default class ParticipantMapper {
       participantVoCopy = participantVoCopy.filter(
         (participant: any) => participant.ID == participantId
       );
-      console.log("tiene equipos");
       
     }else
     {
@@ -31,11 +30,9 @@ export default class ParticipantMapper {
             (row)=>
             {
                 participantVoCopy[0] = row[0]
-                console.log("antes",row[0]);
                 
             }
         ).catch()
-        console.log("despues",participantVo);
         
     } 
 
