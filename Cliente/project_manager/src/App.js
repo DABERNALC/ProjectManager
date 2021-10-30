@@ -7,6 +7,7 @@ import Kanban from './Pages/Kanban/Kanban';
 import Projects from "./Pages/Projects/Projects"
 import Teams from './Pages/Teams/Teams';
 import LogIn from './Pages/LogIn/LogIn';
+import AlertModal from './Components/AlertModal/AlertModal';
 import { BrowserRouter, Route } from "react-router-dom"
 {/*import SubTasks from './Pages/Subtasks/SubTasks';*/}
 function App() {
@@ -52,9 +53,9 @@ function App() {
 
 
       </BrowserRouter>
-      */}
-
       <Projects projects={[{"TeamName":"Paco","ProjectName":"pepe"},{"TeamName":"Paco","ProjectName":"pepe"},{"TeamName":"Paco","ProjectName":"pepe"}]}></Projects>
+      */}
+      <AlertModal Text="¿Paco?"></AlertModal>
 
     </div>
   );
