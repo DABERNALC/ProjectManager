@@ -1,15 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import AddTaskStyle from "./AddTaskStyle.module.css";
 import { GiCancel } from "react-icons/gi"
+import { connect } from 'react-redux';
+import { useParams } from 'react-router';
 
-const AddTask = (props) => {
+const  AddTask = (props) => {
+    const teamId = useParams();
+    useEffect(() => {
+        alert(props.teams)
+    }, [props])
     return (
         <div className={AddTaskStyle.container}>
             <p>Descripción</p>
             <form>
                 <textarea className={AddTaskStyle.descInput}></textarea>
                 <div className={AddTaskStyle.selectDiv}>
-                    <select></select>
+                    <select>
+                        
+                    </select>
                     <select></select>
                 </div>
                 <div className={AddTaskStyle.dateAndCheck}>
@@ -27,4 +35,9 @@ const AddTask = (props) => {
         </div>
     )
 }
-export default AddTask;
+const mapStateToProps = (state) => {
+    return {
+        teams: state.UserInfo.teams
+    };
+  };
+export default connect(mapStateToProps)(AddTask);

@@ -6,7 +6,8 @@ import KanbanColumn from "../../Components/KanbanColumn/KanbanColumn";
 import KanbanStyle from "./KanbanStyle.module.css";
 import axiosApi from "../../Axios/api";
 import Spinner from "../../Components/Spinner/Spinner";
-function Kanban() {
+import { connect } from "react-redux";
+function Kanban(props) {
   const [projectData, setprojectData] = useState({
     doing: [],
     done: [],
@@ -14,6 +15,8 @@ function Kanban() {
     projectId: "",
   });
   const [loading, setloading] = useState(true);
+  const [projectName, setprojectName] = useState("")
+  const [teamName, setteamName] = useState("")
   let { projectId } = useParams();
   const getTeam = () => {
     axiosApi
@@ -21,10 +24,19 @@ function Kanban() {
       .then((project) => {
         setloading(false);
         console.log("data",project.data.data);
+        let proyectName = 
+        props.projects.forEach(project => {
+            if(project.proyectId == projectId)
+            {
+                setprojectName(project.proyectName)
+                setteamName(project.teamName);
+            }
+
+        });
         setprojectData(project.data.data);
       })
       .catch((error)=>{
-          console.log(error);
+          console.log(error.error);
       });
   };
 
@@ -35,8 +47,8 @@ function Kanban() {
 
   return (
     <div>
-      <h1 className={KanbanStyle.title}>Asistente Virtual</h1>
-      <h3>WPT Team</h3>
+      <h1 className={KanbanStyle.title}>{projectName}</h1>
+      <h3>{teamName}</h3>
       <div className={KanbanStyle.kanbanContainerCentered}>
         <div className={KanbanStyle.kanbanContainer}>
           <h1>Kanban</h1>
@@ -59,5 +71,9 @@ function Kanban() {
     </div>
   );
 }
-
-export default Kanban;
+const mapStateToProps = (state) => {
+    return {
+        projects: state.UserInfo.proyects
+    };
+  };
+export default connect(mapStateToProps) (Kanban);

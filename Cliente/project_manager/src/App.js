@@ -48,7 +48,7 @@ function App() {
           <Route path="/app/teams" exact>
             <Teams />
           </Route>
-          <Route path="/app/projects:projectId" exact>
+          <Route path="/app/projects/:projectId" exact>
             <Kanban />
           </Route>
           <Route path="/app/subTasks" exact>

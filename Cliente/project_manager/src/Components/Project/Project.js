@@ -8,7 +8,7 @@ export const Project = (props) => {
         console.log(props)
     }, [])
   return (
-    <Link to={`/app/projects:${props.projectId}`}>
+    <Link to={`/app/projects/${props.projectId}`}>
       <div className={ProjectStyle.containerBlue}>
         <div className={ProjectStyle.container}>
           <h3>{props.ProjectName}</h3>
