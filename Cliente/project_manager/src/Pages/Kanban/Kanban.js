@@ -20,7 +20,7 @@ function Kanban(props) {
   const [teamId,setTeamId] = useState(""); 
   let { projectId } = useParams();
   const getTeam = () => {
-
+    setloading(true)
     axiosApi
       .get(`/projects/getKanban?projectId=${projectId}`)
       .then((project) => {
