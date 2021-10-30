@@ -12,6 +12,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import SubTasks from "./Pages/SubTasks/SubTasks";
 import PrivateRoute from "./Components/PrivateRoute";
 import ProjectZoomIn from "./Components/ProjectZoomIn/ProjectZoomIn";
+import ProjectProperties from "./Components/ProjectProperties/ProjectProperties";
 {
   /*import SubTasks from './Pages/Subtasks/SubTasks';*/
 }
@@ -62,11 +63,12 @@ function App() {
       </BrowserRouter>
       /*}
       {/* <AlertModal Text="¿Paco?"></AlertModal> */}
-      <ProjectZoomIn NombreProjecto="Asistente virtual" 
+      {/*<ProjectZoomIn NombreProjecto="Asistente virtual" 
       DescripcionProjecto="Lorem ipsum dolor sit amet consectetur adipiscing elit nisi faucibus vivamus montes proin congue hendrerit, torquent nisl"
       NombreCliente="Industrializados la 13"
-      NombreEquipo="WPT Team"></ProjectZoomIn>
-    </div>
+      NombreEquipo="WPT Team"></ProjectZoomIn>*/}
+      <ProjectProperties></ProjectProperties>
+      </div>
   );
 }
 
