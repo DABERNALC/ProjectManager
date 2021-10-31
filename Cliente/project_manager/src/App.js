@@ -14,6 +14,7 @@ import PrivateRoute from "./Components/PrivateRoute";
 import ProjectZoomIn from "./Components/ProjectZoomIn/ProjectZoomIn";
 import ProjectProperties from "./Components/ProjectProperties/ProjectProperties";
 import Notification from "./Components/Notification/Notification";
+import Inconvenient from "./Components/Inconvenient/Inconvenient";
 {
   /*import SubTasks from './Pages/Subtasks/SubTasks';*/
 }
@@ -72,9 +73,9 @@ function App() {
       NombreCliente="Industrializados la 13"
       NombreEquipo="WPT Team"></ProjectZoomIn>
       <ProjectProperties></ProjectProperties>
+      <Notification notifications={["Peticion de tarea de Nico","Peticion de tarea de Sebas"]}></Notification>
       */}
-
-        <Notification notifications={["Peticion de tarea de Nico","Peticion de tarea de Sebas"]}></Notification>
+        <Inconvenient></Inconvenient>
 
       </div>
   );
