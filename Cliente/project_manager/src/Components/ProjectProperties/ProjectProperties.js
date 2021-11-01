@@ -1,10 +1,10 @@
 import React from 'react'
 import ProjectPropertiesStyle from "./ProjectPropertiesStyle.module.css"
 
-export const ProjectProperties = () => {
+export const ProjectProperties = (props) => {
     return (
         <div className={ProjectPropertiesStyle.container}>
-            <div>
+            <div onClick= {()=>props.setshowDetails(!props.showDetails)}>
                 <p>Propiedades</p>
             </div>
             <div>

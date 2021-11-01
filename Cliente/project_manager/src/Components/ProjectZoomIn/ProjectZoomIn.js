@@ -8,6 +8,7 @@ import * as actionCreators from "../../Store/Actions/ProjectDetails";
 import { connect } from 'react-redux';
 export const ProjectZoomIn = (props) => {
   const [loading, setloading] = useState(false);
+ 
   useEffect(() => {
     props.getTeamRequest({projectId:props.projectId});
   }, [])

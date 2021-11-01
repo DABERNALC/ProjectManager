@@ -3,12 +3,18 @@ import ProjectStyle from "./ProjectStyle.module.css";
 import { GrConfigure } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import ProjectZoomIn from "../ProjectZoomIn/ProjectZoomIn";
+import ProjectProperties from "../ProjectProperties/ProjectProperties";
 
 export const Project = (props) => {
   useEffect(() => {
     console.log(props);
   }, []);
   const [showDetails, setshowDetails] = useState(false);
+  const [showProperties, setshowProperties] = useState(false);
+  const deleteProject= ()=> 
+  {
+    
+  }
   return (
     <div className={ProjectStyle.containerBlue}>
       <div className={ProjectStyle.container}>
@@ -17,7 +23,9 @@ export const Project = (props) => {
         </Link>
         <div>
           <h4>{props.TeamName}</h4>
-          <li className={ProjectStyle.icon}><GrConfigure onClick={() => setshowDetails(!showDetails)} /></li>
+          <li className={ProjectStyle.icon}>
+            <GrConfigure onClick={() => setshowProperties(!showProperties)} />
+          </li>
         </div>
       </div>
       {showDetails ? (
@@ -28,6 +36,7 @@ export const Project = (props) => {
           projectId={props.projectId}
         />
       ) : null}
+      {showProperties ? <ProjectProperties setshowDetails={(show)=>{setshowDetails(show)}} showDetails={showDetails} /> : null}
     </div>
   );
 };
