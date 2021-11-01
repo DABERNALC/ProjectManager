@@ -1,0 +1,38 @@
+.grayContainer{
+    display: flex;
+    flex-direction: column;
+    background-color: #CACACA;
+    width:74%;
+    margin-left: 13%;
+    height: fit-content;
+    text-align: center;
+    justify-content: space-around;
+}
+.buttonContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    align-items: center;
+}
+.inputContainer{
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 10px;
+    justify-content: start;
+}
+.inputContainer input{
+    margin-left: 0px;
+    color:#909090;
+    border-radius: 5px;
+    border:none;
+    font-size: small;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width:85%;
+    height: fit-content;
+}
