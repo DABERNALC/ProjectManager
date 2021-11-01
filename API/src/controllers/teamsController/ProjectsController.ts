@@ -1,8 +1,11 @@
 import ProjectsComponent from "../../components/ProjectComponent/projectsComponent";
 import { DbConnection } from "../../components/DbConnection";
 import KanbanMapper from "./mappers/KanbanMapper";
+import projectMapper from "./mappers/ProjectMapper";
+import ProjectMapper from "./mappers/ProjectMapper";
 
 export class ProjectsController {
+ 
   addTask(req: any, res: any) {
     const description = req.body.Description;
 
@@ -124,6 +127,29 @@ export class ProjectsController {
         });
       });
   }
+  getProject(req: any, res: any) {
+    const id = req.query.projectId;
+
+    const dbConection = DbConnection.getInstance();
+    const projectComponent = new ProjectsComponent(dbConection);
+    const projectMapper = new ProjectMapper();
+    //manage api response
+    projectComponent
+      .getProject(req)
+      .then((response) => {
+        res.json({
+          ok: true,
+          message: `here is the project with id: ${id} `,
+          data: projectMapper.getDto(response)
+        });
+      })
+      .catch((error) => {
+        res.json({
+          ok: false,
+          message: error,
+        });
+      });
+}
   checkSubtask(req: any, res: any) {
     const id = req.body.subTaskId;
 

@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import thunk from 'redux-thunk';
 import UserInfo from "./Store/Reducers/UserInfo"
-import reducer from './Store/Reducers/UserInfo';
+import userReducer from './Store/Reducers/UserInfo';
+import projectDetailReducer from './Store/Reducers/ProjectInfo';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
@@ -13,7 +14,8 @@ const composeEnhancers = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_ || compose;
 */
 
 const rootReducer = combineReducers({
-  UserInfo: reducer,
+  UserInfo: userReducer,
+  ProjectDetail: projectDetailReducer
 });
 
 

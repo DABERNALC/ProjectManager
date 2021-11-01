@@ -4,6 +4,7 @@ import Teams from "../teamsComponent/Teams";
 
 export default class ProjectsComponent {
   
+  
  
   
 
@@ -233,6 +234,27 @@ export default class ProjectsComponent {
      
  
     const sqlStatement:String = `Select tarea.id,tarea.Descripcion,tarea.prioridad,tarea.FechaTarea,participante.Color,participante.ID from tarea INNER JOIN participante on tarea.IDParticipante = participante.ID WHERE tarea.IDProyecto = "${projectId}";`;
+  
+    //todo: llamar a la base de datos
+    return new Promise<String>((resolve, reject) => {
+      this.dbConection
+      .makeQuery(sqlStatement)
+      .then((response) => {
+        
+        resolve(response);
+      })
+      .catch((error) => {
+        
+        reject(error.sqlMessage);
+      });
+    })
+  }
+  getProject(req: any) {
+    //getting the parameters from the request
+    const projectId = req.query.projectId;
+     
+ 
+    const sqlStatement:String = `select * from proyecto where IDProyecto = ${projectId}`;
   
     //todo: llamar a la base de datos
     return new Promise<String>((resolve, reject) => {

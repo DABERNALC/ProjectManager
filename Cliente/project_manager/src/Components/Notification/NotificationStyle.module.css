@@ -8,8 +8,10 @@
     justify-content: left;
     text-align: left;
     align-items: left;
+    
 
 }
+
 .textContainer{
     display: flex;
     flex-direction: column;

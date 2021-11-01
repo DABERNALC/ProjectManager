@@ -47,4 +47,12 @@ body {
 .listIcon{
     background-color:aqua;
 }
-
+.notificationContainer
+{
+    display: flex;
+    flex-direction: column;
+}
+.notificationContainer:hover
+{
+   cursor: pointer;
+}

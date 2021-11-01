@@ -67,7 +67,7 @@ export const loginRequest = (payload) => {
                 const participantId = response.data.localId
                 // console.log("response: ", response.data.localId);
                 //solicitud a la api
-                axiosApi.get(`/teams/logIn?participantId=${participantId}`).then((resp) => {
+                axiosApi.get(`/teams/logIn?participantId=${2}`).then((resp) => {
                     //setLoading(false);
                     console.log("jeje",resp.data.data);
                     dispatch(login(resp.data.data));

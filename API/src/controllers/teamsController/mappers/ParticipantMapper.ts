@@ -79,9 +79,9 @@ export default class ParticipantMapper {
 
     let theProyects = projects.map((theProyect) => ({
       proyectId: theProyect.IDProyecto,
-      proyectName: theProyect.tag,
+      proyectName: theProyect.nombreProyecto,
       teamId: theProyect.IDEquipo,
-      teamName: theProyect.nombreProyecto,
+      teamName: theProyect.tag,
     }));
     //make unique the proyects
     theProyects = theProyects.filter(

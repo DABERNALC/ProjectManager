@@ -17,12 +17,7 @@
     width: 214px;
     height: 71px;
 }
-.container:hover
-{
-    background: #adb3d0;
-    color: white;
-    cursor: pointer;
-}
+
 .container h3{
     margin-top: 5px;
     font-family: Roboto;
@@ -30,6 +25,12 @@
     font-weight: normal;
     font-size: 18px;
     line-height: 21px;
+}
+.container h3:hover
+{
+    background: #adb3d0;
+    color: white;
+    cursor: pointer;
 }
 .container h4{
     margin-left: 20px;
@@ -44,4 +45,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
+.icon
+{
+    list-style: none;
+}
+.icon:hover
+{
+    cursor: pointer;
+    height: 20px;
 }
