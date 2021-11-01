@@ -15,6 +15,7 @@ import ProjectZoomIn from "./Components/ProjectZoomIn/ProjectZoomIn";
 import ProjectProperties from "./Components/ProjectProperties/ProjectProperties";
 import Notification from "./Components/Notification/Notification";
 import Inconvenient from "./Components/Inconvenient/Inconvenient";
+import AddParticipant from "./Components/AddParticipant/AddParticipant";
 import { connect } from "react-redux";
 {
   /*import SubTasks from './Pages/Subtasks/SubTasks';*/
@@ -33,7 +34,7 @@ function App(props) {
       
       
       */}
-
+      {/*}
       <BrowserRouter>
         <div className="App">
           <Route path="/" exact>
@@ -70,7 +71,7 @@ function App(props) {
           </Route>
         </div>
       </BrowserRouter>
-
+      */}
       {/*
       <AlertModal Text="¿Paco?"></AlertModal>
       <ProjectZoomIn NombreProjecto="Asistente virtual" 
@@ -81,6 +82,7 @@ function App(props) {
       <Notification notifications={["Peticion de tarea de Nico","Peticion de tarea de Sebas"]}></Notification>
       <Inconvenient></Inconvenient>
       */}
+        <AddParticipant></AddParticipant>
     </div>
   );
 }
