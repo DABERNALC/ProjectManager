@@ -23,6 +23,8 @@ const reducer = (state = initialState, action) => {
             return login(state, payload);
         case actionTypes.LOADING:
             return loading(state,payload)
+        case actionTypes.ERROR:
+            return loading(state,payload)
         default:
             return state;
     }

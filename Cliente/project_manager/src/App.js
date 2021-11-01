@@ -15,10 +15,11 @@ import ProjectZoomIn from "./Components/ProjectZoomIn/ProjectZoomIn";
 import ProjectProperties from "./Components/ProjectProperties/ProjectProperties";
 import Notification from "./Components/Notification/Notification";
 import Inconvenient from "./Components/Inconvenient/Inconvenient";
+import { connect } from "react-redux";
 {
   /*import SubTasks from './Pages/Subtasks/SubTasks';*/
 }
-function App() {
+function App(props) {
   return (
     <div>
       {/*
@@ -32,7 +33,7 @@ function App() {
       
       
       */}
-      
+
       <BrowserRouter>
         <div className="App">
           <Route path="/" exact>
@@ -44,11 +45,17 @@ function App() {
           <Route path="/signUp" exact>
             <LogIn mode="signUp" />
           </Route>
-          
-          <Route path="/app">
-            <Header></Header>
-            <SideBar></SideBar>
-          </Route>
+
+          <PrivateRoute
+            path="/app"
+            currentUser = {props.currentUser} 
+            render={() => 
+              <>
+                <Header></Header>
+                <SideBar></SideBar>
+              </>
+            }
+          ></PrivateRoute>
           <Route path="/app/teams" exact>
             <Teams />
           </Route>
@@ -56,14 +63,13 @@ function App() {
             <Kanban />
           </Route>
           <Route path="/app/subTasks" exact>
-            <SubTasks/>
+            <SubTasks />
           </Route>
           <Route path="/app/projects" exact>
-            <Projects/>
+            <Projects />
           </Route>
         </div>
       </BrowserRouter>
-
 
       {/*
       <AlertModal Text="¿Paco?"></AlertModal>
@@ -75,10 +81,13 @@ function App() {
       <Notification notifications={["Peticion de tarea de Nico","Peticion de tarea de Sebas"]}></Notification>
       <Inconvenient></Inconvenient>
       */}
-
-
-      </div>
+    </div>
   );
 }
-
-export default App;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+      currentUser: state.UserInfo.id
+  };
+};
+export default connect(mapStateToProps) (App);

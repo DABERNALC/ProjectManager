@@ -10,7 +10,7 @@ import {useHistory} from 'react-router-dom'
 const BiggerLogSignIn = (props) => {
     let [email, setEmail] = useState("nicoFake@gmail.com")
     let [contra, setContra] = useState("123123")
-    let [error, setError] = useState("")
+    
     let [name, setName] = useState("nico")
     let [loading, setLoading] = useState(false)
     const history = useHistory();
@@ -32,15 +32,22 @@ const BiggerLogSignIn = (props) => {
             password: contra,
             returnSecureToken: true
         }
-        alert("logeandote");
         setLoading(true);
         await props.logIn(data);
-        history.push("/app/teams");
+        
     }
     useEffect(()=>{
         console.log("aaaaaaa",props.loading);
         setLoading(props.loading)
     });
+    useEffect(() => {
+        // alert(props.loading)
+        if(props.userId !== ""  && props.loading === false)
+        {
+            console.log("entra");
+            history.push("/app/teams");
+        }
+    }, [props.loading])
 
 
 
@@ -50,8 +57,8 @@ const BiggerLogSignIn = (props) => {
             <form>
                 <div className={BiggerLogSignInStyle.formStyle}>
                     {
-                        error != "" ?
-                            <p style={{ color: "red" }}>{error}</p>
+                        props.error != "" ?
+                            <p style={{ color: "red" }}>Credenciales incorrectas</p>
                             :
                             null
                     }
@@ -134,7 +141,9 @@ const BiggerLogSignIn = (props) => {
 }
 const mapStateToProps = (state) => {
     return {
-        loading: state.UserInfo.loading
+        loading: state.UserInfo.loading,
+        userId: state.UserInfo.id,
+        error: state.UserInfo.error
     };
   };
 

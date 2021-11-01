@@ -16,7 +16,7 @@ function Teams(props) {
         <div className= {TeamsStyle.teamsContainer}>
         { 
             props.teams.length>0?
-                props.teams.map(  theTeam => (<Team name={theTeam.name} TeamMembers={theTeam.Participants}/>))
+                props.teams.map(  (theTeam,index) => (<Team name={theTeam.name} key={index} TeamMembers={theTeam.Participants}/>))
             :
                 <NoTeams/>
         }

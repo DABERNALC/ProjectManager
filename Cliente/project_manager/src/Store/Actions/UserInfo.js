@@ -3,7 +3,7 @@ import axiosFirebaseAuth from "../../Axios/firebaseAuth"
 import axiosApi from "../../Axios/api"
 import { useHistory } from "react-router";
 
-const { LOGIN, LOADING} = actionTypes;
+const { LOGIN, LOADING,ERROR} = actionTypes;
 
 const login = (payload) => {
     return {
@@ -26,10 +26,24 @@ const setLoadign = () => {
         }
     }
 }
+const setError = (payload) => {
+    return {
+        type: ERROR,
+        payload: {
+            color: "",
+            id: "",
+            name: "",
+            proyects: [],
+            teams: [],
+            loading: false,
+            error:  payload
+        }
+    }
+}
 
 export const loginRequest = (payload) => {    
     return (dispatch) => {
-        dispatch(setLoadign)
+        dispatch(setLoadign())
         console.log("data");
         const data = payload
         axiosFirebaseAuth.post(":signInWithPassword", data)
@@ -41,7 +55,6 @@ export const loginRequest = (payload) => {
                 //solicitud a la api
                 axiosApi.get(`/teams/logIn?participantId=${2}`).then((resp) => {
                     //setLoading(false);
-                    console.log("ok");
                     console.log("jeje",resp.data.data);
                     dispatch(login(resp.data.data));
                     
@@ -58,6 +71,7 @@ export const loginRequest = (payload) => {
                 let error = e.response.data.error.message;
                 //setError(error)
                 console.log(e.response.data.error.message);
+                dispatch(setError(error))
 
             });
     }
