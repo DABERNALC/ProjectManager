@@ -102,6 +102,14 @@ ProjectsRouter.post('/deleteSubtask',[
     let teamsController = new ProjectsController();
     teamsController.deleteSubtask(req,res);
 });
+ProjectsRouter.get('/getProject',[
+    check("projectId","you should send the id of the project in order to see its details").not().isEmpty()
+    
+    ,validate
+],(req: any,res: any)=>{
+    let teamsController = new ProjectsController();
+    teamsController.getProject(req,res);
+});
 ProjectsRouter.get('/getKanban',[
     check("projectId","you should send the id of the project in order to see its kanban").not().isEmpty()
     

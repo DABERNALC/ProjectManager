@@ -3,6 +3,7 @@ import GenericButton2 from "../../Components/GenericButton2/GenericButton2";
 import { Project } from "../../Components/Project/Project";
 import ProjectsStyle from "./ProjectsStyle.module.css"
 import { connect } from "react-redux";
+import ProjectZoomIn from "../../Components/ProjectZoomIn/ProjectZoomIn";
 
 function Projects(props) {
   return (
@@ -23,6 +24,7 @@ function Projects(props) {
                 <NoProjects/>
         }
         </div>
+        
     </div>
   );
 }
