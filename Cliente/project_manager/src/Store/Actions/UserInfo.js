@@ -10,6 +10,21 @@ const login = (payload) => {
         type: LOGIN,
         payload: { ...payload,
             loading: false,
+            error:  ""
+        }
+    }
+}
+const signUp = () => {
+    return {
+        type: LOGIN,
+        payload: {
+            color: "",
+            id: "",
+            name: "",
+            proyects: [],
+            teams: [],
+            loading: false,
+            error:  ""
         }
     }
 }
@@ -23,6 +38,7 @@ const setLoadign = () => {
             proyects: [],
             teams: [],
             loading: true,
+            error:  ""
         }
     }
 }
@@ -49,11 +65,9 @@ export const loginRequest = (payload) => {
         axiosFirebaseAuth.post(":signInWithPassword", data)
             .then((response) => {
                 const participantId = response.data.localId
-
-
                 // console.log("response: ", response.data.localId);
                 //solicitud a la api
-                axiosApi.get(`/teams/logIn?participantId=${2}`).then((resp) => {
+                axiosApi.get(`/teams/logIn?participantId=${participantId}`).then((resp) => {
                     //setLoading(false);
                     console.log("jeje",resp.data.data);
                     dispatch(login(resp.data.data));
@@ -72,6 +86,42 @@ export const loginRequest = (payload) => {
                 //setError(error)
                 console.log(e.response.data.error.message);
                 dispatch(setError(error))
+
+            });
+    }
+}
+
+export const signUpRequest = (payload) => {    
+    return (dispatch) => {
+        dispatch(setLoadign())
+        
+        const firebaseData = payload.firebaseData
+        const apiData = payload.apiData    
+        axiosFirebaseAuth.post(":signUp", firebaseData)
+            .then((response) => {
+                const participantId = response.data.localId
+                const params = new URLSearchParams();
+                var randomColor = ["Red","Pink","Coral","Gold","Violet","Purple","Lime","Green","Teal","Aqua","Blue","Peru","Black"];
+                var randomColor = randomColor[Math.floor(Math.random()*randomColor.length)];
+                params.append('color', randomColor);
+                params.append('correo', apiData.email);
+                params.append('id', participantId);
+                params.append('nombre', apiData.name);
+
+                
+                axiosApi.post("/teams/createParticipant",params).then((resp)=>{
+                    console.log(resp.data);
+                    //se guardo correctamente en la bd
+                    dispatch(signUp())
+                }).catch((e)=>{
+                    console.log(e.response.data);
+                })
+                
+            })
+            .catch((e) => {
+                let error = e.response.data.error.message;
+                dispatch(setError(error))
+                console.log(e.response.data.error.message);
 
             });
     }

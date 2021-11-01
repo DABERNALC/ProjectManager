@@ -55,7 +55,7 @@ function App(props) {
                 <SideBar></SideBar>
               </>
             }
-          ></PrivateRoute>
+          />
           <Route path="/app/teams" exact>
             <Teams />
           </Route>

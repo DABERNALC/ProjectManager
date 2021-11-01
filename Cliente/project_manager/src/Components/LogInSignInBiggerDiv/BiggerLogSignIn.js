@@ -17,12 +17,21 @@ const BiggerLogSignIn = (props) => {
 
 
     const createFirebaseUser = () => {
-        let data = {
+        let firebaseData = {
             email: email,
             password: contra,
             returnSecureToken: true
         }
-        setLoading(true);
+        let apiData = {
+            email: email,
+            name:name
+        }
+        let data = {
+            firebaseData: firebaseData,
+            apiData:apiData
+        } 
+
+        props.signUp(data);
         
     }
     const logIn = async() => {
@@ -127,7 +136,7 @@ const BiggerLogSignIn = (props) => {
                                             
                                         }
                                     }}
-                                >Registrarse</button>
+                                > {props.mode == "signUp" ? "Registrarse" : "Iniciar sesion" }</button>
                             
 
 
@@ -150,7 +159,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
       logIn: (payload) => dispatch(actionCreators.loginRequest(payload)),
-      
+      signUp:(payload) => dispatch(actionCreators.signUpRequest(payload))
     };
   };
 export default  connect(mapStateToProps,mapDispatchToProps)(BiggerLogSignIn) ;

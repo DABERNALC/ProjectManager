@@ -6,6 +6,7 @@ const initialState = {
     name: "",
     proyects: [],
     teams: [],
+    error:  ""
 }
 
 const login = (state, payload) => {
