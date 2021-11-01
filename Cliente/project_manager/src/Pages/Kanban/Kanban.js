@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import {FaUserAlt} from  "react-icons/fa"
 import GenericButton1 from "../../Components/GenericButton1/GenericButton1";
 import KanbanColumn from "../../Components/KanbanColumn/KanbanColumn";
 
@@ -49,8 +50,22 @@ function Kanban(props) {
 
   return (
     <div>
-      <h1 className={KanbanStyle.title}>{projectName}</h1>
-      <h3>{teamName}</h3>
+      <div className={KanbanStyle.container}>
+        <div>
+          <h1 className={KanbanStyle.title}>{projectName}</h1>
+          <h3>{teamName}</h3>
+        </div>
+        <div className={KanbanStyle.userContainer}>
+            {
+              props.teams.map(Team =>(
+                Team.idTeam==teamId?
+                Team.Participants.map(pepe =>(<FaUserAlt color={pepe.color}></FaUserAlt>))
+                :
+                null
+              ))
+            }
+        </div>
+      </div>
       <div className={KanbanStyle.kanbanContainerCentered}>
         <div className={KanbanStyle.kanbanContainer}>
           <h1>Kanban</h1>
@@ -75,7 +90,8 @@ function Kanban(props) {
 }
 const mapStateToProps = (state) => {
     return {
-        projects: state.UserInfo.proyects
+        projects: state.UserInfo.proyects,
+        teams: state.UserInfo.teams
     };
   };
 export default connect(mapStateToProps) (Kanban);

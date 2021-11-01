@@ -32,7 +32,7 @@ function App() {
       
       
       */}
-      {/*
+      
       <BrowserRouter>
         <div className="App">
           <Route path="/" exact>
@@ -63,7 +63,6 @@ function App() {
           </Route>
         </div>
       </BrowserRouter>
-      /*}
 
 
       {/*
@@ -74,8 +73,9 @@ function App() {
       NombreEquipo="WPT Team"></ProjectZoomIn>
       <ProjectProperties></ProjectProperties>
       <Notification notifications={["Peticion de tarea de Nico","Peticion de tarea de Sebas"]}></Notification>
+      <Inconvenient></Inconvenient>
       */}
-        <Inconvenient></Inconvenient>
+
 
       </div>
   );

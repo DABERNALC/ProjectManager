@@ -3,8 +3,9 @@ import HeaderStyle from "./HeaderStyle.module.css";
 import {MdOutlineNotificationsActive} from "react-icons/md"
 import {FaUserAlt} from  "react-icons/fa"
 import imagen from './images/PatoLogo.png'
+import { connect } from 'react-redux';
 
-const Header = () => {
+const Header = (props) => {
     return (
         <div className={HeaderStyle.headerDiv}>
             <div className={HeaderStyle.userContainer}>
@@ -13,10 +14,18 @@ const Header = () => {
             </div>
             <div className={HeaderStyle.userContainer}>
                 <MdOutlineNotificationsActive className="ListIcon"/>
-                <h1 className={HeaderStyle.userName}>juan medina</h1>
-                <FaUserAlt className="ListIcon"></FaUserAlt>
+                <h1 className={HeaderStyle.userName}>{props.Name} #{props.Id}</h1>
+                <FaUserAlt className="ListIcon" color={props.Color}></FaUserAlt>
             </div>
         </div>
     )
 }
-export default Header;
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+        Name: state.UserInfo.name,
+        Id: state.UserInfo.id,
+        Color: state.UserInfo.color
+    };
+  };
+export default connect(mapStateToProps)(Header);
