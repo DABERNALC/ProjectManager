@@ -59,7 +59,11 @@ function Kanban(props) {
             {
               props.teams.map(Team =>(
                 Team.idTeam==teamId?
-                Team.Participants.map(pepe =>(<FaUserAlt color={pepe.color}></FaUserAlt>))
+                Team.Participants.map(pepe =>(
+                <div className={KanbanStyle.user}>
+                  <FaUserAlt color={pepe.color}/>
+                  <p>{pepe.Nombre}</p>
+                </div>))
                 :
                 null
               ))

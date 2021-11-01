@@ -70,3 +70,8 @@ GenericButton1{
     font-size: xx-large;
     margin-right: 10%;
 }
+.user
+{
+    display: flex;
+    flex-direction: column;
+}

@@ -17,6 +17,7 @@ import Notification from "./Components/Notification/Notification";
 import Inconvenient from "./Components/Inconvenient/Inconvenient";
 import AddParticipant from "./Components/AddParticipant/AddParticipant";
 import { connect } from "react-redux";
+import NewTeam from "./Components/NewTeam/NewTeam";
 {
   /*import SubTasks from './Pages/Subtasks/SubTasks';*/
 }
@@ -82,7 +83,7 @@ function App(props) {
       <Notification notifications={["Peticion de tarea de Nico","Peticion de tarea de Sebas"]}></Notification>
       <Inconvenient></Inconvenient>
       */}
-        <AddParticipant></AddParticipant>
+        <NewTeam/>
     </div>
   );
 }
