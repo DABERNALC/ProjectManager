@@ -37,7 +37,7 @@ export default class teamsMapper {
     proyects = proyects.filter(
         (thing: { id: any; name: any; }, index: any, self: any[]) =>
           index ===
-          self.findIndex((t) => t.id === thing.id && t.name === thing.name)
+          self.findIndex((t) => t.id === thing.id && t.name === thing.name && thing.name !== null )
       );
     
         return(new TeamDetailDto(teamId,teamName,participants,proyects));

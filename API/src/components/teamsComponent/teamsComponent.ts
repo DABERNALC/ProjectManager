@@ -96,11 +96,13 @@ export default class TeamsComponent {
     //getting the parameters from the request
     const teamID = req.query.TeamId;
     //sql statement
-    const sqlStatement = `Call getEquipoDetails(${185})`;
+    const sqlStatement = `Call getEquipoDetails('${teamID}')`;
     return new Promise<Object>((resolve, reject) => {
       this.dbConection
         .makeQuery(sqlStatement)
         .then((response: Object) => {
+          console.log("detalles", response);
+          
           resolve(response);
         })
         .catch((error) => {

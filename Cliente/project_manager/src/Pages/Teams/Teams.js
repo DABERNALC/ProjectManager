@@ -22,6 +22,7 @@ function Teams(props) {
               name={theTeam.name}
               key={index}
               TeamMembers={theTeam.Participants}
+              idTeam={theTeam.idTeam}
             />
           ))
         ) : (

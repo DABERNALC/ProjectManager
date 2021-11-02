@@ -96,7 +96,7 @@ export const refreshUserData = (payload) => {
     // console.log("response: ", response.data.localId);
     //solicitud a la api
     axiosApi
-      .get(`/teams/logIn?participantId=${participantId}`)
+      .get(`/teams/logIn?participantId=${[participantId]}`)
       .then((resp) => {
         //setLoading(false);
         dispatch(login(resp.data.data));

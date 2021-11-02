@@ -126,6 +126,8 @@ export class TeamsController {
     teamsComponent
       .getTeam(req)
       .then((team) => {
+        console.log("team details", team);
+        
         res.json({
           ok: true,
           message: `here is the team with id : ${teamId} `,
