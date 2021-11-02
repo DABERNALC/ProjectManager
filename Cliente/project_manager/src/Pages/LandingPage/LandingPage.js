@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import LandingPageStyle from "./LandingPageStyle.module.css"
 import {Link, link} from "react-router-dom"
 import imagen from './images/PatoLogo.png'
+import NewTeam from '../../Components/NewTeam/NewTeam'
 
 const LandingPage = () => {
     return (
@@ -26,6 +27,7 @@ const LandingPage = () => {
                     <button className={LandingPageStyle.estiloBoton}>Regístrate</button>
                 </div>
             </div>
+            
         </div>
     )
 }

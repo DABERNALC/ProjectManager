@@ -39,11 +39,11 @@ export const ProjectZoomIn = (props) => {
 
               <div className={ProjectZoomInStyle.containerBlue}>
                 <h2>Cliente</h2>
-                <p>{props.customer}</p>
+                
               </div>
               <div className={ProjectZoomInStyle.textContainer}>
                 <h3>Nombre</h3>
-                <p>{props.name}</p>
+                <p>{props.customer}</p>
               </div>
 
               <div className={ProjectZoomInStyle.containerBlue}>

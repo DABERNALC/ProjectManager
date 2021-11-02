@@ -18,46 +18,33 @@ export default class TeamsComponent {
   getTeamsParticipant(req: any): Promise<any> {
     return new Promise<String[]>((resolve, reject) => {
       const participantId = req.query.participantId;
-      
-      const sqlStatement: String = `select participanteequipo.IDEquipo, proyecto.IDProyecto, proyecto.Nombre as nombreProyecto,proyecto.Descripcion,equipo.tag from participanteequipo INNER JOIN proyecto on proyecto.IDEquipo = participanteequipo.IDEquipo INNER JOIN equipo ON participanteequipo.IDEquipo = equipo.id where participanteequipo.IDParticipante = '${participantId}'; `;
-      
-      
+
+      const sqlStatement: String = `select participanteequipo.IDEquipo, proyecto.IDProyecto, proyecto.Nombre as nombreProyecto,proyecto.Descripcion,equipo.tag from participanteequipo left JOIN proyecto on proyecto.IDEquipo = participanteequipo.IDEquipo INNER JOIN equipo ON participanteequipo.IDEquipo = equipo.id where participanteequipo.IDParticipante = '${participantId}'; `;
+
       let answer: any = { participants: [] };
       this.dbConection
         .makeQuery(sqlStatement)
         .then(async (response: any) => {
-          
-          
           answer.proyectos = response;
           response = response.map((item: { IDEquipo: any }) => item.IDEquipo);
           var unique = response.filter(this.onlyUnique);
           
-          
-          if(unique.length > 0)
-          {
-           
+          if (unique.length > 0) {
             await unique.forEach((row: number, index: number) => {
               this.getTeamsParticipantsInfo(row).then((status) => {
                 answer.participants = answer.participants.concat(status);
+                
                 if (unique.length - 1 == index) {
-                  
                   resolve(answer);
                 }
               });
-              
             });
-          }else
-          {
-            
+          } else {
             
             
             answer.participants = [];
             resolve(answer);
           }
-          
-
-          
-          
         })
         .catch((error) => {
           reject(error.sqlMessage);
@@ -87,7 +74,8 @@ export default class TeamsComponent {
     //getting the parameters from the request
     const liderId = req.body.liderId;
     const teamName = req.body.teamName;
-    const sqlStatement: String = `call createTeam('${teamName}',${liderId})`;
+    
+    const sqlStatement: String = `call createTeam('${teamName}','${liderId}')`;
     //logic to create a team
     this.teams.addTeam(liderId, teamName);
     //todo: llamar a la base de datos
@@ -95,6 +83,8 @@ export default class TeamsComponent {
       this.dbConection
         .makeQuery(sqlStatement)
         .then((response) => {
+          
+          
           resolve("ok");
         })
         .catch((error) => {

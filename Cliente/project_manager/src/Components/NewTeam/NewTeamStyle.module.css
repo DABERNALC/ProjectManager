@@ -1,7 +1,8 @@
 .container{
     position: absolute;
     width: 22%;
-    height: 60%;
+    height: fit-content;
+    padding-bottom: 20px;
     left: 39%;
     top: 20%;
     display: flex;
@@ -11,7 +12,7 @@
     border-radius: 5px;
 }
 .grayContainer{
-    display: absolute;
+    position: absolute;
     width: 100vw;
     height: 100vh;
     background: rgba(174, 174, 174, 0.4);
@@ -39,4 +40,10 @@
     background: #F5F5F5;
     border: 1px solid #050038;
     border-radius: 2px;
+    margin-bottom: 50px;
+    
+}
+.notValid
+{
+    background-color: red;
 }

@@ -10,6 +10,8 @@ export default class ParticipantMapper {
     this.objectMapper = objectMapper;
   }
   async getDto(participantVo: any, participantId: any) {
+    // console.log("jum",participantVo);
+    
     let participantVoCopy = participantVo.participants;
 
     let projects = [...participantVo.proyectos];
@@ -39,7 +41,8 @@ export default class ParticipantMapper {
     // console.log(participantVo);
 
     let participants = participantVo.participants;
-
+    
+    
     id = participantVoCopy[0].ID;
     name = participantVoCopy[0].Nombre;
     color = participantVoCopy[0].Color;
@@ -56,7 +59,7 @@ export default class ParticipantMapper {
       (thing, index, self) =>
         index ===
         self.findIndex(
-          (t) => t.idTeam === thing.idTeam && t.teamName === thing.teamName
+          (t) => t.idTeam === thing.idTeam && t.teamName === thing.teamName 
         )
     );
 
@@ -88,7 +91,7 @@ export default class ParticipantMapper {
       (thing, index, self) =>
         index ===
         self.findIndex(
-          (t) => t.proyectId === thing.proyectId && t.proyectName === thing.proyectName
+          (t) => t.proyectId === thing.proyectId && t.proyectName === thing.proyectName && t.proyectName != null
         )
     );
     
@@ -100,7 +103,7 @@ export default class ParticipantMapper {
       theProyects
     );
     // console.log(participantDto);
-    
+
     return participantDto;
   }
 }
