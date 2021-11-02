@@ -5,7 +5,7 @@ import { BsFolder } from "react-icons/bs";
 import GenericButton1 from "../GenericButton2/GenericButton2";
 import apiAxios from "../../Axios/api";
 import { connect } from "react-redux";
-import swal from 'sweetalert'
+import swal from "sweetalert";
 import * as actionCreators from "../../Store/Actions/UserInfo";
 export const NewTeam = (props) => {
   const [teamName, setteamName] = useState("");
@@ -15,15 +15,21 @@ export const NewTeam = (props) => {
     if (checkParameters()) {
       const params = new URLSearchParams();
       params.append("teamName", teamName);
-      params.append("liderId",props.liderId);
-      apiAxios.post("/teams/create",params).then((respose)=>{
-        swal("equipo creado correctamente", "ahora puedes añadir participantes a este equipo" )
-        props.refreshUserData({participantId:props.liderId})
-        props.setshowModal();
-      }).catch((e)=>{
-        // console.log(Object.getOwnPropertyNames(e));
-        console.log(e.response);
-      });
+      params.append("liderId", props.liderId);
+      apiAxios
+        .post("/teams/create", params)
+        .then((respose) => {
+          swal(
+            "equipo creado correctamente",
+            "ahora puedes añadir participantes a este equipo"
+          );
+          props.refreshUserData({ participantId: props.liderId });
+          props.setshowModal();
+        })
+        .catch((e) => {
+          // console.log(Object.getOwnPropertyNames(e));
+          console.log(e.response);
+        });
     }
   };
   const checkParameters = () => {
@@ -87,7 +93,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    refreshUserData:(payload) => dispatch(actionCreators.refreshUserData(payload))
+    refreshUserData: (payload) =>
+      dispatch(actionCreators.refreshUserData(payload)),
   };
 };
-export default connect(mapStateToProps,mapDispatchToProps) (NewTeam);
+export default connect(mapStateToProps, mapDispatchToProps)(NewTeam);

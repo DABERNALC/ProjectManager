@@ -12,7 +12,7 @@ function Teams(props) {
     <div>
       <h2 className={TeamsStyle.title}>Mis Equipos</h2>
       <div className={TeamsStyle.buttonContainer} onClick={()=>setshowModal(true)}>
-        <GenericButton2 text="Agregar Equipo" />
+        <GenericButton2 text="Agregar Equipo"  />
       </div>
 
       <div className={TeamsStyle.teamsContainer}>

@@ -137,7 +137,7 @@ export default class TeamsComponent {
     const participantId = req.body.participant;
 
     //sql statement
-    let sqlStatement = `insert into participanteequipo (IDParticipante,IDEquipo) values (${participantId},${teamId});`;
+    let sqlStatement = `insert into participanteequipo (IDParticipante,IDEquipo) values ('${participantId}',${teamId});`;
 
     return new Promise<string>((resolve, reject) => {
       this.dbConection

@@ -55,7 +55,7 @@ export const TeamZoomIn = (props) => {
             <h3>{participant.name}</h3>
           </div>
         ))}
-        <AddParticipant></AddParticipant>
+        <AddParticipant teamId={props.teamId}></AddParticipant>
         <div className={TeamZoomInStyle.blueContainer}>
           <BsFolder fontSize="x-large" color="white" />
           <h2>Proyectos</h2>
