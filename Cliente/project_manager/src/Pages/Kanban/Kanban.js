@@ -61,7 +61,7 @@ function Kanban(props) {
                 Team.idTeam==teamId?
                 Team.Participants.map(pepe =>(
                 <div className={KanbanStyle.user}>
-                  <FaUserAlt color={pepe.color}/>
+                  <FaUserAlt color={pepe.Color}/>
                   <p>{pepe.Nombre}</p>
                 </div>))
                 :

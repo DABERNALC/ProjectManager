@@ -35,7 +35,7 @@ function App(props) {
       
       
       */}
-      {/*}
+
       <BrowserRouter>
         <div className="App">
           <Route path="/" exact>
@@ -72,7 +72,6 @@ function App(props) {
           </Route>
         </div>
       </BrowserRouter>
-      */}
       {/*
       <AlertModal Text="¿Paco?"></AlertModal>
       <ProjectZoomIn NombreProjecto="Asistente virtual" 
@@ -83,7 +82,7 @@ function App(props) {
       <Notification notifications={["Peticion de tarea de Nico","Peticion de tarea de Sebas"]}></Notification>
       <Inconvenient></Inconvenient>
       */}
-        <NewTeam/>
+        
     </div>
   );
 }
