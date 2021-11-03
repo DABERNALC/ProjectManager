@@ -21,6 +21,7 @@ function Kanban(props) {
   const [projectName, setprojectName] = useState("");
   const [teamName, setteamName] = useState("");
   const [teamId, setTeamId] = useState("");
+  const [liderId, setliderId] = useState("")
   let { projectId } = useParams();
   const getTeam = () => {
     setloading(true);
@@ -35,8 +36,10 @@ function Kanban(props) {
             setTeamId(project.teamId);
           }
         });
+        console.log(project.data)
         setprojectData(project.data.data);
-        console.log("to do:", projectData.toDo.length == 0);
+        setliderId(project.data.data.liderId)
+        console.log("data:", project.data.data.liderId);
       })
       .catch((error) => {
         console.log(error.error);
@@ -78,6 +81,7 @@ function Kanban(props) {
             <div className={KanbanStyle.columnsContainers}>
               <KanbanColumn
                 title="TO DO"
+                liderId={liderId}
                 tasks={projectData.toDo}
                 teamId={teamId}
                 refresh={() => {

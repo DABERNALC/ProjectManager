@@ -12,8 +12,11 @@ export default class KanbanMapper {
   }
   
   async getDto(kanbanVo: any, projectId: any) {
+    
+    
     const dbConection = DbConnection.getInstance();
     const projectsComponent = new ProjectsComponent(dbConection);
+    const liderId = kanbanVo[0].liderId;
     var toDoList: any[] = [];
     var doingList: any[] = [];
     var doneList: any[] = [];
@@ -41,7 +44,7 @@ export default class KanbanMapper {
         .catch(() => {});
     }
 
-    const kanbanDto = new KanbanDto(projectId,toDoList,doingList,doneList); 
+    const kanbanDto = new KanbanDto(liderId,projectId,toDoList,doingList,doneList); 
 
     return kanbanDto;
   }

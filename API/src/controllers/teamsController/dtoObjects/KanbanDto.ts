@@ -5,8 +5,10 @@ export default class KanbanDto {
     toDo: any;
     doing: any;
     done: any;
-    constructor(projectId:any,toDo:any,doing:any,done:any)
+    liderId: string;
+    constructor(liderId:string,projectId:any,toDo:any,doing:any,done:any)
     {
+        this.liderId = liderId,
         this.projectId  = projectId,
         this.toDo = toDo
         this.doing = doing

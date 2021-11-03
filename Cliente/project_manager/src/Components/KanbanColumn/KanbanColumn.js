@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux';
 import AddTask from '../AddTask/AddTask';
 import Task from '../Task/Task';
 import KanbanColumnStyle from "./KanbanColumnStyle.module.css";
@@ -14,7 +15,9 @@ const KanbanColumn = (props) => {
                         addTask ?
                             <AddTask setAddTask = {setAddTask} teamId={props.teamId} refresh={props.refresh}></AddTask>
                         :
-                            <p className={KanbanColumnStyle.add} onClick={()=>setAddTask(!addTask)}>+ Añadir una tarjeta</p>
+                            props.currentUser == props.liderId?
+                            <p className={KanbanColumnStyle.add} onClick={()=>setAddTask(!addTask)}>+ Añadir una tarjeta</p>:
+                            null
                         :
                         null
                 }
@@ -27,4 +30,10 @@ const KanbanColumn = (props) => {
         </div>
     )
 }
-export default KanbanColumn;
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+        currentUser: state.UserInfo.id
+    };
+  };
+export default connect(mapStateToProps) (KanbanColumn);

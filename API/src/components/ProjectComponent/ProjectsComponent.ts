@@ -33,8 +33,8 @@ export default class ProjectsComponent {
     const description = req.body.Description;
     const idTeam = req.body.IdTeam;
     const CustomerName= req.body.CustomerName;
-
-    const sqlStatement:String = `INSERT INTO proyecto (nombre,descripcion,nombreCliente,idEquipo) VALUES ('${name}','${description}', '${CustomerName}',${idTeam});`;
+    const liderId =  req.body.liderId;
+    const sqlStatement:String = `call createProject("${name}", "${description}","${CustomerName}",${idTeam},'${liderId}')`;
 
   
     //todo: llamar a la base de datos
@@ -234,7 +234,7 @@ export default class ProjectsComponent {
     const projectId = req.query.projectId;
      
  
-    const sqlStatement:String = `Select tarea.id,tarea.Descripcion,tarea.prioridad,tarea.FechaTarea,participante.Color,participante.ID from tarea INNER JOIN participante on tarea.IDParticipante = participante.ID WHERE tarea.IDProyecto = "${projectId}";`;
+    const sqlStatement:String = `Select tarea.id,tarea.Descripcion,tarea.prioridad,tarea.FechaTarea,participante.Color,participante.ID,(select IDParticipante from liderproyecto  where liderproyecto.IDProyecto =tarea.IDProyecto  ) as liderId  from tarea INNER JOIN participante on tarea.IDParticipante = participante.ID WHERE tarea.IDProyecto = "${projectId}";`;
   
     //todo: llamar a la base de datos
     return new Promise<String>((resolve, reject) => {

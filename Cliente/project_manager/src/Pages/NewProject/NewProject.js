@@ -5,6 +5,7 @@ import { AiFillFolderOpen } from "react-icons/ai";
 import { connect } from "react-redux";
 import axiosApi from "../../Axios/api";
 import swal from "sweetalert";
+import * as actionCreators from "../../Store/Actions/UserInfo";
 
 export const NewProject = (props) => {
   const [projectName, setprojectName] = useState("");
@@ -23,15 +24,16 @@ export const NewProject = (props) => {
       params.append("Description", description);
       params.append("IdTeam", idTeam);
       params.append("CustomerName", customerName);
-
+      params.append("liderId", props.liderId);
       axiosApi
         .post("/projects/create", params)
         .then((response) => {
+          console.log(response.data)
           swal(
             "proyecto creado correctamente",
             "ahora puedes acceder a su kanban"
           );
-         
+          props.refreshUserData({ participantId: props.liderId });
         })
         .catch((error) => {
           swal({
@@ -61,7 +63,6 @@ export const NewProject = (props) => {
       setcustomerNameError(true);
       isOk = false;
     }
-    alert(idTeam == -1);
     if (idTeam == -1) {
       setidTeamError(true);
       isOk = false;
@@ -150,10 +151,18 @@ export const NewProject = (props) => {
     </div>
   );
 };
+
 const mapStateToProps = (state) => {
-  console.log(state);
+  
   return {
     teams: state.UserInfo.teams,
+    liderId: state.UserInfo.id,
   };
 };
-export default connect(mapStateToProps)(NewProject);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    refreshUserData: (payload) =>
+      dispatch(actionCreators.refreshUserData(payload)),
+  };
+};
+export default connect(mapStateToProps,mapDispatchToProps)(NewProject);

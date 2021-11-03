@@ -34,7 +34,8 @@ ProjectsRouter.post('/create',[
     check("Name","you should send the team name to create a project").not().isEmpty(),
     check("Description","you should send the description to create a project").not().isEmpty(),
     check("IdTeam","you should send the Id of the team that works on this project to create a project").not().isEmpty(),
-    check("CustomerName","you should send the name of the customer that this  project belongs to create a project").not().isEmpty()
+    check("CustomerName","you should send the name of the customer that this  project belongs to create a project").not().isEmpty(),
+    check("liderId","you should send the id of the lider that this  project belongs to create a project").not().isEmpty()
     ,validate
 ],(req: any,res: any)=>{
     let teamsController = new ProjectsController();
