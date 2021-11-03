@@ -55,7 +55,7 @@ function SubTasks(props) {
   const [data, setdata] = useState({});
   const getData = () => {
     axiosApi
-      .get("/projects/getSubtasks?projectId=35")
+      .get(`/projects/getSubtasks?projectId=${projectId}`)
       .then((response) => {
         setdata(response.data.data);
         setdoingSubtasks(response.data.data.doingSubtasks)

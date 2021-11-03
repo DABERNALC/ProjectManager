@@ -59,8 +59,9 @@ const AddSubtask = (props) => {
         nombre="añadir"
       />
       </div>
-      
+      <div onClick={props.closeModal}>
       <GiCancel fontSize="x-large"></GiCancel>
+      </div>
     </div>
   );
 };

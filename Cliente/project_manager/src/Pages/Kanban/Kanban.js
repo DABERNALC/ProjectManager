@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import {FaUserAlt} from  "react-icons/fa"
+import { FaUserAlt } from "react-icons/fa";
 import GenericButton1 from "../../Components/GenericButton1/GenericButton1";
 import KanbanColumn from "../../Components/KanbanColumn/KanbanColumn";
 
@@ -18,34 +18,31 @@ function Kanban(props) {
     projectId: "",
   });
   const [loading, setloading] = useState(true);
-  const [projectName, setprojectName] = useState("")
-  const [teamName, setteamName] = useState("")
-  const [teamId,setTeamId] = useState(""); 
+  const [projectName, setprojectName] = useState("");
+  const [teamName, setteamName] = useState("");
+  const [teamId, setTeamId] = useState("");
   let { projectId } = useParams();
   const getTeam = () => {
-    setloading(true)
+    setloading(true);
     axiosApi
       .get(`/projects/getKanban?projectId=${projectId}`)
       .then((project) => {
         setloading(false);
-        let proyectName = 
-        props.projects.forEach(project => {
-            if(project.proyectId == projectId)
-            {
-                setprojectName(project.proyectName)
-                setteamName(project.teamName);
-                setTeamId(project.teamId)
-            }
-
+        let proyectName = props.projects.forEach((project) => {
+          if (project.proyectId == projectId) {
+            setprojectName(project.proyectName);
+            setteamName(project.teamName);
+            setTeamId(project.teamId);
+          }
         });
         setprojectData(project.data.data);
+        console.log("to do:", projectData.toDo.length == 0);
       })
-      .catch((error)=>{
-          console.log(error.error);
+      .catch((error) => {
+        console.log(error.error);
       });
   };
 
-  
   useEffect(() => {
     getTeam();
   }, []);
@@ -58,46 +55,67 @@ function Kanban(props) {
           <h3>{teamName}</h3>
         </div>
         <div className={KanbanStyle.userContainer}>
-            {
-              props.teams.map(Team =>(
-                Team.idTeam==teamId?
-                Team.Participants.map(pepe =>(
-                <div className={KanbanStyle.user}>
-                  <FaUserAlt color={pepe.Color}/>
-                  <p>{pepe.Nombre}</p>
-                </div>))
-                :
-                null
-              ))
-            }
+          {props.teams.map((Team) =>
+            Team.idTeam == teamId
+              ? Team.Participants.map((pepe) => (
+                  <div className={KanbanStyle.user}>
+                    <FaUserAlt color={pepe.Color} />
+                    <p>{pepe.Nombre}</p>
+                  </div>
+                ))
+              : null
+          )}
         </div>
       </div>
       <div className={KanbanStyle.kanbanContainerCentered}>
         <div className={KanbanStyle.kanbanContainer}>
           <h1>Kanban</h1>
           {loading ? (
-            <div className ={KanbanStyle.spinnerContainer}>
+            <div className={KanbanStyle.spinnerContainer}>
               <Spinner />
             </div>
           ) : (
             <div className={KanbanStyle.columnsContainers}>
-              <KanbanColumn title="TO DO" tasks={projectData.toDo} teamId={teamId} refresh={()=>{getTeam()}}></KanbanColumn>
-              <KanbanColumn title="DOING" tasks={projectData.doing} teamId={teamId}></KanbanColumn>
-              <KanbanColumn title="DONE" tasks={projectData.done} teamId={teamId}></KanbanColumn>
+              <KanbanColumn
+                title="TO DO"
+                tasks={projectData.toDo}
+                teamId={teamId}
+                refresh={() => {
+                  getTeam();
+                }}
+              ></KanbanColumn>
+              <KanbanColumn
+                title="DOING"
+                tasks={projectData.doing}
+                teamId={teamId}
+              ></KanbanColumn>
+              <KanbanColumn
+                title="DONE"
+                tasks={projectData.done}
+                teamId={teamId}
+              ></KanbanColumn>
             </div>
           )}
         </div>
       </div>
-      <Link className={KanbanStyle.buttonStyle} to="/app/projects/35/45" >
-        <GenericButton1 nombre="Checklist >"></GenericButton1>
-      </Link>
+
+      {projectData.toDo.length == 0 &&
+      projectData.doing.length == 0 &&
+      projectData.done.length == 0 ? null : (
+        <Link
+          className={KanbanStyle.buttonStyle}
+          to={`/app/projects/${projectId}/45`}
+        >
+          <GenericButton1 nombre="Checklist >"></GenericButton1>
+        </Link>
+      )}
     </div>
   );
 }
 const mapStateToProps = (state) => {
-    return {
-        projects: state.UserInfo.proyects,
-        teams: state.UserInfo.teams
-    };
+  return {
+    projects: state.UserInfo.proyects,
+    teams: state.UserInfo.teams,
   };
-export default connect(mapStateToProps) (Kanban);
+};
+export default connect(mapStateToProps)(Kanban);
