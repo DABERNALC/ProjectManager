@@ -5,6 +5,7 @@ import TeamsStyle from "./TeamsStyle.module.css";
 import { connect } from "react-redux";
 import NewTeam from "../../Components/NewTeam/NewTeam";
 import { useState } from "react";
+import NewProject from "../NewProject/NewProject";
 function Teams(props) {
   const [showModal, setshowModal] = useState(false);
 
@@ -30,6 +31,7 @@ function Teams(props) {
         )}
       </div>
       {showModal ? <NewTeam setshowModal={()=> setshowModal(false)}/> : null}
+      
     </div>
   );
 }

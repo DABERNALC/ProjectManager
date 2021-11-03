@@ -12,7 +12,7 @@
     padding-bottom: 20px;
 }
 .grayContainer{
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     background: rgba(174, 174, 174, 0.4);

@@ -8,7 +8,13 @@ const Task = (props) => {
                     <div className={TaskStyle.taskTextDiv}>
                         <p className={TaskStyle.taskTex}>{props.desc}</p>
                     </div>
-                    <BsExclamationLg className={TaskStyle.exclamationIcon}></BsExclamationLg>
+                    {
+                        props.priority ===2 ?
+                        <BsExclamationLg className={TaskStyle.exclamationIcon}></BsExclamationLg>
+                        :
+                        null
+                    }
+                   
                 </div>
             </div>
     )

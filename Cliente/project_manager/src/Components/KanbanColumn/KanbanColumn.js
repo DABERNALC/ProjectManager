@@ -20,7 +20,7 @@ const KanbanColumn = (props) => {
                 }
                 {
                     props.tasks.map((theTask)=>
-                        <Task desc={theTask.Descripcion} color={theTask.Color}></Task>
+                        <Task desc={theTask.Descripcion} color={theTask.Color} priority={theTask.prioridad}> </Task>
                     )
                 }
                 

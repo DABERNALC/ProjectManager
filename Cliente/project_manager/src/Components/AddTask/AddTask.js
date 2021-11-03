@@ -6,7 +6,7 @@ import { useParams } from "react-router";
 import axiosApi from "../../Axios/api";
 
 const AddTask = (props) => {
-  const {projectId} = useParams();
+  const { projectId } = useParams();
   const [theTeam, settheTeam] = useState({});
 
   const [description, setdescription] = useState("");
@@ -31,23 +31,24 @@ const AddTask = (props) => {
   const createTask = () => {
     validate();
     const params = new URLSearchParams();
-    params.append('date', date);
-    params.append('participantId', participantId);
-    params.append('Description', description);
-    params.append('proyectId', projectId);
-    params.append('relevance', relevance);
-    params.append('priority', priority);
-    
+    params.append("date", date);
+    params.append("participantId", participantId);
+    params.append("Description", description);
+    params.append("proyectId", projectId);
+    params.append("relevance", relevance);
+    params.append("priority", priority);
+
     if (participantId == "-1" || date == "" || description == "") {
-      
-    } else 
-    axiosApi.post("/projects/addTask",params).then((response)=>{
-      props.refresh();
-      console.log(response.data);
-    }).catch((error)=>{
-      console.log(error);
-    });
-    
+    } else
+      axiosApi
+        .post("/projects/addTask", params)
+        .then((response) => {
+          props.refresh();
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
   };
   const validate = () => {
     console.log(date);
@@ -71,6 +72,24 @@ const AddTask = (props) => {
         validateError + " debes seleccionar un responsable de esta tarea "
       );
     } else setparticipantError(false);
+  };
+  const getCurrentDate = () => {
+    var today = new Date();
+    var year = today.getFullYear(); 
+    var month = (today.getMonth() + 1)
+    var day = today.getDate();
+    if(day < 10)
+    {
+      day = "0" +day
+    }
+    var date =
+      year +
+      "-" +
+      month +
+      "-" +
+      day;
+      
+    return date
   };
   return (
     <div className={AddTaskStyle.container}>
@@ -121,6 +140,8 @@ const AddTask = (props) => {
         <div className={AddTaskStyle.dateAndCheck}>
           <input
             type="date"
+            
+            min={getCurrentDate()}
             className={`${AddTaskStyle.calendarStyle} ${
               dateError ? AddTaskStyle.notValid : null
             }`}
