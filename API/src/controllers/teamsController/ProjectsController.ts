@@ -3,6 +3,7 @@ import { DbConnection } from "../../components/DbConnection";
 import KanbanMapper from "./mappers/KanbanMapper";
 import projectMapper from "./mappers/ProjectMapper";
 import ProjectMapper from "./mappers/ProjectMapper";
+import SubtasksMapper from "./mappers/SubtasksMapper";
 
 export class ProjectsController {
  
@@ -208,6 +209,29 @@ export class ProjectsController {
           ok: true,
           message: `here is the kanban for the project with id: ${id} `,
           data: await kanbanMapper.getDto(response,id)
+        });
+      })
+      .catch((error) => {
+        res.json({
+          ok: false,
+          message: error,
+        });
+      });
+  }
+  async getSubtasks(req: any, res: any) {
+    const id = req.query.projectId;
+
+    const dbConection = DbConnection.getInstance();
+    const projectComponent = new ProjectsComponent(dbConection);
+    const subtasksMapper = new SubtasksMapper();
+    // manage api response
+    projectComponent
+      .getSubTask(req)
+      .then(async (response) => {
+        res.json({
+          ok: true,
+          message: `here is the subtasks for the project with id: ${id} `,
+          data: await subtasksMapper.getDto(response)
         });
       })
       .catch((error) => {

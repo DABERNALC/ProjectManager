@@ -118,5 +118,13 @@ ProjectsRouter.get('/getKanban',[
     let teamsController = new ProjectsController();
     teamsController.getKanban(req,res);
 });
+ProjectsRouter.get('/getSubtasks',[
+    check("projectId","you should send the id of the project in order to see its subtasks").not().isEmpty()
+    
+    ,validate
+],(req: any,res: any)=>{
+    let teamsController = new ProjectsController();
+    teamsController.getSubtasks(req,res);
+});
 
 export {ProjectsRouter};

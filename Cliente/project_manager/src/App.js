@@ -70,6 +70,9 @@ function App(props) {
           <Route path="/app/projects" exact>
             <Projects />
           </Route>
+          <Route path="/app/projects/:projectId/:taskId" exact>
+            <SubTasks />
+          </Route>
         </div>
       </BrowserRouter>
       {/*

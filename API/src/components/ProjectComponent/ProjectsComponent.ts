@@ -5,6 +5,7 @@ import Teams from "../teamsComponent/Teams";
 export default class ProjectsComponent {
   
   
+  
  
   
 
@@ -281,6 +282,27 @@ export default class ProjectsComponent {
       this.dbConection
       .makeQuery(sqlStatement)
       .then((response) => {
+        resolve(response);
+      })
+      .catch((error) => {
+        
+        reject(error.sqlMessage);
+      });
+    })
+  }
+  getSubTask(req: any) {
+    //getting the parameters from the request
+    const projectId = req.query.projectId;
+     
+ 
+    const sqlStatement:String = `select tarea.ID as idTask, tarea.Descripcion as taskDescription,IDProyecto,tarea.Inconvenientes, subtarea.ID, subtarea.Descripcion,subtarea.Estado from tarea left join subtarea on subtarea.IDTarea = tarea.ID where tarea.IDProyecto = ${projectId};`;
+  
+    //todo: llamar a la base de datos
+    return new Promise<String>((resolve, reject) => {
+      this.dbConection
+      .makeQuery(sqlStatement)
+      .then((response) => {
+        
         resolve(response);
       })
       .catch((error) => {

@@ -8,6 +8,8 @@ import KanbanStyle from "./KanbanStyle.module.css";
 import axiosApi from "../../Axios/api";
 import Spinner from "../../Components/Spinner/Spinner";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+
 function Kanban(props) {
   const [projectData, setprojectData] = useState({
     doing: [],
@@ -86,9 +88,9 @@ function Kanban(props) {
           )}
         </div>
       </div>
-      <div className={KanbanStyle.buttonStyle}>
+      <Link className={KanbanStyle.buttonStyle} to="/app/projects/35/10" >
         <GenericButton1 nombre="Checklist >"></GenericButton1>
-      </div>
+      </Link>
     </div>
   );
 }
