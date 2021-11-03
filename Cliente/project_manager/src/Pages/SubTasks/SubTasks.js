@@ -8,6 +8,7 @@ import axiosApi from "../../Axios/api";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
+import AddSubtask from "../../Components/AddSubtask/AddSubtask";
 
 
 function SubTasks(props) {
@@ -76,12 +77,15 @@ function SubTasks(props) {
               <option value={theTask.idTask}>{theTask.description}</option>:null
             ))
           : null}
+           
       </select>
+      
       <div className={SubTaskStyle.columns}>
-        <SubTaskColumn title="Por hacer" subtasks={doingSubtasks} checkSubtask={(id)=>checkSubtask(id)}/>
+        <SubTaskColumn title="Por hacer" subtasks={doingSubtasks} checkSubtask={(id)=>checkSubtask(id)} refresh={getData}/>
         <SubTaskColumn title="Hecho" subtasks={doneSubtasks} checkSubtask={(id)=>uncheckSubtask(id)}/>
         <Inconvenient />
       </div>
+     
     </div>
   );
 }
