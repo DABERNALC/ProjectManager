@@ -194,7 +194,7 @@ export default class ProjectsComponent {
    
    
  
-   const sqlStatement:String = `update subTarea SET  Estado =1 WHERE   subtarea.ID = ${subTaskId}    ; `;
+   const sqlStatement:String = `update subTarea SET  Estado =if(estado=0 , 1, 0) WHERE   subtarea.ID = ${subTaskId}; `;
  
    //todo: llamar a la base de datos
    return new Promise<String>((resolve, reject) => {
@@ -295,7 +295,7 @@ export default class ProjectsComponent {
     const projectId = req.query.projectId;
      
  
-    const sqlStatement:String = `select tarea.ID as idTask, tarea.Descripcion as taskDescription,IDProyecto,tarea.Inconvenientes, subtarea.ID, subtarea.Descripcion,subtarea.Estado from tarea left join subtarea on subtarea.IDTarea = tarea.ID where tarea.IDProyecto = ${projectId};`;
+    const sqlStatement:String = `select tarea.ID as idTask, tarea.Descripcion as taskDescription,IDProyecto,tarea.Inconvenientes, subtarea.ID, subtarea.Descripcion,subtarea.Estado,tarea.IDParticipante from tarea left join subtarea on subtarea.IDTarea = tarea.ID where tarea.IDProyecto =${projectId};`;
   
     //todo: llamar a la base de datos
     return new Promise<String>((resolve, reject) => {

@@ -17,15 +17,19 @@ export default class SubtasksMapper {
     var doneList: any[] = [];
     var tasks: any[] = [];
     var idProject = subtasksVo[0].IDProyecto;
+    console.log(subtasksVo);
+    
     for(const subtasks of  subtasksVo)
     {
       tasks.push({idTask: subtasks.idTask, 
         description: subtasks.taskDescription,
-        Inconveninients: subtasks.Inconvenientes
+        Inconveninients: subtasks.Inconvenientes,
+        IDParticipante:subtasks.IDParticipante
       })
       if(subtasks.Estado == 1)
       {
         doneList.push({
+          idTask: subtasks.idTask,
           id: subtasks.ID,
           description: subtasks.Descripcion,
         });
@@ -33,6 +37,7 @@ export default class SubtasksMapper {
       if(subtasks.Estado == 0)
       {
         toDoList.push({
+          idTask: subtasks.idTask,
           id: subtasks.ID,
           description: subtasks.Descripcion,
         });
@@ -50,7 +55,7 @@ export default class SubtasksMapper {
     theArray = theArray.filter(
       (thing, index, self) =>
         index ===
-        self.findIndex((t) => t[properties[0]] === thing[properties[0]] && t[properties[1]] === thing[properties[1]])
+        self.findIndex((t) => t[properties[0]] === thing[properties[0]] && t[properties[1]] === thing[properties[1]] && t[properties[1]] != null)
     );
     return theArray
   }

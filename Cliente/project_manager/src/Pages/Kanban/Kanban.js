@@ -88,7 +88,7 @@ function Kanban(props) {
           )}
         </div>
       </div>
-      <Link className={KanbanStyle.buttonStyle} to="/app/projects/35/10" >
+      <Link className={KanbanStyle.buttonStyle} to="/app/projects/35/45" >
         <GenericButton1 nombre="Checklist >"></GenericButton1>
       </Link>
     </div>
