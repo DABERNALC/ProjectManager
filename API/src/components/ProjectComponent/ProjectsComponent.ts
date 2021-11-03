@@ -229,6 +229,25 @@ export default class ProjectsComponent {
        });
      })
   }
+  getLider(projectId:any)
+  {
+ 
+     const sqlStatement:String = `select IDParticipante from liderproyecto where IDProyecto = ${projectId}`;
+   
+     //todo: llamar a la base de datos
+     return new Promise<String>((resolve, reject) => {
+       this.dbConection
+       .makeQuery(sqlStatement)
+       .then((response) => {
+         
+         resolve(response);
+       })
+       .catch((error) => {
+         
+         reject(error.sqlMessage);
+       });
+     })
+  }
   getKanban(req: any) {
     //getting the parameters from the request
     const projectId = req.query.projectId;

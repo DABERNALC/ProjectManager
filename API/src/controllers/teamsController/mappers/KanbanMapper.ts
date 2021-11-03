@@ -13,14 +13,30 @@ export default class KanbanMapper {
   
   async getDto(kanbanVo: any, projectId: any) {
     
+    console.log("kanban",kanbanVo);
     
     const dbConection = DbConnection.getInstance();
     const projectsComponent = new ProjectsComponent(dbConection);
-    const liderId = kanbanVo[0].liderId;
+    let liderId = "";
     var toDoList: any[] = [];
     var doingList: any[] = [];
     var doneList: any[] = [];
+    if(kanbanVo.length > 0){
+      
+      liderId = kanbanVo[0].liderId
+    }else
+    {
+      await projectsComponent
+      .getLider(projectId)
+      .then((response: any) => {
+        
+        liderId = (response[0].IDParticipante);
+      })
+      .catch(() => {});
+    }
     for (const task of kanbanVo) {
+      console.log("entra");
+      
       await projectsComponent
         .getSubtarea(task.id)
         .then((subTasks: any) => {
