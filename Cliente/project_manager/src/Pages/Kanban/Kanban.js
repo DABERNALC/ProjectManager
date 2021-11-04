@@ -51,7 +51,7 @@ function Kanban(props) {
   }, []);
 
   return (
-    <div>
+    <div className={`${props.mode=="client" ? KanbanStyle.fullScreen:null}`}>
       <div className={KanbanStyle.container}>
         <div>
           <h1 className={KanbanStyle.title}>{projectName}</h1>

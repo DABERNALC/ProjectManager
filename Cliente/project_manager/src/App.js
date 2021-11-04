@@ -73,6 +73,9 @@ function App(props) {
           <Route path="/app/projects/:projectId/:taskId" exact>
             <SubTasks />
           </Route>
+          <Route path="/projects/:projectId" exact>
+            <Kanban mode="client" />
+          </Route>
         </div>
       </BrowserRouter>
       {/*}

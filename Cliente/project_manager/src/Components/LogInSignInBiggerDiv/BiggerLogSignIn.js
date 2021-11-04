@@ -67,7 +67,7 @@ const BiggerLogSignIn = (props) => {
                 <div className={BiggerLogSignInStyle.formStyle}>
                     {
                         props.error != "" ?
-                            <p style={{ color: "red" }}>Credenciales incorrectas</p>
+                            <p style={{ color: "red" }}>{props.error}</p>
                             :
                             null
                     }

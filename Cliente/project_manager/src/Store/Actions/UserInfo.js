@@ -70,7 +70,14 @@ export const loginRequest = (payload) => {
           .then((resp) => {
             //setLoading(false);
             console.log("jeje", resp.data.data);
-            dispatch(login(resp.data.data));
+            if(resp.data.data != undefined)
+            {
+              dispatch(login(resp.data.data));
+            }else
+            {
+              dispatch(setError("no hay conección con nuestros servidores,intenta mas tarde"));
+            }
+            
 
             //se guardo correctamente en la bd
             //history.push('/signIn');
@@ -78,7 +85,7 @@ export const loginRequest = (payload) => {
           .catch((e) => {
             //setLoading(false);
             console.log("error pa");
-            console.log("error", Object.getOwnPropertyNames(e));
+            console.log("error", "credenciales incorrectas");
           });
       })
       .catch((e) => {
@@ -86,7 +93,7 @@ export const loginRequest = (payload) => {
         let error = e.response.data.error.message;
         //setError(error)
         console.log(e.response.data.error.message);
-        dispatch(setError(error));
+        dispatch(setError("credenciales incorrectas"));
       });
   };
 };
