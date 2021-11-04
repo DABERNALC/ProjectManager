@@ -36,4 +36,8 @@
     border: 2px solid #2643D1;
     color: #2643D1;
 }
-
+@media (max-width: 600px){
+    .leftDiv{
+        width: 80%;
+    }
+}

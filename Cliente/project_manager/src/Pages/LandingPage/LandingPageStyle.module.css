@@ -112,3 +112,40 @@ a {
     height: 100%;
   
 }
+@media (max-width: 600px) {
+    .upperContainer{
+        display: flex;
+        flex-direction: column;
+    }
+    .logo{
+        width: 20%;
+    }
+    .inlinePart{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .leftUpperPart{
+        align-items: center;
+        justify-content: center;
+        margin: 0%;
+        width: 100%;
+    }
+    .rightUpperPart{
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin: 0%;
+    }
+    .rightUpperPart p{
+        margin: 0%;
+    }
+    .welcomeInfo{
+        width: fit-content;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .estiloBoton{
+        margin-top: 15px;
+    }
+  }

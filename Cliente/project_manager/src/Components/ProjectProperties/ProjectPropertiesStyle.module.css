@@ -29,3 +29,8 @@
     background: #adb3d0;
     cursor: pointer;
 }
+@media (max-width: 600px) {
+    .container{
+        width: 40vw;
+    }
+}

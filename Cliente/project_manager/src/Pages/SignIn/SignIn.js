@@ -4,7 +4,7 @@ import SignInStyle from "./SignInStyle.module.css"
 const SignIn = () => {
     return (
         <div >
-            <div className={LogInStyle.container}>
+            <div className={SignInStyle.container}>
                 <BiggerLogSignIn />
                 <SmallerLogSignIn />
             </div>

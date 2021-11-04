@@ -33,8 +33,8 @@ function App(props) {
       /app/etc muestra el header y el sidebar
       /app/teams muestra la vista de todos los equipos
       
-      
       */}
+      
 
       <BrowserRouter>
         <div className="App">
@@ -75,7 +75,7 @@ function App(props) {
           </Route>
         </div>
       </BrowserRouter>
-      {/*
+      {/*}
       <AlertModal Text="¿Paco?"></AlertModal>
       <ProjectZoomIn NombreProjecto="Asistente virtual" 
       DescripcionProjecto="Lorem ipsum dolor sit amet consectetur adipiscing elit nisi faucibus vivamus montes proin congue hendrerit, torquent nisl"
@@ -85,7 +85,7 @@ function App(props) {
       <Notification notifications={["Peticion de tarea de Nico","Peticion de tarea de Sebas"]}></Notification>
       <Inconvenient></Inconvenient>
       */}
-        
+      
     </div>
   );
 }
