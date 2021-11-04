@@ -70,7 +70,15 @@ export const loginRequest = (payload) => {
           .then((resp) => {
             //setLoading(false);
             console.log("jeje", resp.data.data);
-            dispatch(login(resp.data.data));
+            if(resp.data.data != undefined)
+            {
+              dispatch(login(resp.data.data));
+            }else
+            {
+              dispatch(setError("no hay coneccion con nuestros servidores,intenta mas tarde"));
+
+            }
+            
 
             //se guardo correctamente en la bd
             //history.push('/signIn');

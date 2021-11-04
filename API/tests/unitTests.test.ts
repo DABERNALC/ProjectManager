@@ -124,7 +124,7 @@ arrays.forEach((theArray) => {
       const response = teams_Mapper.delete_duplicated_In_Array(
         theArray.array,
         theArray.params
-      );
+      );  
 
       assert.deepEqual(response, theArray.expected);
     });
