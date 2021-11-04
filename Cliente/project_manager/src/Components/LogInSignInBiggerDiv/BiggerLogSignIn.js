@@ -67,7 +67,7 @@ const BiggerLogSignIn = (props) => {
                 <div className={BiggerLogSignInStyle.formStyle}>
                     {
                         props.error != "" ?
-                            <p style={{ color: "red" }}>{props.error == "no hay coneccion con nuestros servidores,intenta mas tarde" ? "no hay coneccion con nuestros servidores,intenta mas tarde" : "Credenciales incorrectas"}</p>
+                            <p style={{ color: "red" }}>{props.error}</p>
                             :
                             null
                     }

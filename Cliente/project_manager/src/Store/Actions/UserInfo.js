@@ -75,8 +75,7 @@ export const loginRequest = (payload) => {
               dispatch(login(resp.data.data));
             }else
             {
-              dispatch(setError("no hay coneccion con nuestros servidores,intenta mas tarde"));
-
+              dispatch(setError("no hay conección con nuestros servidores,intenta mas tarde"));
             }
             
 
@@ -86,7 +85,7 @@ export const loginRequest = (payload) => {
           .catch((e) => {
             //setLoading(false);
             console.log("error pa");
-            console.log("error", Object.getOwnPropertyNames(e));
+            console.log("error", "credenciales incorrectas");
           });
       })
       .catch((e) => {
@@ -94,7 +93,7 @@ export const loginRequest = (payload) => {
         let error = e.response.data.error.message;
         //setError(error)
         console.log(e.response.data.error.message);
-        dispatch(setError(error));
+        dispatch(setError("credenciales incorrectas"));
       });
   };
 };
