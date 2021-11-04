@@ -8,6 +8,7 @@ import { BsFolder } from "react-icons/bs";
 import GenericButton2 from "../GenericButton2/GenericButton2";
 import { RiFilePaperLine } from "react-icons/ri";
 import apiAxios from "../../Axios/api";
+import { GiCancel } from "react-icons/gi";
 export const TeamZoomIn = (props) => {
   useEffect(() => {
     getTeam();
@@ -15,12 +16,15 @@ export const TeamZoomIn = (props) => {
   const [name, setname] = useState("");
   const [participants, setparticipants] = useState([]);
   const [projects, setprojects] = useState([]);
+  const [idTeam, setidTeam] = useState("")
   const getTeam = () => {
     const params = new URLSearchParams();
     apiAxios
       .get(`/teams/getTeam?TeamId=${props.teamId}`)
       .then((respose) => {
-          setname(respose.data.team.name)
+        console.log("response",props.teamId);
+        setidTeam(respose.data.team.idTeam)
+        setname(respose.data.team.name)
         setprojects(respose.data.team.proyects);
         setparticipants(respose.data.team.Participants);
         console.log("equipo: ", respose.data);
@@ -30,6 +34,25 @@ export const TeamZoomIn = (props) => {
         console.log(e.response);
       });
   };
+  const deleteTeam = (participantId) =>
+  {
+    
+    const params = new URLSearchParams();
+    params.append("teamId", idTeam);
+    params.append("participant", participantId);
+
+    apiAxios
+      .post(`/teams/removeParticipant`,params)
+      .then((respose) => {
+        alert("eliminado compa")
+        getTeam()
+      })
+      .catch((e) => {
+        // console.log(Object.getOwnPropertyNames(e));
+        console.log(e.response);
+      });
+      
+  }
   return (
     <div
       className={TeamZoomInStyle.grayContainer}
@@ -52,7 +75,12 @@ export const TeamZoomIn = (props) => {
               fontSize="xx-large"
               color={participant.color}
             ></BsFillPersonFill>
+            
             <h3>{participant.name}</h3>
+            <div onClick={()=>{deleteTeam(participant.id)}}>
+            <GiCancel fontSize="x-large" color="red"></GiCancel>
+
+            </div>
           </div>
         ))}
         <AddParticipant teamId={props.teamId}></AddParticipant>

@@ -4,6 +4,7 @@ import ParticipantMapper from "./mappers/ParticipantMapper";
 import teamsMapper from "./mappers/teamsMapper";
 
 export class TeamsController {
+  
   logIn(req: any, res: any) {
     const dbConection = DbConnection.getInstance();
     const teamsComponent = new TeamsComponent(dbConection);
@@ -114,6 +115,32 @@ export class TeamsController {
         });
       });
   }
+  removeParticipants(req: any, res: any) {
+    const teamId = req.body.teamId;
+
+    const dbConection = DbConnection.getInstance();
+
+    const teamsComponent = new TeamsComponent(dbConection);
+    const mensaje = "Se te ha agregó a un equipo, porfavor mira tus lista de equipos"
+    const participant = req.body.participant;
+    //manage api response
+    teamsComponent
+      .removeParticipantofTeam(req)
+      .then((status) => {
+        res.json({
+          ok: true,
+          message: `i remover the participant to the `,
+        })
+
+        
+      })
+      .catch((error) => {
+        res.json({
+          ok: false,
+          message: error,
+        });
+      });
+  }
   
   getTeam(req: any, res: any) {
     const teamId = req.query.TeamId;
@@ -155,4 +182,5 @@ export class TeamsController {
         });
     });
   }
+  
 }

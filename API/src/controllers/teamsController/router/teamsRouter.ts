@@ -142,4 +142,21 @@ router.post(
     teamsController.addParticipantToTeam(req, res);
   }
 );
+router.post(
+  "/removeParticipant",
+  [
+    check("teamId", "you should send the id of the team").not().isEmpty(),
+    check(
+      "participant",
+      "you should send the participantId you are trying to remove"
+    )
+      .not()
+      .isEmpty(),
+    validate,
+  ],
+  (req: any, res: any) => {
+    let teamsController = new TeamsController();
+    teamsController.removeParticipants(req, res);
+  }
+);
 export { router };

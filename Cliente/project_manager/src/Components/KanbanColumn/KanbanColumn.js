@@ -15,7 +15,7 @@ const KanbanColumn = (props) => {
                         addTask ?
                             <AddTask setAddTask = {setAddTask} teamId={props.teamId} refresh={props.refresh}></AddTask>
                         :
-                            props.currentUser == props.liderId?
+                            props.currentUser == props.liderId && props.liderId != ""?
                             <p className={KanbanColumnStyle.add} onClick={()=>setAddTask(!addTask)}>+ Añadir una tarjeta</p>:
                             null
                         :

@@ -6,6 +6,7 @@ export default class TeamsComponent {
   instance: any;
   teams: any;
   dbConection: IDbConection;
+  
   constructor(DbConection: IDbConection) {
     const instance = this.instance;
     if (instance) {
@@ -138,6 +139,26 @@ export default class TeamsComponent {
 
     //sql statement
     let sqlStatement = `insert into participanteequipo (IDParticipante,IDEquipo) values ('${participantId}',${teamId});`;
+
+    return new Promise<string>((resolve, reject) => {
+      this.dbConection
+        .makeQuery(sqlStatement)
+        .then((response) => {
+          resolve("ok");
+        })
+        .catch((error) => {
+          reject(error.sqlMessage);
+        });
+    });
+  }
+  removeParticipantofTeam(req: any): Promise<String> {
+    //getting the parameters from the request
+    const teamId = req.body.teamId;
+
+    const participantId = req.body.participant;
+
+    //sql statement
+    let sqlStatement = `delete from participanteequipo where IDParticipante = ${participantId} and IDEquipo= ${teamId}`;
 
     return new Promise<string>((resolve, reject) => {
       this.dbConection
