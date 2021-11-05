@@ -77,17 +77,19 @@ export const NewProject = (props) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className={NewProjectStyle.nContainer}>
-          <AiFillFolderOpen />
-          <h3>Nuevo Proyecto</h3>
+          <div className={NewProjectStyle.iconDiv}>
+          <AiFillFolderOpen className={NewProjectStyle.upperIcon}/>
+          </div>
+          <h3 className={NewProjectStyle.title1}>Nuevo Proyecto</h3>
         </div>
-        <h3>Nombre:</h3>
+        <h3 className={NewProjectStyle.titles}>Nombre</h3>
         {nameError ? (
           <p style={{ color: "red" }}>
             debes poner un nombre menor a 30 caracteres{" "}
           </p>
         ) : null}
         <input
-          className={`   ${nameError ? NewProjectStyle.notValid : null}`}
+          className={` ${NewProjectStyle.inputStle}  ${nameError ? NewProjectStyle.notValid : null}`}
           type="text"
           value={projectName}
           onChange={(e) => {
@@ -95,7 +97,7 @@ export const NewProject = (props) => {
             setprojectName(e.target.value);
           }}
         ></input>
-        <h3>Descripcion</h3>
+        <h3 className={NewProjectStyle.titles} >Descripción</h3>
         {descriptionError ? (
           <p style={{ color: "red" }}>
             debes poner una Descripcion menor a 50 caracteres{" "}
@@ -111,14 +113,14 @@ export const NewProject = (props) => {
             setdescription(e.target.value);
           }}
         ></textarea>
-        <h3>Cliente:</h3>
+        <h3 className={NewProjectStyle.titles} >Cliente</h3>
         {customerNameError ? (
           <p style={{ color: "red" }}>
             debes poner un nombre menor a 30 caracteres{" "}
           </p>
         ) : null}
         <input
-          className={`   ${
+          className={`  ${NewProjectStyle.inputStle}  ${
             customerNameError ? NewProjectStyle.notValid : null
           }`}
           type="text"
@@ -128,10 +130,10 @@ export const NewProject = (props) => {
             setcustomerName(e.target.value);
           }}
         ></input>
-        <h3>Equipo:</h3>
+        <h3 className={NewProjectStyle.titles} >Equipo</h3>
         <select
           value={idTeam}
-          className={`   ${idTeamError ? NewProjectStyle.notValid : null}`}
+          className={` ${NewProjectStyle.inputStyle}   ${idTeamError ? NewProjectStyle.notValid : null}`}
           onChange={(e) => {
             setidTeamError(false);
             setidTeam(e.target.value);
@@ -144,7 +146,7 @@ export const NewProject = (props) => {
             <option value={theTeam.idTeam}>{theTeam.name}</option>
           ))}
         </select>
-        <div onClick={createProject}>
+        <div className={NewProjectStyle.buttonDiv} onClick={createProject}>
           <GenericButton2 text="crear proyecto" />
         </div>
       </div>

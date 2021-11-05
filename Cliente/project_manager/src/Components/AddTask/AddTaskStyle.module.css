@@ -62,17 +62,28 @@ select {
 .checkwithtext {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    height: 30px;
+    
 }
 
 .checkStyle {
     width: 20px;
     height: 20px;
+    margin-left: 8px;
+}
+
+.clientText{
+    width: 90px;
 }
 
 .dateAndCheck {
     display: flex;
     flex-direction: row;
     margin-top: 6px;
+    margin-bottom: 8px;
+    align-items: center;
+    justify-content: center;
 }
 
 .buttonCancel {
@@ -98,6 +109,8 @@ select {
     margin-right: 8px;
     cursor: pointer;
 }
+
+
 
 .icon{
     height: 23px;

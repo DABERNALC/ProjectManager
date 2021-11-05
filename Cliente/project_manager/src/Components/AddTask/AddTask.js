@@ -116,7 +116,7 @@ const AddTask = (props) => {
             }}
           >
             <option hidden selected value="-1">
-              Seleccione responsable
+              Responsable
             </option>
             {theTeam.Participants != undefined
               ? theTeam.Participants.map((participant) => (
@@ -160,7 +160,7 @@ const AddTask = (props) => {
                 setrelevance(!relevance);
               }}
             />
-            <p>Relevante para cliente</p>
+            <p className={AddTaskStyle.clientText}>Relevante para cliente</p>
           </div>
         </div>
         <div className={AddTaskStyle.buttonCancel}>
