@@ -110,7 +110,7 @@ function Kanban(props) {
         projectData.done.length == 0 ? null : (
         <Link
           className={KanbanStyle.buttonStyle}
-          to={`/app/projects/${projectId}/45`}
+          to={`/app/projects/${projectId}/-1`}
         >
           <GenericButton1 nombre="Checklist >"></GenericButton1>
         </Link>

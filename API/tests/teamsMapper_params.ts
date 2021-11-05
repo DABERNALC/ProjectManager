@@ -14,7 +14,7 @@ export const  duplicatedTeams = [
         { nombre: "Isaac", identificacion: 1 },
       ],
       params: ["nombre", "identificacion"],
-      expected: [{ nombre: "Isaac", identificacion: 1 }],
+      expected: [{ nombre: "Isaacs", identificacion: 1 }],
     },
     {
       array: [

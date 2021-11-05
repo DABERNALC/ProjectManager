@@ -58,11 +58,9 @@ ProjectsRouter.post('/updateTask',[
     check("taskId","you should send the id of the task that yopu whant to update").not().isEmpty(),
     check("date","you should send the task due-date to create a task").not().isEmpty(),
     check("Description","you should send the task description to create a task").not().isEmpty(),
-    check("participantId","you should send the Id of the participant that works on this task").not().isEmpty(),
     check("relevance","you should send the relevance of the task").isBoolean(),
     check("priority","you should send the priority of the task").not().isEmpty(),
-    check("proyectId","you should send the proyect id that this task belongs").not().isEmpty(),
-    check("state","you should send the task state that this task belongs").not().isEmpty()
+    check("proyectId","you should send the proyect id that this task belongs").not().isEmpty()
     ,validate
 ],(req: any,res: any)=>{
     let teamsController = new ProjectsController();

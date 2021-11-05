@@ -121,13 +121,12 @@ export default class ProjectsComponent {
     const description = req.body.Description;
     
     const priority = req.body.priority;
-    const participantId = req.body.participantId;
     const relevance = req.body.relevance;
     const date = req.body.date;
     const taskId = req.body.taskId;
-    const state = req.body.state;
+   
 
-    const sqlStatement:String = `update tarea SET  Descripcion ="${description}" ,  Estado ="${state}" ,  IDParticipante = "${participantId}" , Prioridad= "${priority}"  ,  FechaTarea= "${date}"   WHERE   ID = ${taskId}`;
+    const sqlStatement:String = `update tarea SET  Descripcion ="${description}" , Prioridad= "${priority}"  ,  FechaTarea= "${date}"   WHERE   ID = ${taskId}`;
     if(!this.isValidDate(date)){
       return new Promise<String>((resolve, reject) => {
         reject("esa fecha no es valida");

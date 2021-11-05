@@ -26,7 +26,10 @@ const AddTask = (props) => {
         console.log(team);
       }
     });
-  });
+    setpriority(props.priority);
+    setdescription(props.description);
+    setdate(props.date.split("T")[0]);
+  }, []);
 
   const createTask = () => {
     validate();
@@ -50,6 +53,28 @@ const AddTask = (props) => {
           console.log(error);
         });
   };
+  const updateTask = () =>
+  {
+    validate();
+    const params = new URLSearchParams();
+    params.append("date", date);
+    params.append("taskId", props.id);
+    params.append("Description", description);
+    params.append("proyectId", projectId);
+    params.append("relevance", relevance);
+    params.append("priority", priority);
+    if ( date == "" || description == "") {
+    } else
+      axiosApi
+        .post("/projects/updateTask", params)
+        .then((response) => {
+          props.refresh();
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  }
   const validate = () => {
     console.log(date);
 
@@ -75,25 +100,18 @@ const AddTask = (props) => {
   };
   const getCurrentDate = () => {
     var today = new Date();
-    var year = today.getFullYear(); 
-    var month = (today.getMonth() + 1)
+    var year = today.getFullYear();
+    var month = today.getMonth() + 1;
     var day = today.getDate();
-    if(day < 10)
-    {
-      day = "0" +day
+    if (day < 10) {
+      day = "0" + day;
     }
-    var date =
-      year +
-      "-" +
-      month +
-      "-" +
-      day;
-      
-    return date
+    var date = year + "-" + month + "-" + day;
+
+    return date;
   };
   return (
     <div className={AddTaskStyle.container}>
-      {<p>{validateError}</p>}
       <p>Descripción</p>
       <form>
         <textarea
@@ -107,25 +125,28 @@ const AddTask = (props) => {
           }}
         ></textarea>
         <div className={AddTaskStyle.selectDiv}>
-          <select
-            className={participantError ? AddTaskStyle.notValid : null}
-            value={participantId}
-            onChange={(e) => {
-              setparticipantError(false);
-              setparticipantId(e.target.value);
-            }}
-          >
-            <option hidden selected value="-1">
-              Responsable
-            </option>
-            {theTeam.Participants != undefined
-              ? theTeam.Participants.map((participant) => (
-                  <option value={participant.IDParticipante}>
-                    {participant.Nombre}
-                  </option>
-                ))
-              : undefined}
-          </select>
+          {props.description == "" ? (
+            <select
+              className={participantError ? AddTaskStyle.notValid : null}
+              value={participantId}
+              onChange={(e) => {
+                setparticipantError(false);
+                setparticipantId(e.target.value);
+              }}
+            >
+              <option hidden selected value="-1">
+                Responsable
+              </option>
+              {theTeam.Participants != undefined
+                ? theTeam.Participants.map((participant) => (
+                    <option value={participant.IDParticipante}>
+                      {participant.Nombre}
+                    </option>
+                  ))
+                : undefined}
+            </select>
+          ) : null}
+
           <select
             value={priority}
             onChange={(e) => {
@@ -140,7 +161,6 @@ const AddTask = (props) => {
         <div className={AddTaskStyle.dateAndCheck}>
           <input
             type="date"
-            
             min={getCurrentDate()}
             className={`${AddTaskStyle.calendarStyle} ${
               dateError ? AddTaskStyle.notValid : null
@@ -164,15 +184,28 @@ const AddTask = (props) => {
           </div>
         </div>
         <div className={AddTaskStyle.buttonCancel}>
-          <button
-            className={` ${AddTaskStyle.buttonStyle} `}
-            onClick={(e) => {
-              e.preventDefault();
-              createTask();
-            }}
-          >
-            Aceptar
-          </button>
+          {props.description == "" ? (
+            <button
+              className={` ${AddTaskStyle.buttonStyle} `}
+              onClick={(e) => {
+                e.preventDefault();
+                createTask();
+              }}
+            >
+              Aceptar
+            </button>
+          ) : (
+            <button
+              className={` ${AddTaskStyle.buttonStyle} `}
+              onClick={(e) => {
+                e.preventDefault();
+                updateTask();
+              }}
+            >
+              modificar
+            </button>
+          )}
+
           <GiCancel
             onClick={() => props.setAddTask(false)}
             className={AddTaskStyle.icon}

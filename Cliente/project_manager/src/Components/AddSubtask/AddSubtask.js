@@ -23,7 +23,7 @@ const AddSubtask = (props) => {
             "Sub tarea agregada correctamente",
             "Recuerda que los estados de la tarea dependen de la subtarea"
           );
-          alert("subtarea agregada")
+          setSubTaskText("");
         })
         .catch((error) => {
           swal({
@@ -42,7 +42,7 @@ const AddSubtask = (props) => {
     <div className={AddSubTaskStyle.container}>
       {
         subTaskTextError ?
-          <p style={{ color: "red" }}>Debes escribir una descripción de la subtarea menor a 50 caracteres</p> :
+          <p style={{ color: "red" }}>Debes escribir una descripción de la subtarea y que sea menor a 50 caracteres</p> :
           null
       }
       <textarea className={AddSubTaskStyle.textareaStyle}

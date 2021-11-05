@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import AddTask from '../AddTask/AddTask';
+import AlertModal from '../AlertModal/AlertModal';
 import Task from '../Task/Task';
 import KanbanColumnStyle from "./KanbanColumnStyle.module.css";
 
@@ -23,10 +24,10 @@ const KanbanColumn = (props) => {
                 }
                 {
                     props.tasks.map((theTask)=>
-                        <Task desc={theTask.Descripcion} color={theTask.Color} priority={theTask.prioridad}> </Task>
+                        <Task desc={theTask.Descripcion} color={theTask.Color} priority={theTask.prioridad} date={theTask.FechaTarea} id={theTask.id} refresh={props.refresh}> </Task>
                     )
                 }
-                
+               
         </div>
     )
 }

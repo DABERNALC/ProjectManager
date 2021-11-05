@@ -32,7 +32,9 @@ const BiggerLogSignIn = (props) => {
         }
 
         props.signUp(data);
-
+        
+        
+        
     }
     const logIn = async () => {
 

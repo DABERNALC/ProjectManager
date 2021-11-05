@@ -33,6 +33,7 @@ export const NewProject = (props) => {
             "proyecto creado correctamente",
             "ahora puedes acceder a su kanban"
           );
+          props.setshowModal()
           props.refreshUserData({ participantId: props.liderId });
         })
         .catch((error) => {

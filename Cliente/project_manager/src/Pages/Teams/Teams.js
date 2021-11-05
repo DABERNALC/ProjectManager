@@ -9,6 +9,11 @@ import NewProject from "../NewProject/NewProject";
 function Teams(props) {
   const [showModal, setshowModal] = useState(false);
 
+
+  const openModal =()=>
+  {
+    setshowModal(true);
+  }
   return (
     <div>
       <h2 className={TeamsStyle.title}>Mis Equipos</h2>
@@ -27,7 +32,7 @@ function Teams(props) {
             />
           ))
         ) : (
-          <NoTeams />
+          <NoTeams setshowModal={openModal} />
         )}
       </div>
       {showModal ? <NewTeam setshowModal={()=> setshowModal(false)}/> : null}

@@ -2,10 +2,46 @@ import React, { useEffect, useState } from "react";
 import SubTaskColumnStyle from "./SubTaskColumnStyle.module.css";
 import { useParams } from "react-router-dom";
 import AddSubtask from "../AddSubtask/AddSubtask";
+import { AiFillDelete } from 'react-icons/ai';
+import swal from "sweetalert";
+import apiAxios from "../../Axios/api";
 
 const SubTaskColumn = (props) => {
   let { taskId, projectId } = useParams();
   const [showAddTask, setshowAddTask] = useState(false);
+  const deleteSubtask = (subtaskId)=>
+  {
+    const params = new URLSearchParams();
+    params.append("subTaskId", subtaskId);
+    
+
+    swal({
+      title: "Esta seguro que quiere eliminar esta subtarea",
+      text: "Una vez borrado no podrás recuperarlo!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        apiAxios
+      .post(`/projects/deleteSubtask`,params)
+      .then((respose) => {
+        swal("la subtarea ha sido eliminada!", {
+          icon: "success",
+        });
+        props.refresh()
+      })
+      .catch((e) => {
+        // console.log(Object.getOwnPropertyNames(e));
+        console.log(e.response);
+      });
+        
+      } else {
+        swal("No se elimino la subtask!");
+      }
+    });
+  }
   return (
     <div className={SubTaskColumnStyle.container}>
       <div className={SubTaskColumnStyle.upperDiv}>
@@ -38,6 +74,9 @@ const SubTaskColumn = (props) => {
                     >
                       {subtask.description}
                     </label>
+                    <div onClick={()=>deleteSubtask(subtask.id)} >
+                      <AiFillDelete />
+                    </div>
                   </div>
                 );
               else return null;
