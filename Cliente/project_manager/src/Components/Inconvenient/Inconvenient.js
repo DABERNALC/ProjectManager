@@ -6,11 +6,13 @@ export const Inconvenient = () => {
     return (
         <div className={InconvenientStyle.container}>
             <div className={InconvenientStyle.blueContainer}>
-                <h2>¿Algun inconveniente?</h2>
+                <h2>¿Algún inconveniente?</h2>
             </div>
             <div className={InconvenientStyle.grayContainer}>
-                <input type="text" placeholder="Hácelo saber al lider"/>
-                <GenericButton2 text="Enviar" className={InconvenientStyle.gButton}></GenericButton2>
+                <textarea type="text" placeholder="Escríbele al líder" />
+                <div className={InconvenientStyle.buttonDiv}>
+                    <GenericButton2 text="Enviar" className={InconvenientStyle.gButton}></GenericButton2>
+                </div>
             </div>
         </div>
     )

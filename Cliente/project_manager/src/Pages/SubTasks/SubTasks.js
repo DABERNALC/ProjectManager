@@ -12,42 +12,39 @@ import AddSubtask from "../../Components/AddSubtask/AddSubtask";
 
 
 function SubTasks(props) {
-    let{taskId,projectId} = useParams();
+  let { taskId, projectId } = useParams();
   useEffect(() => {
-        getData()
+    getData()
   }, []);
   const [doingSubtasks, setdoingSubtasks] = useState([])
   const [doneSubtasks, setdoneSubtasks] = useState([])
   let history = useHistory();
   function handleChange(value) {
-      
+
     history.push(`/app/projects/${projectId}/${value}`);
   }
-  const changedbData=(id)=>
-  {
+  const changedbData = (id) => {
     const params = new URLSearchParams();
     params.append("subTaskId", id);
     axiosApi
-    .post("/projects/checkSubtask", params)
-    .then((response) => {
-    //   alert("checkeada")
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .post("/projects/checkSubtask", params)
+      .then((response) => {
+        //   alert("checkeada")
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
-  const checkSubtask = (id)=>
-  {
-    const found = doingSubtasks.find(element => element.id ==id);
-    const newDoing = doingSubtasks.filter(task=> task.id != id);
+  const checkSubtask = (id) => {
+    const found = doingSubtasks.find(element => element.id == id);
+    const newDoing = doingSubtasks.filter(task => task.id != id);
     setdoingSubtasks(newDoing)
     doneSubtasks.push(found);
     changedbData(id);
   }
-  const uncheckSubtask = (id)=>
-  {
-    const found = doneSubtasks.find(element => element.id ==id);
-    const newDone = doneSubtasks.filter(task=> task.id != id);
+  const uncheckSubtask = (id) => {
+    const found = doneSubtasks.find(element => element.id == id);
+    const newDone = doneSubtasks.filter(task => task.id != id);
     setdoneSubtasks(newDone)
     doingSubtasks.push(found);
     changedbData(id)
@@ -60,61 +57,44 @@ function SubTasks(props) {
         setdata(response.data.data);
         setdoingSubtasks(response.data.data.doingSubtasks)
         setdoneSubtasks(response.data.data.doneSubtasks)
-        console.log("subtareas",response.data.data);
+        console.log(response.data.data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
   return (
-    
     <div>
-      
       <h1>Asistente Virtual</h1>
       <h2>Maguri UwU</h2>
-      <select value={taskId} onChange={event => handleChange(event.target.value)}>
-          <option hidden selected value="-1" style={{color:"red"}}>
-            Seleccione una tarea
-          </option>
-        {data.tasks != undefined
-          ? data.tasks.map((theTask) => (
+      <div className={SubTaskStyle.selectDiv}>
+        <select className={SubTaskStyle.selectStyle} value={taskId} onChange={event => handleChange(event.target.value)}>
+          {data.tasks != undefined
+            ? data.tasks.map((theTask) => (
               theTask.IDParticipante == props.currentUser ?
-              <option value={theTask.idTask}>{theTask.description}</option>:null
+                <option value={theTask.idTask}>{theTask.description}</option> : null
             ))
-          : null}
-           
-      </select>
-      {
-        
-        taskId != -1 ?
-      <>
-      <div className={SubTaskStyle.columns}>
-        <SubTaskColumn title="Por hacer" subtasks={doingSubtasks} checkSubtask={(id)=>checkSubtask(id)} refresh={getData}/>
-        <SubTaskColumn title="Hecho" subtasks={doneSubtasks} checkSubtask={(id)=>uncheckSubtask(id)}/>
-        <Inconvenient />
+            : null}
+
+        </select>
       </div>
-      </>
-      :
-      <div>
-        {data.tasks != undefined ?
-          data.tasks.length != 0 ?
-          
-          <p>porfavor selecciona una tarea para ver sus subtareas</p>
-          :
-          <p>No tienes tareas asignadas en este proyecto</p>
-          :null
-        }
-            
+      <div className={SubTaskStyle.biggerDiv}>
+        <div className={SubTaskStyle.columns}>
+          <SubTaskColumn className={SubTaskStyle.estilo} title="Por hacer" subtasks={doingSubtasks} checkSubtask={(id) => checkSubtask(id)} refresh={getData} />
+          <SubTaskColumn title="Hecho" subtasks={doneSubtasks} checkSubtask={(id) => uncheckSubtask(id)} />
+        </div>
+        <div className={SubTaskStyle.inconvenientDiv}>
+          <Inconvenient />
+        </div>
+
       </div>
-      
-     }
     </div>
   );
 }
 const mapStateToProps = (state) => {
-    console.log(state);
-    return {
-        currentUser: state.UserInfo.id
-    };
+  console.log(state);
+  return {
+    currentUser: state.UserInfo.id
   };
-export default connect(mapStateToProps) (SubTasks);
+};
+export default connect(mapStateToProps)(SubTasks);

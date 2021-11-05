@@ -1,5 +1,32 @@
-.columns
-{
-    display: flex; 
+.biggerDiv{
+    display: flex;
     align-items: center;
+}
+.columns {
+    display: flex;
+    align-items: center;
+    width: 700px;
+    margin-left: 50px;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.selectStyle {
+    width: 405px;
+    height: 40px;
+    background: #ebecf0;
+    border: 1px solid #050038;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+
+.selectDiv{
+    display: flex;
+    align-items: flex-start;
+    margin-left: 50px;
+}
+.inconvenientDiv{
+    margin-left: 50px;
 }

@@ -15,6 +15,9 @@
     background: #050038;
     border-radius: 5px 5px 0px 0px;
     height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .title {
@@ -27,7 +30,7 @@
 }
 
 .whiteDiv {
-    height: 85%;
+    height: 83%;
     overflow-y: scroll;
 }
 
@@ -58,10 +61,12 @@
     background: #fefefe;
     height: 2px;
 }
+
 .completed
 {
     text-decoration: line-through;
 }
+
 .hideAddTask{
 display: none;
 }

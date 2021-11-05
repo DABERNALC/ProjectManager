@@ -6,14 +6,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    max-height: fit-content;
 }
-.formStyle div  {
-    margin-bottom: 30px;
+
+.subContainer {
+    height: fit-content;
 }
 
 .h3 {
-    
-    height: 40px;
+    height: fit-content;
     font-family: Sansita;
     font-style: normal;
     font-weight: bold;
@@ -24,6 +25,7 @@
     letter-spacing: 0.03em;
     color: #050038;
     margin-bottom: -5px;
+    padding-bottom: 8px;
 }
 
 input {
@@ -54,7 +56,7 @@ input {
     letter-spacing: 0.03em;
     border: none;
     color: #ffffff;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .buttonDiv {
@@ -62,7 +64,7 @@ input {
     justify-content: center;
 }
 
-.LogInButton:hover{
+.LogInButton:hover {
     cursor: pointer;
-    background: #2643D1;
+    background: #2643d1;
 }

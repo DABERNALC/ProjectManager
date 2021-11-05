@@ -51,7 +51,7 @@ function Kanban(props) {
   }, []);
 
   return (
-    <div className={`${props.mode=="client" ? KanbanStyle.fullScreen:null}`}>
+    <div className={`${props.mode == "client" ? KanbanStyle.fullScreen : null}`}>
       <div className={KanbanStyle.container}>
         <div>
           <h1 className={KanbanStyle.title}>{projectName}</h1>
@@ -61,11 +61,13 @@ function Kanban(props) {
           {props.teams.map((Team) =>
             Team.idTeam == teamId
               ? Team.Participants.map((pepe) => (
+                <div className={KanbanStyle.userDiv}>
                   <div className={KanbanStyle.user}>
                     <FaUserAlt color={pepe.Color} />
-                    <p>{pepe.Nombre}</p>
+                    <p className={KanbanStyle.userName}>{pepe.Nombre}</p>
                   </div>
-                ))
+                </div>
+              ))
               : null
           )}
         </div>
@@ -104,11 +106,11 @@ function Kanban(props) {
       </div>
 
       {projectData.toDo.length == 0 &&
-      projectData.doing.length == 0 &&
-      projectData.done.length == 0 ? null : (
+        projectData.doing.length == 0 &&
+        projectData.done.length == 0 ? null : (
         <Link
           className={KanbanStyle.buttonStyle}
-          to={`/app/projects/${projectId}/-1`}
+          to={`/app/projects/${projectId}/45`}
         >
           <GenericButton1 nombre="Checklist >"></GenericButton1>
         </Link>

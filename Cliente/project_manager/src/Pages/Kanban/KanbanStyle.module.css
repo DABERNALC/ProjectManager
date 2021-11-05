@@ -48,12 +48,14 @@ body {
 
 .buttonStyle {
     margin-right: 20px;
+    margin-top: 20px;
     display: flex;
     justify-content: end;
 }
 
 GenericButton1{
     margin-right: 20px;
+    margin-bottom: 20px;
 }
 .spinnerContainer
 {
@@ -75,6 +77,17 @@ GenericButton1{
     justify-content: space-evenly;
     font-size: xx-large;
     margin-right: 10%;
+    height: fit-content;
+    margin-bottom: -20px;
+    align-items: center;
+}
+
+.userDiv{
+    height: fit-content;
+    width: fit-content;
+}
+.userName{
+    margin-bottom: -5px;
 }
 .user
 {
