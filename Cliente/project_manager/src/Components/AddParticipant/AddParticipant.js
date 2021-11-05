@@ -29,12 +29,7 @@ export const AddParticipant = (props) => {
           .catch((e) => {
             // console.log(Object.getOwnPropertyNames(e));
             
-              swal({
-                icon: 'error',
-                title: "Error agregando participante",
-                text: "no puedes añadir el mismo participante varias veces",
-                footer: '<a href="">Why do I have this issue?</a>'
-              })
+              
             console.log("error",e.response);
           });
     } else {

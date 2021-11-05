@@ -44,7 +44,7 @@ export const TeamZoomIn = (props) => {
     params.append("participant", participantId);
 
     swal({
-      title: "Esta seguro que quiere eliminar este equipo?",
+      title: "Esta seguro que quiere eliminar el participante de  este equipo?",
       text: "Una vez borrado no podrás recuperarlo!",
       icon: "warning",
       buttons: true,
