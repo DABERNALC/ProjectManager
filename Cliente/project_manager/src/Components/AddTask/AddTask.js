@@ -4,6 +4,8 @@ import { GiCancel } from "react-icons/gi";
 import { connect } from "react-redux";
 import { useParams } from "react-router";
 import axiosApi from "../../Axios/api";
+import swal from "sweetalert";
+
 
 const AddTask = (props) => {
   const { projectId } = useParams();
@@ -75,6 +77,7 @@ const AddTask = (props) => {
           console.log(error);
         });
   }
+  
   const validate = () => {
     console.log(date);
 
