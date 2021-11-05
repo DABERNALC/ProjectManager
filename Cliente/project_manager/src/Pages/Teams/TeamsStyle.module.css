@@ -19,3 +19,11 @@
 .title{ 
     margin-left: 20px;
 }
+@media (max-width: 600px){
+    .title{
+        margin-left: 33%;
+    }
+    .buttonContainer{
+        margin-left: 20%;
+    }
+}

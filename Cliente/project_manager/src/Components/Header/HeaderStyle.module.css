@@ -56,3 +56,16 @@ body {
 {
    cursor: pointer;
 }
+@media (max-width: 600px) {
+    .headerDiv{
+      grid-template-areas: none;
+      display: flex;
+      flex-direction: row;
+      height: 5vh;
+    }
+    .logo{
+        height: 30%;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+  }

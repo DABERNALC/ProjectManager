@@ -89,5 +89,7 @@ body{
 @media (max-width: 600px) {
   .App{
     grid-template-areas: none;
+    display: flex;
+    flex-direction: column;
   }
 }

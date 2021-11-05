@@ -1,6 +1,6 @@
 import React from 'react'
 import GenericButton2 from '../../Components/GenericButton2/GenericButton2';
-import NewProjectStyle from './NewProject.module.css'
+import NewProjectStyle from './NewProjectStyle.module.css'
 import {AiFillFolderOpen} from "react-icons/ai"
 
 export const NewProject = () => {

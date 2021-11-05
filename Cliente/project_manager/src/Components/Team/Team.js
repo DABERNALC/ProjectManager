@@ -17,9 +17,9 @@ export const Team = (props) => {
         <div className={TeamStyle.personContainer}>
           {props.TeamMembers.map((TeamMembers, index) => (
             <FaUserAlt
+            className={TeamStyle.pIcon}
               color={TeamMembers.Color}
               key={index}
-              size="45px"
             ></FaUserAlt>
           ))}
         </div>

@@ -25,7 +25,15 @@
 }
 .miniContainer h3, input{
     margin-left: 3%;
+    margin-bottom: 5px;
 }
 .GenericButton2{
     margin-left: 10%;
+}
+
+@media (max-width: 600px) {
+    .miniContainer{
+        width: 90%;
+        display: none;
+    }
 }
