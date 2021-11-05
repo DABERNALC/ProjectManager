@@ -8,7 +8,6 @@ export default class teamsMapper {
     this.objectMapper = objectMapper;
   }
   getDto(teamsVo: any) {
-    // console.log(teamsVo);
     
     const teamsCleanVo = teamsVo[0];
     
@@ -37,7 +36,7 @@ export default class teamsMapper {
     proyects = proyects.filter(
         (thing: { id: any; name: any; }, index: any, self: any[]) =>
           index ===
-          self.findIndex((t) => t.id === thing.id && t.name === thing.name && thing.name !== null )
+          self.findIndex((t) => t.id === thing.id && t.name === thing.name && thing.name !== null  && thing.name !== "")
       );
     
         return(new TeamDetailDto(teamId,teamName,participants,proyects));

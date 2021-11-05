@@ -24,7 +24,7 @@ const AddSubtask = (props) => {
                 "sub tarea agregada correctamente",
                 "recuerda que los estados de la tarea dependen de la subtarea"
               );
-          alert("subtarea agregada")
+          
         })
         .catch((error) => {
             swal({

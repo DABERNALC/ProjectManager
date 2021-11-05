@@ -60,7 +60,7 @@ function SubTasks(props) {
         setdata(response.data.data);
         setdoingSubtasks(response.data.data.doingSubtasks)
         setdoneSubtasks(response.data.data.doneSubtasks)
-        console.log(response.data.data);
+        console.log("subtareas",response.data.data);
       })
       .catch((error) => {
         console.log(error);
@@ -71,6 +71,9 @@ function SubTasks(props) {
       <h1>Asistente Virtual</h1>
       <h2>Maguri UwU</h2>
       <select value={taskId} onChange={event => handleChange(event.target.value)}>
+          <option hidden selected value="-1">
+            Seleccione una tarea
+          </option>
         {data.tasks != undefined
           ? data.tasks.map((theTask) => (
               theTask.IDParticipante == props.currentUser ?
