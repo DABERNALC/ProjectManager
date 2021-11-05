@@ -158,7 +158,7 @@ export default class TeamsComponent {
     const participantId = req.body.participant;
 
     //sql statement
-    let sqlStatement = `delete from participanteequipo where IDParticipante = ${participantId} and IDEquipo= ${teamId}`;
+    let sqlStatement = `delete from participanteequipo where IDParticipante = '${participantId}' and IDEquipo= ${teamId}`;
 
     return new Promise<string>((resolve, reject) => {
       this.dbConection

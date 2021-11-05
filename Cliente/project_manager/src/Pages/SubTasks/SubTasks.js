@@ -67,11 +67,13 @@ function SubTasks(props) {
       });
   };
   return (
+    
     <div>
+      
       <h1>Asistente Virtual</h1>
       <h2>Maguri UwU</h2>
       <select value={taskId} onChange={event => handleChange(event.target.value)}>
-          <option hidden selected value="-1">
+          <option hidden selected value="-1" style={{color:"red"}}>
             Seleccione una tarea
           </option>
         {data.tasks != undefined
@@ -82,13 +84,30 @@ function SubTasks(props) {
           : null}
            
       </select>
-      
+      {
+        
+        taskId != -1 ?
+      <>
       <div className={SubTaskStyle.columns}>
         <SubTaskColumn title="Por hacer" subtasks={doingSubtasks} checkSubtask={(id)=>checkSubtask(id)} refresh={getData}/>
         <SubTaskColumn title="Hecho" subtasks={doneSubtasks} checkSubtask={(id)=>uncheckSubtask(id)}/>
         <Inconvenient />
       </div>
-     
+      </>
+      :
+      <div>
+        {data.tasks != undefined ?
+          data.tasks.length != 0 ?
+          
+          <p>porfavor selecciona una tarea para ver sus subtareas</p>
+          :
+          <p>No tienes tareas asignadas en este proyecto</p>
+          :null
+        }
+            
+      </div>
+      
+     }
     </div>
   );
 }

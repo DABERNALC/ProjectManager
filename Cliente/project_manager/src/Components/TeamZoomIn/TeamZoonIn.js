@@ -9,6 +9,8 @@ import GenericButton2 from "../GenericButton2/GenericButton2";
 import { RiFilePaperLine } from "react-icons/ri";
 import apiAxios from "../../Axios/api";
 import { GiCancel } from "react-icons/gi";
+import swal from "sweetalert";
+
 export const TeamZoomIn = (props) => {
   useEffect(() => {
     getTeam();
@@ -41,16 +43,33 @@ export const TeamZoomIn = (props) => {
     params.append("teamId", idTeam);
     params.append("participant", participantId);
 
-    apiAxios
+    swal({
+      title: "Esta seguro que quiere eliminar este equipo?",
+      text: "Una vez borrado no podrás recuperarlo!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        apiAxios
       .post(`/teams/removeParticipant`,params)
       .then((respose) => {
-        alert("eliminado compa")
+        swal("el participante ha sido eliminado del equipo!", {
+          icon: "success",
+        });
         getTeam()
       })
       .catch((e) => {
         // console.log(Object.getOwnPropertyNames(e));
         console.log(e.response);
       });
+        
+      } else {
+        swal("No se elimino el participante!");
+      }
+    });
+    
       
   }
   return (
