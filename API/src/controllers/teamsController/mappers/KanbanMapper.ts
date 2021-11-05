@@ -13,7 +13,7 @@ export default class KanbanMapper {
   
   async getDto(kanbanVo: any, projectId: any) {
     
-    console.log("kanban",kanbanVo);
+    // console.log("kanban",kanbanVo);
     
     const dbConection = DbConnection.getInstance();
     const projectsComponent = new ProjectsComponent(dbConection);
@@ -35,24 +35,34 @@ export default class KanbanMapper {
       .catch(() => {});
     }
     for (const task of kanbanVo) {
-      console.log("entra");
       
       await projectsComponent
         .getSubtarea(task.id)
         .then((subTasks: any) => {
+          // console.log(task);
+          
+          // console.log("subtask",subTasks.length);
+          
           if (subTasks.length > 0) {
             let totalStateSum = 0;
             for (let subTask of subTasks) {
+              
+              
               totalStateSum += subTask.Estado;
             }
+            console.log("task",totalStateSum);
             if (totalStateSum == subTasks.length) {
 
               doneList.push(task);
             }
             if (totalStateSum > 0 && totalStateSum < subTasks.length) {
               doingList.push(task);
+            }else
+            {
+              toDoList.push(task);
             }
           } else {
+            console.log(task);
             toDoList.push(task);
             
           }
