@@ -36,6 +36,11 @@ const Task = (props) => {
       })
       .catch((e) => {
         // console.log(Object.getOwnPropertyNames(e));
+        swal({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No puedes eliminar una tarea que tiene subtareas!'
+        })
         console.log(e.response);
       });
         

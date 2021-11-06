@@ -51,7 +51,7 @@ const SubTaskColumn = (props) => {
         {props.title == "Por hacer" ? (
           <p  onClick={()=> setshowAddTask(true)} className={`${showAddTask ? SubTaskColumnStyle.hideAddTask:null} ${SubTaskColumnStyle.add}`}>+ Añadir subtarea</p>
         ) : null}
-        {showAddTask ? <AddSubtask refresh={props.refresh} closeModal={()=>setshowAddTask(false)} /> : null}
+        {showAddTask ? <AddSubtask refresh={props.refresh} closeModal={()=>setshowAddTask(false)}  /> : null}
 
         {props.subtasks != undefined
           ? props.subtasks.map((subtask) => {

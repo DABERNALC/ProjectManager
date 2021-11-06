@@ -30,7 +30,8 @@ const AddTask = (props) => {
     });
     setpriority(props.priority);
     setdescription(props.description);
-    setdate(props.date.split("T")[0]);
+    if(projectId.description != "") 
+      setdate(props.date.split("T")[0]);
   }, []);
 
   const createTask = () => {

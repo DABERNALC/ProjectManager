@@ -78,10 +78,7 @@ export class ProjectsController {
         });
       })
       .catch((error) => {
-        res.json({
-          ok: false,
-          message: error,
-        });
+        res.status(500).send(error);
       });
   }
   addSubtask(req: any, res: any) {
