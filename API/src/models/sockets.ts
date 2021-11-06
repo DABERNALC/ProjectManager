@@ -16,7 +16,7 @@ export default class Sockets {
 
             // Escuchar evento: mensaje-to-server
             socket.on('mensaje-to-server', ( data: any ) => {
-                console.log( data );
+                // console.log( data );
                 
                 this.io.emit('mensaje-from-server', data );
             });

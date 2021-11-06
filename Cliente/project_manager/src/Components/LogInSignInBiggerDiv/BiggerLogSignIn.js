@@ -8,10 +8,10 @@ import axios from "axios"
 import Spinner from '../Spinner/Spinner';
 import { useHistory } from 'react-router-dom'
 const BiggerLogSignIn = (props) => {
-    let [email, setEmail] = useState("nicoFake@gmail.com")
-    let [contra, setContra] = useState("123123")
+    let [email, setEmail] = useState("")
+    let [contra, setContra] = useState("")
 
-    let [name, setName] = useState("nico")
+    let [name, setName] = useState("")
     let [loading, setLoading] = useState(false)
     const history = useHistory();
 

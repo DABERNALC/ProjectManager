@@ -17,7 +17,7 @@ export default class SubtasksMapper {
     var doneList: any[] = [];
     var tasks: any[] = [];
     var idProject = subtasksVo[0].IDProyecto;
-    console.log(subtasksVo);
+    // console.log(subtasksVo);
     
     for(const subtasks of  subtasksVo)
     {
