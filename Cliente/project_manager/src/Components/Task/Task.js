@@ -59,6 +59,7 @@ const Task = (props) => {
       {showEdit && !props.client ? (
         <>
           <AddTask
+            Relevante={props.Relevante} 
             setAddTask={() => setshowEdit(false)}
             description={props.desc}
             priority={props.priority}

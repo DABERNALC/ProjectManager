@@ -31,6 +31,10 @@ const AddTask = (props) => {
     });
     setpriority(props.priority);
     setdescription(props.description);
+    let relevance = true; 
+    if (props.Relevante == 0)
+      relevance = false
+    setrelevance(relevance)
     if(props.description != "") 
       setdate(props.date.split("T")[0]);
   }, []);
