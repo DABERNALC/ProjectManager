@@ -30,8 +30,8 @@ export const NewProject = (props) => {
         .then((response) => {
           console.log(response.data)
           swal(
-            "proyecto creado correctamente",
-            "ahora puedes acceder a su kanban"
+            "Proyecto creado correctamente",
+            "Ahora puedes acceder a su kanban"
           );
           props.setshowModal()
           props.refreshUserData({ participantId: props.liderId });
@@ -86,7 +86,7 @@ export const NewProject = (props) => {
         <h3 className={NewProjectStyle.titles}>Nombre</h3>
         {nameError ? (
           <p style={{ color: "red" }}>
-            debes poner un nombre menor a 30 caracteres{" "}
+            Debes poner un nombre menor a 30 caracteres{" "}
           </p>
         ) : null}
         <input
@@ -101,7 +101,7 @@ export const NewProject = (props) => {
         <h3 className={NewProjectStyle.titles} >Descripción</h3>
         {descriptionError ? (
           <p style={{ color: "red" }}>
-            debes poner una Descripcion menor a 50 caracteres{" "}
+            Debes poner una descripción menor a 50 caracteres{" "}
           </p>
         ) : null}
         <textarea
@@ -117,7 +117,7 @@ export const NewProject = (props) => {
         <h3 className={NewProjectStyle.titles} >Cliente</h3>
         {customerNameError ? (
           <p style={{ color: "red" }}>
-            debes poner un nombre menor a 30 caracteres{" "}
+            Debes poner un nombre menor a 30 caracteres{" "}
           </p>
         ) : null}
         <input

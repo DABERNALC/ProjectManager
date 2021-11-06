@@ -26,6 +26,7 @@
 .miniContainer h3, input{
     margin-left: 3%;
     margin-bottom: 5px;
+    font-size: 18px;
 }
 .GenericButton2{
     margin-left: 10%;

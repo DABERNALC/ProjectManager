@@ -17,6 +17,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
 }
+
 .nContainer {
     background-color: #050038;
     display: flex;
@@ -39,6 +40,7 @@
 
 .title1 {
     color: white;
+    font-size: 20px;
 }
 
 .GenericButton2 {
@@ -49,7 +51,7 @@
     width: 87%;
     display: flex;
     margin-right: 8px;
-    font-size: 15px;
+    font-size: 18px;
     resize: none;
     margin-left: auto;
     margin-right: auto;
@@ -61,6 +63,7 @@
 .titles {
     text-align: start;
     margin-left: 3%;
+    font-size: 18px;
 }
 
 .inputStle {
@@ -71,9 +74,11 @@
     background: #f5f5f5;
     border: 1px solid #050038;
     border-radius: 5px;
+    font-size: 18px;
 }
 
 .inputStyle {
+    font-size: 18px;
     width: 87%;
     margin-left: auto;
     margin-right: auto;
