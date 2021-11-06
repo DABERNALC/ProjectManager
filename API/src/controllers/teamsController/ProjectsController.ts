@@ -53,8 +53,7 @@ export class ProjectsController {
 
     const dbConection = DbConnection.getInstance();
     const projectComponent = new ProjectsComponent(dbConection);
-    const mensaje =
-      "se te ha agregado una tarea verifica tus responsabilidades";
+    const mensaje ="se te ha agregado una tarea";
     const participant = req.body.participantId;
     //manage api response
     projectComponent

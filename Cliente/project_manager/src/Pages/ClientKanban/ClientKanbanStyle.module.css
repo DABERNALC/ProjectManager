@@ -1,0 +1,96 @@
+body {
+    background-color: #f4f4f4;
+    height: 100%;
+    width: 100%;
+}
+.title {
+    text-align: start;
+    margin-left: 10px;
+}
+.fullScreen
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.container h1 {
+    font-family: Sansita;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-align: start;
+    margin-left: 30px;
+}
+
+.kanbanContainerCentered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75%;
+    width: 100%;
+}
+.kanbanContainer {
+    height: 100%;
+    background: white;
+    border-radius: 5px;
+    width: 80%;
+}
+
+.columnsContainers {
+    display: flex;
+    justify-content: space-evenly;
+    height: 80%;
+}
+
+.buttonStyle {
+    margin-right: 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: end;
+}
+
+GenericButton1{
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.spinnerContainer
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.userContainer{
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    justify-content: space-evenly;
+    font-size: xx-large;
+    margin-right: 10%;
+    height: fit-content;
+    margin-bottom: -20px;
+    align-items: center;
+}
+
+.userDiv{
+    height: fit-content;
+    width: fit-content;
+}
+.userName{
+    margin-bottom: -5px;
+}
+.user
+{
+    display: flex;
+    flex-direction: column;
+}

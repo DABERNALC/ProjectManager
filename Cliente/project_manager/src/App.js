@@ -18,6 +18,7 @@ import Inconvenient from "./Components/Inconvenient/Inconvenient";
 import AddParticipant from "./Components/AddParticipant/AddParticipant";
 import { connect } from "react-redux";
 import NewTeam from "./Components/NewTeam/NewTeam";
+import ClientKanban from "./Pages/ClientKanban/ClientKanban";
 {
   /*import SubTasks from './Pages/Subtasks/SubTasks';*/
 }
@@ -74,7 +75,7 @@ function App(props) {
             <SubTasks />
           </Route>
           <Route path="/projects/:projectId" exact>
-            <Kanban mode="client" />
+            <ClientKanban mode="client" />
           </Route>
         </div>
       </BrowserRouter>

@@ -61,14 +61,14 @@ const AddTask = (props) => {
   {
     const sentence = description;
 
-    const media = 'diseñar'
-    const alta = 'desarrollar'
-
+    const media = ['diseñar','agregar','modificar']
+    const alta = ['desarrollar','cliente','eliminar','crear']
+    
     setpriorityRecomendation("");
-    if(sentence.includes(alta))
+    if(alta.some(el => sentence.includes(el)))
     {
       setpriorityRecomendation("te recomiento alta prioridad");
-    }else if(sentence.includes(media))
+    }else if(media.some(el => sentence.includes(el)))
     {
       setpriorityRecomendation("te recomiento  prioridad media");
     }else if(description.length > 6)

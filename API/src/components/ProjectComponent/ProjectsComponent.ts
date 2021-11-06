@@ -68,7 +68,7 @@ export default class ProjectsComponent {
     const proyectId = req.body.proyectId;
     const priority = req.body.priority;
     const participantId = req.body.participantId;
-    const relevance = req.body.relevance;
+    let relevance = req.body.relevance;
     const date = req.body.date;
 
     if (!this.isValidDate(date)) {
@@ -76,9 +76,13 @@ export default class ProjectsComponent {
         reject("esa fecha no es valida");
       });
     }
+    relevance = 1;
+    if(relevance == false)
+      relevance = 0
 
-    const sqlStatement: String = `INSERT INTO tarea (Descripcion,Estado,idParticipante,IDProyecto,Prioridad,FechaTarea) VALUES ('${description}',
-    ${relevance}, '${participantId}',${proyectId},'${priority}','${date}');`;
+
+    const sqlStatement: String = `INSERT INTO tarea (Descripcion,Estado,Relevante,idParticipante,IDProyecto,Prioridad,FechaTarea) VALUES ('${description}',
+    0,${relevance} ,'${participantId}',${proyectId},'${priority}','${date}');`;
 
     //todo: llamar a la base de datos
     return new Promise<String>((resolve, reject) => {
@@ -275,7 +279,7 @@ export default class ProjectsComponent {
     //getting the parameters from the request
     const projectId = req.query.projectId;
 
-    const sqlStatement: String = `Select tarea.id,tarea.Descripcion,tarea.prioridad,tarea.FechaTarea,participante.Color,participante.ID,(select IDParticipante from liderproyecto  where liderproyecto.IDProyecto =tarea.IDProyecto  ) as liderId  from tarea INNER JOIN participante on tarea.IDParticipante = participante.ID WHERE tarea.IDProyecto = "${projectId}";`;
+    const sqlStatement: String = `Select tarea.id,tarea.Descripcion,tarea.prioridad,tarea.Relevante,tarea.FechaTarea,participante.Color,participante.ID,(select IDParticipante from liderproyecto  where liderproyecto.IDProyecto =tarea.IDProyecto  ) as liderId  from tarea INNER JOIN participante on tarea.IDParticipante = participante.ID WHERE tarea.IDProyecto = "${projectId}";`;
 
     //todo: llamar a la base de datos
     return new Promise<String>((resolve, reject) => {
