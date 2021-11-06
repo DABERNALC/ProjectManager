@@ -76,7 +76,7 @@ const BiggerLogSignIn = (props) => {
                             props.mode == "signUp" ?
                                 <div>
                                     <h3 className={BiggerLogSignInStyle.h3}>Name:</h3>
-                                    <input value={name}
+                                    <input className = {BiggerLogSignInStyle.inputStyle} value={name}
                                         onChange={(e) => {
                                             setName(e.target.value);
                                         }}></input>
@@ -88,14 +88,14 @@ const BiggerLogSignIn = (props) => {
                             <h3 className={BiggerLogSignInStyle.h3}
 
                             >Email:</h3>
-                            <input value={email}
+                            <input className = {BiggerLogSignInStyle.inputStyle} value={email}
                                 onChange={(e) => {
                                     setEmail(e.target.value);
                                 }}></input>
                         </div>
                         <div>
                             <h3 className={BiggerLogSignInStyle.h3}>Contraseña:</h3>
-                            <input type="password"
+                            <input className = {BiggerLogSignInStyle.inputStyle} type="password"
                                 value={contra}
                                 onChange={(e) => {
                                     setContra(e.target.value);
@@ -106,7 +106,7 @@ const BiggerLogSignIn = (props) => {
                             props.mode == "signUp" ?
                                 <div>
                                     <h3 className={BiggerLogSignInStyle.h3}>Confirmar Contraseña:</h3>
-                                    <input type="password"
+                                    <input className = {BiggerLogSignInStyle.inputStyle} type="password"
                                         value={contra}
                                         onChange={(e) => {
                                             setContra(e.target.value);

@@ -68,3 +68,11 @@
     cursor: pointer;
     background: #2643d1;
 }
+
+.inputStyle {
+    width: 291px;
+height: 33px;
+    background: #f5f5f5;
+    border: 1px solid #050038;
+    border-radius: 5px;
+}
