@@ -20,8 +20,8 @@ export const NewTeam = (props) => {
         .post("/teams/create", params)
         .then((respose) => {
           swal(
-            "equipo creado correctamente",
-            "ahora puedes añadir participantes a este equipo"
+            "Equipo creado correctamente",
+            "Ahora puedes añadir participantes a este equipo"
           );
           props.refreshUserData({ participantId: props.liderId });
           props.setshowModal();
@@ -55,29 +55,30 @@ export const NewTeam = (props) => {
           <BsFolder fontSize="x-large" color="white" />
           <h2>Nuevo Equipo</h2>
         </div>
-        <p>
+        <p className={NewTeamStyle.textStyle}>
           Los equipos ayudan a organizar personas dentro de un mismo projecto,
           comencemos por darle un nombre
         </p>
-        <h2>Nombre</h2>
+        <h2 className={NewTeamStyle.textStyle} >Nombre</h2>
+        
+        <div className={NewTeamStyle.inputDiv}>
+          <input
+            type="text"
+            className={`${NewTeamStyle.nameInput}   ${teamNameError ? NewTeamStyle.notValid : null
+              }`}
+            value={teamName}
+            onChange={(e) => {
+              setteamNameError(false);
+              setteamName(e.target.value);
+            }}
+          />
+        </div>
         {teamNameError ? (
-          <p style={{ color: "red" }}>
-            el nombre del equipo no puede estar vacio, ni ser mayor a 30
+          <p style={{ color: "rgb(212, 14, 14)", fontSize:"18px"}}>
+            El nombre del equipo no puede estar vacío, ni ser mayor a 30
             caracteres
           </p>
         ) : null}
-        <input
-          type="text"
-          className={`${NewTeamStyle.nameInput}   ${
-            teamNameError ? NewTeamStyle.notValid : null
-          }`}
-          value={teamName}
-          onChange={(e) => {
-            setteamNameError(false);
-            setteamName(e.target.value);
-          }}
-        />
-
         <div onClick={() => createTeam()}>
           <GenericButton1 text="Crear equipo" />
         </div>
