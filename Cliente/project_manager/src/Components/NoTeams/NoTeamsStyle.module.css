@@ -1,37 +1,39 @@
 
 .container {
     width: 312px;
-    height: 235px;
+    height: fit-content;
     left: 228px;
     top: 264px;
     background-color: white;
     padding: 2px;
     border-radius: 5px;
     margin: 10px;
+    margin-bottom: 20px;
 }
+
 .grayContainer {
     width: 312px;
-    height: 67%;
+    height: 140px;
     background: #f1f1f1;
     border: 2px solid #ffffff;
     box-sizing: border-box;
     border-radius: 5px;
 }
-p {
+
+.textStyle{
     font-family: 'Sansita', sans-serif;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 17px;
     text-align: center;
     color: #000000;
     margin-top: 8px;
 }
-
 .buttonDiv {
     display: flex;
     justify-content: center;
     margin-bottom: 2px;
-    margin-top: -2px;
+    margin-bottom: 10px;
 }
 img{
     height: 100%;

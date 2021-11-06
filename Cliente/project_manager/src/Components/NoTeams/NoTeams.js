@@ -10,9 +10,8 @@ const NoTeams = (props) => {
         <div className={NoTeamsStyle.container}>
             <div className={NoTeamsStyle.grayContainer}>
                 <img src={imagen}></img>
-
             </div>
-            <p>¡Crea equipo!</p>
+            <p className={NoTeamsStyle.textStyle} >¡Crea equipo!</p>
             <div className={NoTeamsStyle.buttonDiv} onClick={()=> props.setshowModal()}>
                 <GenericButton2 text="Agregar Equipo"></GenericButton2>
             </div>
