@@ -76,13 +76,13 @@ export default class ProjectsComponent {
         reject("esa fecha no es valida");
       });
     }
-    relevance = 1;
-    if(relevance == false)
-      relevance = 0
+    let relevante = 1;
+    if(relevance == 'false')
+      relevante = 0
 
 
     const sqlStatement: String = `INSERT INTO tarea (Descripcion,Estado,Relevante,idParticipante,IDProyecto,Prioridad,FechaTarea) VALUES ('${description}',
-    0,${relevance} ,'${participantId}',${proyectId},'${priority}','${date}');`;
+    0,${relevante} ,'${participantId}',${proyectId},'${priority}','${date}');`;
 
     //todo: llamar a la base de datos
     return new Promise<String>((resolve, reject) => {
@@ -105,8 +105,10 @@ export default class ProjectsComponent {
     const relevance = req.body.relevance;
     const date = req.body.date;
     const taskId = req.body.taskId;
-
-    const sqlStatement: String = `update tarea SET  Descripcion ="${description}" , Prioridad= "${priority}"  ,  FechaTarea= "${date}"   WHERE   ID = ${taskId}`;
+    let relevante = 0
+    if(relevance == 'true')
+      relevante = 1
+    const sqlStatement: String = `update tarea SET  Descripcion ="${description}" , Relevante = ${relevante} , Prioridad= "${priority}"  ,  FechaTarea= "${date}"   WHERE   ID = ${taskId}`;
     if (!this.isValidDate(date)) {
       return new Promise<String>((resolve, reject) => {
         reject("esa fecha no es valida");
