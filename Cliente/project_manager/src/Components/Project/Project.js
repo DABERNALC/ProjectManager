@@ -37,7 +37,7 @@ export const Project = (props) => {
           TeamName={props.TeamName}
         />
       ) : null}
-      {showProperties ? <ProjectProperties setshowDetails={(show)=>{setshowDetails(show)}} showDetails={showDetails} /> : null}
+      {showProperties ? <ProjectProperties projectId={props.projectId} setshowDetails={(show)=>{setshowDetails(show)}} showDetails={showDetails} /> : null}
     </div>
   );
 };

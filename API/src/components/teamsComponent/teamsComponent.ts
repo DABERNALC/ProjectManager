@@ -102,7 +102,7 @@ export default class TeamsComponent {
       this.dbConection
         .makeQuery(sqlStatement)
         .then((response: Object) => {
-          console.log("detalles", response);
+          // console.log("detalles", response);
           
           resolve(response);
         })

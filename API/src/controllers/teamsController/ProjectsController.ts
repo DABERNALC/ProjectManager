@@ -7,7 +7,6 @@ import SubtasksMapper from "./mappers/SubtasksMapper";
 
 export class ProjectsController {
   updateProject(req: any, res: any) {
-    
     const projectId = req.body.projectId;
 
     const dbConection = DbConnection.getInstance();
@@ -27,6 +26,25 @@ export class ProjectsController {
           ok: false,
           message: error,
         });
+      });
+  }
+  delete(req: any, res: any) {
+    const projectId = req.body.projectId;
+
+    const dbConection = DbConnection.getInstance();
+    const projectComponent = new ProjectsComponent(dbConection);
+
+    //manage api response
+    projectComponent
+      .delete(req)
+      .then((status) => {
+        res.json({
+          ok: true,
+          message: `i deleted the project with id: ${projectId} `,
+        });
+      })
+      .catch((error) => {
+        res.status(500).send(error);
       });
   }
 

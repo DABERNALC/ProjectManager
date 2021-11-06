@@ -21,6 +21,7 @@ const AddTask = (props) => {
   const [priority, setpriority] = useState(0);
   const [validateError, setvalidateError] = useState("");
   const [isError, setisError] = useState(true);
+  const [priorityRecomendationText, setpriorityRecomendation] = useState("")
   useEffect(() => {
     props.teams.forEach((team) => {
       if (team.idTeam == props.teamId) {
@@ -56,6 +57,27 @@ const AddTask = (props) => {
           console.log(error);
         });
   };
+  const priorityRecomendation= ()=> 
+  {
+    const sentence = description;
+
+    const media = 'diseñar'
+    const alta = 'desarrollar'
+
+    setpriorityRecomendation("");
+    if(sentence.includes(alta))
+    {
+      setpriorityRecomendation("te recomiento alta prioridad");
+    }else if(sentence.includes(media))
+    {
+      setpriorityRecomendation("te recomiento  prioridad media");
+    }else if(description.length > 6)
+    {
+      setpriorityRecomendation("te recomiento prioridad baja");
+    }
+
+
+  }
   const updateTask = () =>
   {
     validate();
@@ -118,12 +140,16 @@ const AddTask = (props) => {
     <div className={AddTaskStyle.container}>
       <p>Descripción</p>
       <form>
+        {
+          priorityRecomendationText != "" ? <p style={{color:"Teal"}}>{priorityRecomendationText} !!!</p>:null
+        }
         <textarea
           className={`${AddTaskStyle.descInput}   ${
             descriptionError ? AddTaskStyle.notValid : null
           }`}
           value={description}
           onChange={(e) => {
+            priorityRecomendation();
             setdescriptionError(false);
             setdescription(e.target.value);
           }}

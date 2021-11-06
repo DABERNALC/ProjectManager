@@ -50,7 +50,7 @@ export default class KanbanMapper {
               
               totalStateSum += subTask.Estado;
             }
-            console.log("task",totalStateSum);
+            // console.log("task",totalStateSum);
             if (totalStateSum == subTasks.length) {
 
               doneList.push(task);
@@ -62,7 +62,7 @@ export default class KanbanMapper {
               toDoList.push(task);
             }
           } else {
-            console.log(task);
+            // console.log(task);
             toDoList.push(task);
             
           }

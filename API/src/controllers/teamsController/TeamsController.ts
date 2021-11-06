@@ -153,7 +153,7 @@ export class TeamsController {
     teamsComponent
       .getTeam(req)
       .then((team) => {
-        console.log("team details", team);
+        // console.log("team details", team);
         
         res.json({
           ok: true,

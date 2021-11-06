@@ -184,7 +184,7 @@ export const ProjectZoomIn = (props) => {
                   </div>
                 )}
 
-                <GenericButton2 text="Aceptar"></GenericButton2>
+                {/* <GenericButton2 text="Aceptar"></GenericButton2> */}
               </div>
             </>
           ) : (

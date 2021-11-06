@@ -38,8 +38,8 @@ ProjectsRouter.post('/create',[
     check("liderId","you should send the id of the lider that this  project belongs to create a project").not().isEmpty()
     ,validate
 ],(req: any,res: any)=>{
-    let teamsController = new ProjectsController();
-    teamsController.createProject(req,res);
+    let projectController = new ProjectsController();
+    projectController.createProject(req,res);
 });
 ProjectsRouter.post('/updateProject',[
     check("projectId","you should send the id of the task that yopu whant to update").not().isEmpty(),
@@ -48,9 +48,18 @@ ProjectsRouter.post('/updateProject',[
     check("CustomerName","you should send the name of the customer that this  project belongs to create a project").not().isEmpty(),
     validate
 ],(req: any,res: any)=>{
-    let teamsController = new ProjectsController();
-    teamsController.updateProject(req,res);
+    let projectController = new ProjectsController();
+    projectController.updateProject(req,res);
     
+});
+ProjectsRouter.post('/delete',[
+    check("projectId","you should send the id of the project that you whant to delete").not().isEmpty()
+    
+    ,validate
+],(req: any,res: any)=>{
+    let projectController = new ProjectsController();
+    projectController.delete(req,res);
+    //to do delete all subtask 
 });
 ProjectsRouter.post('/addTask',[
     check("date","you should send the task due-date to create a task").not().isEmpty(),
@@ -61,8 +70,8 @@ ProjectsRouter.post('/addTask',[
     check("proyectId","you should send the proyect id that this task belongs").not().isEmpty()
     ,validate
 ],(req: any,res: any)=>{
-    let teamsController = new ProjectsController();
-    teamsController.addTask(req,res);
+    let projectController = new ProjectsController();
+    projectController.addTask(req,res);
     
 });
 ProjectsRouter.post('/updateTask',[
@@ -74,8 +83,8 @@ ProjectsRouter.post('/updateTask',[
     check("proyectId","you should send the proyect id that this task belongs").not().isEmpty()
     ,validate
 ],(req: any,res: any)=>{
-    let teamsController = new ProjectsController();
-    teamsController.updateTask(req,res);
+    let projectController = new ProjectsController();
+    projectController.updateTask(req,res);
     
 });
 ProjectsRouter.post('/deleteTask',[
@@ -83,8 +92,8 @@ ProjectsRouter.post('/deleteTask',[
     
     ,validate
 ],(req: any,res: any)=>{
-    let teamsController = new ProjectsController();
-    teamsController.deleteTask(req,res);
+    let projectController = new ProjectsController();
+    projectController.deleteTask(req,res);
     //to do delete all subtask 
 });
 
@@ -93,16 +102,16 @@ ProjectsRouter.post('/addSubtask',[
     check("description","you should send the description of the subtask").not().isEmpty()
     ,validate
 ],(req: any,res: any)=>{
-    let teamsController = new ProjectsController();
-    teamsController.addSubtask(req,res);
+    let projectController = new ProjectsController();
+    projectController.addSubtask(req,res);
 });
 ProjectsRouter.post('/updateSubTask',[
     check("subTaskId","you should send the id of the task will hold this subtask").not().isEmpty(),
     check("description","you should send the description of the subtask").not().isEmpty()
     ,validate
 ],(req: any,res: any)=>{
-    let teamsController = new ProjectsController();
-    teamsController.updateSubTask(req,res);
+    let projectController = new ProjectsController();
+    projectController.updateSubTask(req,res);
     
 });
 
@@ -111,40 +120,40 @@ ProjectsRouter.post('/checkSubtask',[
     
     ,validate
 ],(req: any,res: any)=>{
-    let teamsController = new ProjectsController();
-    teamsController.checkSubtask(req,res);
+    let projectController = new ProjectsController();
+    projectController.checkSubtask(req,res);
 });
 ProjectsRouter.post('/deleteSubtask',[
     check("subTaskId","you should send the id of the subtask will delete").not().isEmpty()
     
     ,validate
 ],(req: any,res: any)=>{
-    let teamsController = new ProjectsController();
-    teamsController.deleteSubtask(req,res);
+    let projectController = new ProjectsController();
+    projectController.deleteSubtask(req,res);
 });
 ProjectsRouter.get('/getProject',[
     check("projectId","you should send the id of the project in order to see its details").not().isEmpty()
     
     ,validate
 ],(req: any,res: any)=>{
-    let teamsController = new ProjectsController();
-    teamsController.getProject(req,res);
+    let projectController = new ProjectsController();
+    projectController.getProject(req,res);
 });
 ProjectsRouter.get('/getKanban',[
     check("projectId","you should send the id of the project in order to see its kanban").not().isEmpty()
     
     ,validate
 ],(req: any,res: any)=>{
-    let teamsController = new ProjectsController();
-    teamsController.getKanban(req,res);
+    let projectController = new ProjectsController();
+    projectController.getKanban(req,res);
 });
 ProjectsRouter.get('/getSubtasks',[
     check("projectId","you should send the id of the project in order to see its subtasks").not().isEmpty()
     
     ,validate
 ],(req: any,res: any)=>{
-    let teamsController = new ProjectsController();
-    teamsController.getSubtasks(req,res);
+    let projectController = new ProjectsController();
+    projectController.getSubtasks(req,res);
 });
 
 export {ProjectsRouter};
