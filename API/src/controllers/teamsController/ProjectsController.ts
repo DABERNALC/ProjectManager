@@ -6,7 +6,30 @@ import ProjectMapper from "./mappers/ProjectMapper";
 import SubtasksMapper from "./mappers/SubtasksMapper";
 
 export class ProjectsController {
- 
+  updateProject(req: any, res: any) {
+    
+    const projectId = req.body.projectId;
+
+    const dbConection = DbConnection.getInstance();
+    const projectComponent = new ProjectsComponent(dbConection);
+
+    //manage api response
+    projectComponent
+      .updateProject(req)
+      .then((status) => {
+        res.json({
+          ok: true,
+          message: `i updated the project with id: ${projectId} `,
+        });
+      })
+      .catch((error) => {
+        res.json({
+          ok: false,
+          message: error,
+        });
+      });
+  }
+
   addTask(req: any, res: any) {
     const description = req.body.Description;
 
@@ -103,6 +126,28 @@ export class ProjectsController {
         });
       });
   }
+  updateSubTask(req: any, res: any) {
+    const subTaskId = req.body.subTaskId;
+
+    const dbConection = DbConnection.getInstance();
+    const projectComponent = new ProjectsComponent(dbConection);
+
+    //manage api response
+    projectComponent
+      .updateSubtask(req)
+      .then((status) => {
+        res.json({
+          ok: true,
+          message: `i updated the subtask with id: ${subTaskId} `,
+        });
+      })
+      .catch((error) => {
+        res.json({
+          ok: false,
+          message: error,
+        });
+      });
+  }
   createProject(req: any, res: any) {
     const name = req.body.Name;
 
@@ -138,7 +183,7 @@ export class ProjectsController {
         res.json({
           ok: true,
           message: `here is the project with id: ${id} `,
-          data: projectMapper.getDto(response)
+          data: projectMapper.getDto(response),
         });
       })
       .catch((error) => {
@@ -147,7 +192,7 @@ export class ProjectsController {
           message: error,
         });
       });
-}
+  }
   checkSubtask(req: any, res: any) {
     const id = req.body.subTaskId;
 
@@ -205,7 +250,7 @@ export class ProjectsController {
         res.json({
           ok: true,
           message: `here is the kanban for the project with id: ${id} `,
-          data: await kanbanMapper.getDto(response,id)
+          data: await kanbanMapper.getDto(response, id),
         });
       })
       .catch((error) => {
@@ -228,7 +273,7 @@ export class ProjectsController {
         res.json({
           ok: true,
           message: `here is the subtasks for the project with id: ${id} `,
-          data: await subtasksMapper.getDto(response)
+          data: await subtasksMapper.getDto(response),
         });
       })
       .catch((error) => {
@@ -238,17 +283,6 @@ export class ProjectsController {
         });
       });
   }
-
-
-
-
-
-
-
-
-
-
-
 
   createNotification(message: string, participant: string) {
     const dbConection = DbConnection.getInstance();

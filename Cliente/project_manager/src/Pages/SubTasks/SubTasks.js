@@ -99,6 +99,7 @@ function SubTasks(props) {
               title="Hecho"
               subtasks={doneSubtasks}
               checkSubtask={(id) => uncheckSubtask(id)}
+              refresh={getData}
             />
             
           </div>

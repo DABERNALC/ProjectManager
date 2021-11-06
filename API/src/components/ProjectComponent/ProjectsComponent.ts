@@ -4,15 +4,6 @@ import Teams from "../teamsComponent/Teams";
 
 export default class ProjectsComponent {
   
-  
-  
- 
-  
-
-  
- 
-  
-  
   instance: any;
   teams: any;
   dbConection: IDbConection;
@@ -146,6 +137,54 @@ export default class ProjectsComponent {
       });
     })
   }
+  updateProject(req: any) {
+    //getting the parameters from the request
+        
+    const CustomerName = req.body.CustomerName;
+    const Description = req.body.Description;
+    const Name = req.body.Name;
+    const projectId = req.body.projectId;
+   
+
+    const sqlStatement:String = `update proyecto SET  Descripcion ="${Description}" , Nombre= "${Name}"  ,  NombreCliente= "${CustomerName}"   WHERE   IDProyecto = ${projectId}`;
+  
+    //todo: llamar a la base de datos
+    return new Promise<String>((resolve, reject) => {
+      this.dbConection
+      .makeQuery(sqlStatement)
+      .then((response) => {
+        resolve("ok");
+      })
+      .catch((error) => {
+        
+        reject(error.sqlMessage);
+      });
+    })
+  }
+  updateSubtask(req: any) {
+    //getting the parameters from the request
+    
+    const description = req.body.description;
+  
+    const subTaskId = req.body.subTaskId;
+   
+
+    const sqlStatement:String = `update subtarea SET  Descripcion ="${description}"    WHERE   ID = ${subTaskId}`;
+  
+    //todo: llamar a la base de datos
+    return new Promise<String>((resolve, reject) => {
+      this.dbConection
+      .makeQuery(sqlStatement)
+      .then((response) => {
+        resolve("ok");
+      })
+      .catch((error) => {
+        
+        reject(error.sqlMessage);
+      });
+    })
+  }
+  
   deleteTask(req: any) {
      //getting the parameters from the request
      const taskId = req.body.taskId;
