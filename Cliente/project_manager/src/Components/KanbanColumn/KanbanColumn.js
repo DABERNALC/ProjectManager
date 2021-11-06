@@ -24,7 +24,7 @@ const KanbanColumn = (props) => {
                 }
                 {
                     props.tasks.map((theTask)=>
-                        <Task desc={theTask.Descripcion} color={theTask.Color} priority={theTask.prioridad} date={theTask.FechaTarea} id={theTask.id} refresh={props.refresh}> </Task>
+                        <Task desc={theTask.Descripcion} client={props.client} color={theTask.Color} priority={theTask.prioridad} date={theTask.FechaTarea} id={theTask.id} refresh={props.refresh}> </Task>
                     )
                 }
                

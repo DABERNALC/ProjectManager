@@ -86,6 +86,7 @@ function Kanban(props) {
           ) : (
             <div className={KanbanStyle.columnsContainers}>
               <KanbanColumn
+                client ="true"
                 title="TO DO"
                 liderId={liderId}
                 tasks={projectData.toDo}
@@ -95,6 +96,7 @@ function Kanban(props) {
                 }}
               ></KanbanColumn>
               <KanbanColumn
+                client ="true"
                 title="DOING"
                 tasks={projectData.doing}
                 teamId={teamId}

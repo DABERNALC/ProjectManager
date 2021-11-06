@@ -56,7 +56,7 @@ const Task = (props) => {
       className={TaskStyle.colorDiv}
       style={{ backgroundColor: `${props.color}` }}
     >
-      {showEdit ? (
+      {showEdit && !props.client ? (
         <>
           <AddTask
             setAddTask={() => setshowEdit(false)}
