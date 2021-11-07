@@ -17,11 +17,15 @@ function SubTasks(props) {
   }, []);
   const [doingSubtasks, setdoingSubtasks] = useState([]);
   const [doneSubtasks, setdoneSubtasks] = useState([]);
+  const [projectName, setprojectName] = useState("");
+
   let history = useHistory();
   function handleChange(value) {
     history.push(`/app/projects/${projectId}/${value}`);
   }
+
   const changedbData = (id) => {
+    
     const params = new URLSearchParams();
     params.append("subTaskId", id);
     axiosApi
@@ -63,8 +67,8 @@ function SubTasks(props) {
   };
   return (
     <div>
-      <h1>Asistente Virtual</h1>
-      <h2>Maguri UwU</h2>
+      <h1></h1>
+      <h2></h2>
       <div className={SubTaskStyle.selectDiv}>
         <select
           className={SubTaskStyle.selectStyle}
@@ -72,7 +76,7 @@ function SubTasks(props) {
           onChange={(event) => handleChange(event.target.value)}
         >
           <option hidden selected value="-1">
-            seleccione tarea
+            Seleccione tarea
           </option>
           {data.tasks != undefined
             ? data.tasks.map((theTask) =>
@@ -108,7 +112,7 @@ function SubTasks(props) {
         </div>
         </>
           :
-          <p>Porfavor elija una tarea primero</p>
+          <p className={SubTaskStyle.text1}>Por favor elige una tarea primero</p>
         }
 
         

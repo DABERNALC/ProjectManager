@@ -34,8 +34,8 @@ const UpdateSubtask = (props) => {
           console.log(error);
           swal({
             icon: 'error',
-            title: "Error modigicando subtarea",
-            text: "no hemos podido crear la subtarea, intenta mas tarde...",
+            title: "Error modificando subtarea",
+            text: "N  o hemos podido crear la subtarea, intenta mas tarde...",
             footer: '<a href="">Why do I have this issue?</a>'
           })
         });
@@ -48,7 +48,7 @@ const UpdateSubtask = (props) => {
     <div className={UpdateSubTaskStyle.container}>
       {
         subTaskTextError ?
-          <p style={{ color: "red" }}>Debes escribir una descripción de la subtarea y que sea menor a 50 caracteres</p> :
+          <p style={{ color: "red" }}>Debes escribir una descripción que sea menor a 50 caracteres</p> :
           null
       }
       <textarea className={UpdateSubTaskStyle.textareaStyle}

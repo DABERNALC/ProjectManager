@@ -17,8 +17,8 @@ const SubTaskColumn = (props) => {
     params.append("subTaskId", subtaskId);
 
     swal({
-      title: "Esta seguro que quiere eliminar esta subtarea",
-      text: "Una vez borrado no podrás recuperarlo!",
+      title: "¿Está seguro que quiere eliminar esta subtarea?",
+      text: "¡Una vez borrada no podrás recuperarla!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -28,7 +28,7 @@ const SubTaskColumn = (props) => {
           .post(`/projects/deleteSubtask`, params)
           .then((respose) => {
             props.refresh();
-            swal("la subtarea ha sido eliminada!", {
+            swal("¡La subtarea ha sido eliminada!", {
               icon: "success",
             });
           })
@@ -37,7 +37,7 @@ const SubTaskColumn = (props) => {
             console.log(e.response);
           });
       } else {
-        swal("No se elimino la subtask!");
+        swal("¡No se eliminó la subtask!");
       }
     });
   };

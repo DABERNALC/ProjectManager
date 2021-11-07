@@ -19,8 +19,8 @@ export const AddParticipant = (props) => {
           .post("/teams/addParticipant", params)
           .then((response) => {
             swal(
-              "participante agregado correctamente",
-              "puedes agregar cuantos participantes quieras"
+              "Participante agregado correctamente",
+              "Puedes agregar cuantos participantes quieras"
             );
             props.refreshUserData({ participantId: props.liderId });
             props.setshowModal();
@@ -33,7 +33,7 @@ export const AddParticipant = (props) => {
             console.log("error",e.response);
           });
     } else {
-      alert("no se manda");
+     
     }
   };
   const checkParameters = () => {
@@ -48,7 +48,7 @@ export const AddParticipant = (props) => {
     <div className={AddParticipantStyle.grayContainer}>
         {
             participantIdError ? 
-            <p style={{color:"red"}}>debes ingresar un id valido</p>
+            <p style={{color:"rgb(182, 37, 37);"}}>Debes ingresar un ID valido</p>
             :null
         }
       <div className={AddParticipantStyle.inputContainer}>
@@ -57,7 +57,7 @@ export const AddParticipant = (props) => {
             participantIdError ? AddParticipantStyle.notValid : null
           }`}
           type="text"
-          placeholder="Introduzca el código del usuario..."
+          placeholder="Introduzca el código del usuario"
           value={participantId}
           onChange={(e) => {
             setparticipantIdError(false);
@@ -69,7 +69,7 @@ export const AddParticipant = (props) => {
         <div onClick={() => addParticipant()}>
           <GenericButton2 text="Añadir"></GenericButton2>
         </div>
-        <GiCancel fontSize="x-large"></GiCancel>
+        <GiCancel className={AddParticipantStyle.iconStyle} fontSize="x-large"></GiCancel>
       </div>
     </div>
   );

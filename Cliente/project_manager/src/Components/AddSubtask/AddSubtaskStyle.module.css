@@ -10,6 +10,7 @@
     padding-top: 20px;
     padding-bottom: 5px;
     align-items: center;
+    margin-bottom: 15px;
 }
 
 .textareaStyle{
@@ -32,12 +33,12 @@
 }
 
 .buttonStyle {
-    width: 61.59px;
+    width: fit-content;
     height: 23px;
     font-family: Sansita;
     font-style: normal;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 18px;
     line-height: 14px;
     letter-spacing: 0.03em;
     color: #ffffff;
@@ -46,6 +47,10 @@
     border: none;
     margin-left: 8px;
     margin-right: 8px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 15px;
     cursor: pointer;
 }
 

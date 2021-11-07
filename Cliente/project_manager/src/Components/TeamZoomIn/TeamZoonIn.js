@@ -24,7 +24,7 @@ export const TeamZoomIn = (props) => {
     apiAxios
       .get(`/teams/getTeam?TeamId=${props.teamId}`)
       .then((respose) => {
-        console.log("response",props.teamId);
+        console.log("response", props.teamId);
         setidTeam(respose.data.team.idTeam)
         setname(respose.data.team.name)
         setprojects(respose.data.team.proyects);
@@ -36,41 +36,40 @@ export const TeamZoomIn = (props) => {
         console.log(e.response);
       });
   };
-  const deleteTeam = (participantId) =>
-  {
-    
+  const deleteTeam = (participantId) => {
+
     const params = new URLSearchParams();
     params.append("teamId", idTeam);
     params.append("participant", participantId);
 
     swal({
-      title: "Esta seguro que quiere eliminar el participante de  este equipo?",
-      text: "Una vez borrado no podrás recuperarlo!",
+      title: "¿Estás seguro que quieres eliminar el participante de este equipo?",
+      text: "¡Una vez borrado no podrás recuperarlo!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     })
-    .then((willDelete) => {
-      if (willDelete) {
-        apiAxios
-      .post(`/teams/removeParticipant`,params)
-      .then((respose) => {
-        swal("el participante ha sido eliminado del equipo!", {
-          icon: "success",
-        });
-        getTeam()
-      })
-      .catch((e) => {
-        // console.log(Object.getOwnPropertyNames(e));
-        console.log(e.response);
+      .then((willDelete) => {
+        if (willDelete) {
+          apiAxios
+            .post(`/teams/removeParticipant`, params)
+            .then((respose) => {
+              swal("¡El participante ha sido eliminado del equipo!", {
+                icon: "success",
+              });
+              getTeam()
+            })
+            .catch((e) => {
+              // console.log(Object.getOwnPropertyNames(e));
+              console.log(e.response);
+            });
+
+        } else {
+          swal("¡No se eliminó el participante!");
+        }
       });
-        
-      } else {
-        swal("No se elimino el participante!");
-      }
-    });
-    
-      
+
+
   }
   return (
     <div
@@ -94,15 +93,16 @@ export const TeamZoomIn = (props) => {
               fontSize="xx-large"
               color={participant.color}
             ></BsFillPersonFill>
-            
-            <h3>{participant.name}</h3>
-            <div onClick={()=>{deleteTeam(participant.id)}}>
-            <GiCancel fontSize="x-large" color="red"></GiCancel>
 
+            <h3>{participant.name}</h3>
+            <div className={TeamZoomInStyle.cancelIcon} onClick={() => { deleteTeam(participant.id) }}>
+              <GiCancel fontSize="x-large"></GiCancel>
             </div>
           </div>
         ))}
-        <AddParticipant teamId={props.teamId}></AddParticipant>
+        <div className={TeamZoomInStyle.addParticipantDiv}>
+          <AddParticipant teamId={props.teamId}></AddParticipant>
+        </div>
         <div className={TeamZoomInStyle.blueContainer}>
           <BsFolder fontSize="x-large" color="white" />
           <h2>Proyectos</h2>
@@ -116,13 +116,12 @@ export const TeamZoomIn = (props) => {
             <h3>{project.name}</h3>
           </div>
         ))}
-        <div  onClick={props.setshowTeamDetail} className={TeamZoomInStyle.gButton}>
-            <GenericButton2
-          text="Aceptar"
-          
-        ></GenericButton2>
+        <div onClick={props.setshowTeamDetail} className={TeamZoomInStyle.gButton}>
+          <GenericButton2
+            text="Aceptar"
+          ></GenericButton2>
         </div>
-        
+
       </div>
     </div>
   );

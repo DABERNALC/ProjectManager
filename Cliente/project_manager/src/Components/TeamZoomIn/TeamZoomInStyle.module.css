@@ -1,4 +1,4 @@
-.container{
+.container {
     position: absolute;
     width: 22%;
     min-height: 70%;
@@ -6,24 +6,24 @@
     top: 5%;
     display: flex;
     flex-direction: column;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     padding-bottom: 20px;
 }
-.grayContainer{
+.grayContainer {
     position: fixed;
     width: 100vw;
     height: 100vh;
     background: rgba(174, 174, 174, 0.4);
-    top:0px;
+    top: 0px;
     left: 0px;
 }
-.container h2{
+.container h2 {
     margin-left: 15px;
     margin-right: 15px;
 }
-.blueContainer{
+.blueContainer {
     display: flex;
     flex-direction: row;
     margin-top: 20px;
@@ -34,25 +34,40 @@
     align-items: center;
     padding-left: 15px;
 }
-.blueContainer h2{
+.blueContainer h2 {
     color: white;
 }
-.personContainer{
+.personContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 80%;
     padding-left: 20%;
 }
-.personContainer h3{
+.personContainer h3 {
     font-size: large;
     margin-left: 10px;
 }
-.gButton{
+
+.cancelIcon {
+    margin-left: 5px;
+    padding-top: 2px;
+    color: black;
+    cursor: pointer;
+}
+
+.cancelIcon:hover {
+    color: rgb(189, 5, 5);
+}
+.addParticipantDiv {
+    display: flex;
+    justify-content: center;
+}
+.gButton {
     margin-top: 20px;
 }
 @media (max-width: 600px) {
-    .container{
+    .container {
         width: 90%;
         margin-left: 0%;
         left: 5%;

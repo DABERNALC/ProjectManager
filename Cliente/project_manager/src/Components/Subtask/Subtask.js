@@ -6,7 +6,7 @@ import SubTaskStyle from "./SubTaskStyle.module.css";
 const Subtask = (props) => {
   const [showUpdate, setshowUpdate] = useState(false);
   return (
-    <div>
+    <div className={SubTaskStyle.biggerCont}>
       {!showUpdate ? (
         <div className={SubTaskStyle.container}>
           <input
@@ -25,8 +25,8 @@ const Subtask = (props) => {
           >
             {props.subtask.description}
           </label>
-          <div onClick={() => props.deleteSubtask(props.subtask.id)}>
-            <AiFillDelete />
+          <div className={SubTaskStyle.trashIconDiv} onClick={() => props.deleteSubtask(props.subtask.id)}>
+            <AiFillDelete className={SubTaskStyle.trashIcon}></AiFillDelete>
           </div>
         </div>
       ) : (
