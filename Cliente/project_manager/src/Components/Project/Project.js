@@ -19,15 +19,17 @@ export const Project = (props) => {
     <div className={ProjectStyle.containerBlue}>
       <div className={ProjectStyle.container}>
         <Link to={`/app/projects/${props.projectId}`}>
-          <h3>{props.ProjectName}</h3>
+          <h3 className={ProjectStyle.projectStyle}>{props.ProjectName}</h3>
         </Link>
         <div>
-          <h4>{props.TeamName}</h4>
-          <li className={ProjectStyle.icon}>
-            <GrConfigure onClick={() => setshowProperties(!showProperties)} />
-          </li>
+          <h4 className={ProjectStyle.teamStyle}>{props.TeamName}</h4>
+          <div className={ProjectStyle.icon}>
+            <GrConfigure className={ProjectStyle.iconStyle} onClick={() => setshowProperties(!showProperties)} />
+          </div>
         </div>
       </div>
+
+
       {showDetails ? (
         <ProjectZoomIn
           setshowDetails={() => {

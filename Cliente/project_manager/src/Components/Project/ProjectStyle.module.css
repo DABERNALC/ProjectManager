@@ -8,6 +8,7 @@
     display: flex;
     align-items: flex-end;
 }
+
 .container{
     background: #FFFFFF;
     border: 1px solid #000000;
@@ -16,42 +17,63 @@
     border-radius: 5px;
     width: 214px;
     height: 71px;
+    text-align: start;
 }
 
 .container h3{
     margin-top: 5px;
     font-family: Roboto;
     font-style: normal;
-    font-weight: normal;
     font-size: 18px;
     line-height: 21px;
 }
+
 .container h3:hover
 {
-    background: #adb3d0;
-    color: white;
+    color: #002aff;
     cursor: pointer;
 }
+.projectStyle{
+    margin-left: 8px;
+    font-weight: bold;
+}
+
+.teamStyle{
+    font-size: 18px;
+    text-align: start;
+    color: #424242;
+}
+
 .container h4{
     margin-left: 20px;
     margin-top: 0px;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 18px;
 }
+
 .container div{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    
 }
+
 .icon
 {
     list-style: none;
+    margin-right: -35px;
+    height: fit-content;
 }
-.icon:hover
+
+.iconStyle{
+    height: 25px;
+    width: 25px;
+}
+
+.iconStyle:hover
 {
     cursor: pointer;
-    height: 20px;
+    color:rgb(189, 5, 5);
 }

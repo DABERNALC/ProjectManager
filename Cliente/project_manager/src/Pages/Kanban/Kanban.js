@@ -50,7 +50,7 @@ function Kanban(props) {
   };
   const copyLink = () => {
     navigator.clipboard.writeText(`http://localhost:3000/projects/${projectId}`)
-    alert.show("link copiado, compartelo con tu cliente");
+    alert.show("Link copiado, compártelo con tu cliente");
   }
 
   useEffect(() => {
@@ -118,7 +118,7 @@ function Kanban(props) {
         projectData.doing.length == 0 &&
         projectData.done.length == 0 ? null : (
         <>
-          <button className={KanbanStyle.shareLink} onClick={copyLink}>compartir con el cliente</button>
+          <button className={KanbanStyle.shareLink} onClick={copyLink}>Compartir con el cliente</button>
           <div className={KanbanStyle.buttonStyle}>
           <Link
             to={`/app/projects/${projectId}/-1`}
