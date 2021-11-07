@@ -93,3 +93,9 @@
 .notValid {
     background-color: red;
 }
+@media (max-width: 600px) {
+    .miniContainer{
+        width: 90%;
+        left: 5%;
+    }
+}

@@ -35,3 +35,37 @@
 .inconvenientDiv{
     margin-left: 50px;
 }
+@media (max-width: 600px) {
+    .biggerDiv{
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        width: 100%;
+        justify-content: center;
+    }
+    .columns{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        margin: 0;
+        margin-top: 20px;
+    }
+    .selectDiv{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-left: 0%;
+    }
+    .selectStyle{
+        width: 70%;
+    }
+    .inconvenientDiv{
+        width: 100%;
+        margin-left: 0;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+}

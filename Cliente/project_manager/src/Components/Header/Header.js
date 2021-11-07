@@ -31,7 +31,6 @@ const Header = (props) => {
         </h1>
         <h1 className={HeaderStyle.userCode}> #{props.Id}</h1>
         </div>
-        
         <FaUserAlt className="ListIcon" color={props.Color}></FaUserAlt>
       </div>
     </div>

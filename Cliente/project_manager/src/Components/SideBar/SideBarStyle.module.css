@@ -87,6 +87,7 @@ hr{
         -moz-columns: 2;
         display: flex;
         flex-direction: row;
+        height: 100%;
     }
     .ListIcon{
         font-size: 2em;

@@ -127,3 +127,12 @@ GenericButton1 {
     width: 60px;
     justify-content: center;
 }
+@media (max-width: 600px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+    }
+    .container h1{
+        margin: 0;
+    }
+}
