@@ -42,8 +42,8 @@ export const ProjectZoomIn = (props) => {
           props.setshowDetails();
           props.refreshUserData({ participantId: props.liderId });
           swal(
-            "projecto modificado correctamente",
-            "todos los datos han sido guardados",
+            "Proyecto modificado correctamente",
+            "Todos los datos han sido guardados",
             "success"
           );
         })
@@ -53,7 +53,7 @@ export const ProjectZoomIn = (props) => {
           swal({
             icon: "error",
             title: "Error modigicando el projecto",
-            text: "no hemos podido modificar el projecto, intenta mas tarde...",
+            text: "No hemos podido modificar el projecto, intenta más tarde...",
           });
         });
     }
@@ -98,10 +98,10 @@ export const ProjectZoomIn = (props) => {
                   <>
                     {nameError ? (
                       <p style={{ color: "red" }}>
-                        debes ingresar un nombre y que sea menor a 30 caracters
+                        Debes ingresar un nombre y que sea menor a 30 caracters
                       </p>
                     ) : null}
-                    <input
+                    <input className={ProjectZoomInStyle.inputStyle}
                       type="text"
                       value={name}
                       onChange={(e) => {
@@ -113,16 +113,17 @@ export const ProjectZoomIn = (props) => {
                 ) : (
                   <p>{props.name}</p>
                 )}
-                <h3>Descripcion</h3>
+                <h3>Descripción</h3>
                 {update ? (
                   <>
                     {descriptionError ? (
                       <p style={{ color: "red" }}>
-                        debes ingresar una descripcion y que sea menor a 50
-                        caracters
+                        Debes ingresar una descripción y que sea menor a 50
+                        caracteres
                       </p>
                     ) : null}
                     <input
+                      className={ProjectZoomInStyle.inputStyle}
                       type="text"
                       value={description}
                       onChange={(e) => {
@@ -151,6 +152,7 @@ export const ProjectZoomIn = (props) => {
                     ) : null}
 
                     <input
+                      className={ProjectZoomInStyle.inputStyle}
                       type="text"
                       value={customerName}
                       onChange={(e) => {
@@ -176,7 +178,7 @@ export const ProjectZoomIn = (props) => {
               <div className={ProjectZoomInStyle.buttonContainer}>
                 {update ? (
                   <div onClick={() => updateProject()}>
-                    <GenericButton2 text="guardar"></GenericButton2>
+                    <GenericButton2 text="Guardar"></GenericButton2>
                   </div>
                 ) : (
                   <div onClick={() => setupdate(true)}>

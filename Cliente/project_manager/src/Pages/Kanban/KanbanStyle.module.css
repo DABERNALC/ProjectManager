@@ -73,22 +73,27 @@ GenericButton1 {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    
 }
+
 .userContainer {
     display: flex;
     flex-direction: row;
-    width: 20%;
+    width: fit-content;
     justify-content: space-evenly;
     font-size: xx-large;
     margin-right: 10%;
     height: fit-content;
     margin-bottom: -20px;
     align-items: center;
+    align-items: flex-start;
 }
 
 .userName {
     font-size: 15px;
     width: 80px;
+    text-align: center;
+    
 }
 
 .shareLink {
@@ -116,7 +121,7 @@ GenericButton1 {
 .user {
     display: flex;
     flex-direction: column;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    width: 60px;
+    justify-content: center;
 }
