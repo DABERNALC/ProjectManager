@@ -7,8 +7,8 @@ import { connect } from "react-redux";
 import Notification from "../Notification/Notification";
 
 const Header = (props) => {
-    const [showNotification, setshowNotification] = useState(false)
-    
+  const [showNotification, setshowNotification] = useState(false)
+
   return (
     <div className={HeaderStyle.headerDiv}>
       <div className={HeaderStyle.userContainer}>
@@ -16,13 +16,22 @@ const Header = (props) => {
         <h1 className={HeaderStyle.logoName}>Gestor de proyectos</h1>
       </div>
       <div className={HeaderStyle.userContainer}>
-        <section className={HeaderStyle.notificationContainer} onClick={()=>{setshowNotification(!showNotification)}}> 
-          <MdOutlineNotificationsActive className="ListIcon" onClick={()=>{setshowNotification(!showNotification)}}/>
-          {showNotification ? <Notification notifications={[]} />: null}
-        </section>
+        <div className={HeaderStyle.notifDiv}>
+          <section className={HeaderStyle.notificationContainer} onClick={() => { setshowNotification(!showNotification) }}>
+            <MdOutlineNotificationsActive className="ListIcon" onClick={() => { setshowNotification(!showNotification) }} />
+            <div>
+              {showNotification ?
+                <Notification notifications={[]} /> : null}
+            </div>
+          </section>
+        </div>
+        <div className={HeaderStyle.userInfoStyle}>
         <h1 className={HeaderStyle.userName}>
-          {props.Name} #{props.Id}
+          {props.Name}
         </h1>
+        <h1 className={HeaderStyle.userCode}> #{props.Id}</h1>
+        </div>
+        
         <FaUserAlt className="ListIcon" color={props.Color}></FaUserAlt>
       </div>
     </div>

@@ -13,7 +13,7 @@ export const Notification = (props) => {
                     :
                         <div className={NotificationStyle.noNoti}>
                             <MdNotificationsOff className={NotificationStyle.noNotiLogo}/>
-                            <p>¡No hay notificaciones!</p>
+                            <p>¡Nada nuevo! Sin notificaciones</p>
                         </div>
                 }
             </div>

@@ -4,10 +4,10 @@ body {
 
 .logoName {
     margin-left: 5px;
-    font-size: 16px;   
+    font-size: 16px;
 }
 
-.userName{
+.userName {
     font-size: 19px;
     margin-left: 15px;
 }
@@ -45,28 +45,39 @@ body {
     margin-left: 50px;
 }
 
-.listIcon{
-    background-color:aqua;
+.listIcon {
+    background-color: rgb(28, 65, 65);
 }
-.notificationContainer
-{
+.notificationContainer {
     display: flex;
     flex-direction: column;
 }
-.notificationContainer:hover
-{
-   cursor: pointer;
+.notifDiv {
+}
+
+.userInfoStyle {
+    display: flex;
+    flex-direction: column;
+}
+
+.userCode{
+    font-size: 15px;
+    color: gray;
+}
+
+.notificationContainer:hover {
+    cursor: pointer;
 }
 @media (max-width: 600px) {
-    .headerDiv{
-      grid-template-areas: none;
-      display: flex;
-      flex-direction: row;
-      height: 5vh;
+    .headerDiv {
+        grid-template-areas: none;
+        display: flex;
+        flex-direction: row;
+        height: 5vh;
     }
-    .logo{
+    .logo {
         height: 30%;
         margin-left: 5px;
         margin-right: 5px;
     }
-  }
+}
