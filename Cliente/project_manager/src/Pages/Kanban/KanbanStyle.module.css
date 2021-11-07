@@ -27,6 +27,7 @@ body {
     letter-spacing: 0.02em;
     text-align: start;
     margin-left: 30px;
+    margin-top: -12px;
 }
 
 .kanbanContainerCentered {
@@ -41,6 +42,7 @@ body {
     background: white;
     border-radius: 5px;
     width: 80%;
+    margin-top: 25px;
 }
 
 .columnsContainers {
@@ -73,7 +75,7 @@ GenericButton1 {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    
+    margin-top: 20px;
 }
 
 .userContainer {

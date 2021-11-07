@@ -6,16 +6,15 @@
 
 .leftMenu {
     width: 95%;
-    height: 90%;
+    height: 95%;
     margin-left: 5%;
-    margin-top: 10%;
+    margin-top: 5%;
     background: #1b183d;
     backdrop-filter: blur(4px);
     border-radius: 5px;
 }
 hr{
     border: 10px solid #ADB3D0;
-    margin-top: 50px;
 }
 
 .list {
@@ -44,8 +43,6 @@ hr{
     display: flex;
     align-items: center;
     margin-right: 10px;
-    margin-bottom: 10px;
-
 }
 .list li > *{
     margin-right: 20px;
