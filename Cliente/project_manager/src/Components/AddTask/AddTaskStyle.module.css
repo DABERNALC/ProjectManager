@@ -1,6 +1,7 @@
 * {
     font-family: Sansita;
     font-style: normal;
+    
 }
 
 .container {
@@ -12,30 +13,32 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 13px;
+    text-align: start;
 }
 
-.container p {
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 14px;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.03em;
+
+.descriptionStyle {
+    margin-left: 8px;
+    font-size: 18px;
     color: #050038;
+    font-weight: bold;
+    margin-bottom: 0;
+    
 }
 
 .descInput {
     width: 94%;
     display: flex;
     margin-right: 8px;
-    font-size: 15px;
+    font-size: 18px;
     resize: none;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     background: #f5f5f5;
     border: 1px solid #050038;
-    border-radius: 2px;
+    border-radius: 5px;
+    margin-top: 7px;
 }
 
 select {
@@ -46,17 +49,22 @@ select {
     border: 1px solid #050038;
     box-sizing: border-box;
     border-radius: 5px;
+    font-size: 18px;
 }
 
 .selectDiv {
     display: flex;
     justify-content: space-evenly;
+    font-size: 18px;
 }
 
 .calendarStyle {
     width: 50%;
     height: 25px;
-    font-size: 15px;
+    font-size: 18px;
+    background: #f5f5f5;
+    border: 2px solid #050038;
+    border-radius: 5px;
 }
 
 .checkwithtext {
@@ -64,7 +72,6 @@ select {
     flex-direction: row;
     align-items: center;
     height: 30px;
-    
 }
 
 .checkStyle {
@@ -73,8 +80,9 @@ select {
     margin-left: 8px;
 }
 
-.clientText{
+.clientText {
     width: 90px;
+    color: black;
 }
 
 .dateAndCheck {
@@ -88,19 +96,17 @@ select {
 
 .buttonCancel {
     display: flex;
-    align-items:center;
+    align-items: center;
     padding-bottom: 8px;
 }
 
 .buttonStyle {
-    width: 61.59px;
-    height: 23px;
+    width: fit-content;
+    height: 30px;
     font-family: Sansita;
     font-style: normal;
     font-weight: bold;
-    font-size: 12px;
-    line-height: 14px;
-    letter-spacing: 0.03em;
+    font-size: 18px;
     color: #ffffff;
     background: #4262ff;
     border-radius: 5px;
@@ -108,20 +114,24 @@ select {
     margin-left: 8px;
     margin-right: 8px;
     cursor: pointer;
+
+
+}
+.buttonStyle:hover{
+    background: #2643D1;
+    cursor: pointer;
 }
 
-
-
-.icon{
+.icon {
     height: 23px;
     width: 23px;
 }
 
-.icon:hover{
+.icon:hover {
     cursor: pointer;
+    color:rgb(189, 5, 5);
 }
 
-.notValid
-{
+.notValid {
     background-color: red;
 }

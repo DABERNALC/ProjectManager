@@ -7,8 +7,11 @@ body {
     text-align: start;
     margin-left: 10px;
 }
-.fullScreen
-{
+
+.teamStyle{
+    font-size: 18px;
+}
+.fullScreen {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -51,26 +54,27 @@ body {
     margin-top: 20px;
     display: flex;
     justify-content: end;
+    padding-bottom: 20px;
+    padding-right: 15px;
 }
 
-GenericButton1{
+GenericButton1 {
     margin-right: 20px;
     margin-bottom: 20px;
 }
-.spinnerContainer
-{
+.spinnerContainer {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
 }
-.container{
+.container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
-.userContainer{
+.userContainer {
     display: flex;
     flex-direction: row;
     width: 20%;
@@ -82,15 +86,37 @@ GenericButton1{
     align-items: center;
 }
 
-.userDiv{
-    height: fit-content;
+.userName {
+    font-size: 15px;
+    width: 80px;
+}
+
+.shareLink {
     width: fit-content;
+    height: fit-content;
+    background: #ffffff;
+    border: 2px solid #4262ff;
+    border-radius: 10px;
+    font-family: Sansita;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    color: #4262ff;
+    margin-top: 20px;
+    
 }
-.userName{
-    margin-bottom: -5px;
+.shareLink:hover{
+    cursor: pointer;
+    border: 2px solid #2643D1;
+    color: #2643D1;
 }
-.user
-{
+
+.user {
     display: flex;
     flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

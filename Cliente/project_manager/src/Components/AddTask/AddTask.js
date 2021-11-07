@@ -111,20 +111,20 @@ const AddTask = (props) => {
     if (description == "") {
       setdescriptionError(true);
       setvalidateError(
-        validateError + " la tarea debe tener una descripción, "
+        validateError + " La tarea debe tener una descripción, "
       );
     } else setdescriptionError(false);
 
     if (date == "") {
       setdateError(true);
       setvalidateError(
-        validateError + " debes elegir una fecha despues de la actual, "
+        validateError + " Debes elegir una fecha después de la actual, "
       );
     } else setdateError(false);
     if (participantId == "-1") {
       setparticipantError(true);
       setvalidateError(
-        validateError + " debes seleccionar un responsable de esta tarea "
+        validateError + " Debes seleccionar un responsable de esta tarea "
       );
     } else setparticipantError(false);
   };
@@ -142,7 +142,7 @@ const AddTask = (props) => {
   };
   return (
     <div className={AddTaskStyle.container}>
-      <p>Descripción</p>
+      <p className={AddTaskStyle.descriptionStyle}>Descripción</p>
       <form>
         {
           priorityRecomendationText != "" ? <p style={{color:"Teal"}}>{priorityRecomendationText} !!!</p>:null

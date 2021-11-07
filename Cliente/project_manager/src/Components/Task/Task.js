@@ -15,8 +15,8 @@ const Task = (props) => {
     const params = new URLSearchParams();
     params.append("taskId", props.id);
     swal({
-      title: "Esta seguro que quiere eliminar esta tarea?",
-      text: "Una vez borrado no podrás recuperarlo!",
+      title: "¿Estás seguro que quieres eliminar esta tarea?",
+      text: "¡Una vez borrada no podrás recuperarlo!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -27,7 +27,7 @@ const Task = (props) => {
       .post(`/projects/deleteTask`,params)
       .then((respose) => {
           console.log(respose.data);
-        swal("la tarea se elimino con exito!", {
+        swal("¡La tarea se eliminó con éxito!", {
             icon: "success",
           });
           props.refresh();
@@ -39,13 +39,13 @@ const Task = (props) => {
         swal({
           icon: 'error',
           title: 'Oops...',
-          text: 'No puedes eliminar una tarea que tiene subtareas!'
+          text: '¡No puedes eliminar una tarea que tenga subtareas!'
         })
         console.log(e.response);
       });
         
       } else {
-        swal("No se elimino la tarea!");
+        swal("¡No se eliminó la tarea!");
       }
     });
     

@@ -48,8 +48,7 @@ function Kanban(props) {
         console.log(error.error);
       });
   };
-  const copyLink = ()=>
-  {
+  const copyLink = () => {
     navigator.clipboard.writeText(`http://localhost:3000/projects/${projectId}`)
     alert.show("link copiado, compartelo con tu cliente");
   }
@@ -65,19 +64,19 @@ function Kanban(props) {
       <div className={KanbanStyle.container}>
         <div>
           <h1 className={KanbanStyle.title}>{projectName}</h1>
-          <h3>{teamName}</h3>
+          <h3 className={KanbanStyle.teamStyle}>{teamName}</h3>
         </div>
         <div className={KanbanStyle.userContainer}>
           {props.teams.map((Team) =>
             Team.idTeam == teamId
               ? Team.Participants.map((pepe) => (
-                  <div className={KanbanStyle.userDiv}>
-                    <div className={KanbanStyle.user}>
-                      <FaUserAlt color={pepe.Color} />
-                      <p className={KanbanStyle.userName}>{pepe.Nombre}</p>
-                    </div>
+                <div className={KanbanStyle.userDiv}>
+                  <div className={KanbanStyle.user}>
+                    <FaUserAlt color={pepe.Color} />
+                    <p className={KanbanStyle.userName}>{pepe.Nombre}</p>
                   </div>
-                ))
+                </div>
+              ))
               : null
           )}
         </div>
@@ -116,16 +115,17 @@ function Kanban(props) {
       </div>
 
       {projectData.toDo.length == 0 &&
-      projectData.doing.length == 0 &&
-      projectData.done.length == 0 ? null : (
+        projectData.doing.length == 0 &&
+        projectData.done.length == 0 ? null : (
         <>
-          <button onClick={copyLink}>compartir con el cliente</button>
+          <button className={KanbanStyle.shareLink} onClick={copyLink}>compartir con el cliente</button>
+          <div className={KanbanStyle.buttonStyle}>
           <Link
-            className={KanbanStyle.buttonStyle}
             to={`/app/projects/${projectId}/-1`}
           >
             <GenericButton1 nombre="Checklist >"></GenericButton1>
           </Link>
+          </div>
         </>
       )}
     </div>
