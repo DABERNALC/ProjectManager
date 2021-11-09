@@ -7,6 +7,8 @@ import * as actionCreators from "../../Store/Actions/UserInfo";
 import axios from "axios"
 import Spinner from '../Spinner/Spinner';
 import { useHistory } from 'react-router-dom'
+
+
 const BiggerLogSignIn = (props) => {
     let [email, setEmail] = useState("")
     let [contra, setContra] = useState("")
@@ -30,9 +32,7 @@ const BiggerLogSignIn = (props) => {
             firebaseData: firebaseData,
             apiData: apiData
         }
-
         props.signUp(data);
-        
         
         
     }
@@ -70,7 +70,8 @@ const BiggerLogSignIn = (props) => {
                             props.error != "" ?
                                 <p style={{ color: "rgb(182, 37, 37)" }}>{props.error}</p>
                                 :
-                                null
+                               // <p style={{ color: "green" }}>¡Inicia sesión!</p>
+                               null
                         }
                         {
                             props.mode == "signUp" ?
@@ -115,14 +116,13 @@ const BiggerLogSignIn = (props) => {
                                 </div> :
                                 null
                         }
-
-
                     </div>
                     <div className={BiggerLogSignInStyle.buttonDiv}>
                         {
                             loading ?
-                                <Spinner />
+                                <Spinner className={BiggerLogSignInStyle.spinnerStyle}/>
                                 :
+                                
                                 <button className={BiggerLogSignInStyle.LogInButton}
                                     onClick={(e) => {
                                         e.preventDefault();
@@ -131,7 +131,6 @@ const BiggerLogSignIn = (props) => {
                                         }
                                         else {
                                             logIn();
-
                                         }
                                     }}
                                 > {props.mode == "signUp" ? "Registrarse" : "Iniciar sesión"}</button>

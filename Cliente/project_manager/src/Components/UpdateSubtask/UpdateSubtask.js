@@ -35,7 +35,7 @@ const UpdateSubtask = (props) => {
           swal({
             icon: 'error',
             title: "Error modificando subtarea",
-            text: "N  o hemos podido crear la subtarea, intenta mas tarde...",
+            text: "No hemos podido crear la subtarea, intenta mas tarde...",
             footer: '<a href="">Why do I have this issue?</a>'
           })
         });
@@ -46,6 +46,7 @@ const UpdateSubtask = (props) => {
   }
   return (
     <div className={UpdateSubTaskStyle.container}>
+      <p className={UpdateSubTaskStyle.descriptionStyle}>Descripción</p>
       {
         subTaskTextError ?
           <p style={{ color: "red" }}>Debes escribir una descripción que sea menor a 50 caracteres</p> :
@@ -62,7 +63,7 @@ const UpdateSubtask = (props) => {
         <div onClick={updateSubtask}>
           <button className={UpdateSubTaskStyle.buttonStyle}
             nombre="modificar"
-          >modificar</button>
+          >Modificar</button>
         </div>
         <div onClick={props.closeModal}>
           <GiCancel className={UpdateSubTaskStyle.icon} fontSize="x-large"></GiCancel>

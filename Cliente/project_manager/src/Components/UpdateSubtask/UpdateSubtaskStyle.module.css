@@ -12,6 +12,16 @@
     align-items: center;
 }
 
+.descriptionStyle {
+    margin-left: 8px;
+    font-size: 18px;
+    color: #050038;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: start;
+    margin-top: 0px;
+}
+
 .textareaStyle{
     width: 94%;
     display: flex;

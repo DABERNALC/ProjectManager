@@ -59,6 +59,10 @@
     margin-top: 20px;
 }
 
+.spinnerStyle{
+    margin-top: 10px;
+}
+
 .buttonDiv {
     display: flex;
     justify-content: center;
