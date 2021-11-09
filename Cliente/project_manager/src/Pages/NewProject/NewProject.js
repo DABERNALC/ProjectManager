@@ -40,7 +40,7 @@ export const NewProject = (props) => {
           swal({
             icon: 'error',
             title: "Error creando proyecto",
-            text: "Intente mas tarde",
+            text: "Intenta más tarde",
             footer: '<a href="">Why do I have this issue?</a>'
           })
         });
@@ -85,8 +85,8 @@ export const NewProject = (props) => {
         </div>
         <h3 className={NewProjectStyle.titles}>Nombre</h3>
         {nameError ? (
-          <p style={{ color: "red" }}>
-            Debes poner un nombre menor a 30 caracteres{" "}
+          <p style={{ color: "rgb(182, 37, 37)" }}>
+            Debes poner un nombre y que sea menor a 30 caracteres{" "}
           </p>
         ) : null}
         <input
@@ -100,8 +100,8 @@ export const NewProject = (props) => {
         ></input>
         <h3 className={NewProjectStyle.titles} >Descripción</h3>
         {descriptionError ? (
-          <p style={{ color: "red" }}>
-            Debes poner una descripción menor a 50 caracteres{" "}
+          <p style={{ color: "rgb(182, 37, 37)" }}>
+            Debes poner una descripción y que sea menor a 50 caracteres{" "}
           </p>
         ) : null}
         <textarea
@@ -116,7 +116,7 @@ export const NewProject = (props) => {
         ></textarea>
         <h3 className={NewProjectStyle.titles} >Cliente</h3>
         {customerNameError ? (
-          <p style={{ color: "red" }}>
+          <p style={{ color: "rgb(182, 37, 37)" }}>
             Debes poner un nombre menor a 30 caracteres{" "}
           </p>
         ) : null}

@@ -30,7 +30,7 @@ a {
 
 .estiloBoton {
     display: flex;
-    width: 224px;
+    width: 204px;
     height: 47px;
     background: #4262ff;
     border-radius: 60px;
@@ -42,11 +42,30 @@ a {
     justify-content: center;
     color: #ffffff;
     cursor: pointer;
+    padding-bottom: 5px;
     border: none;
 }
 
 .estiloBoton:hover {
     background: #2643d1;
+}
+
+.estiloBoton:after {
+    content: "»";
+    opacity: 0;
+    transition: 0.5s;
+    color: #ffffff;
+    margin-left: 10px;
+}
+
+.estiloBoton:hover {
+    padding-right: 24px;
+    padding-left: 8px;
+}
+
+.estiloBoton:hover:after {
+    opacity: 1;
+    right: 10px;
 }
 
 .tittleName {
@@ -72,6 +91,12 @@ a {
     cursor: pointer;
     color: #000000;
 }
+
+.logInText:hover,
+.logInText:active {
+  letter-spacing: 0.2px;
+}
+
 
 .welcomeText {
     height: fit-content;
@@ -109,42 +134,41 @@ a {
 }
 .logo {
     height: 100%;
-  
 }
 @media (max-width: 600px) {
-    .upperContainer{
+    .upperContainer {
         display: flex;
         flex-direction: column;
     }
-    .logo{
+    .logo {
         width: 20%;
     }
-    .inlinePart{
+    .inlinePart {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
     }
-    .leftUpperPart{
+    .leftUpperPart {
         align-items: center;
         justify-content: center;
         margin: 0%;
         width: 100%;
     }
-    .rightUpperPart{
+    .rightUpperPart {
         align-items: center;
         justify-content: center;
         text-align: center;
         margin: 0%;
     }
-    .rightUpperPart p{
+    .rightUpperPart p {
         margin: 0%;
     }
-    .welcomeInfo{
+    .welcomeInfo {
         width: fit-content;
         margin-left: 5px;
         margin-right: 5px;
     }
-    .estiloBoton{
+    .estiloBoton {
         margin-top: 15px;
     }
-  }
+}

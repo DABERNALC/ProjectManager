@@ -8,7 +8,7 @@ import swal from "sweetalert";
 
 const AddSubtask = (props) => {
   const [subTaskText, setSubTaskText] = useState("");
-  const [subTaskTextError, setSubTaskTextError] = useState(false)
+  const [subTaskTextError, setSubTaskTextError] = useState(false);
   const { taskId } = useParams();
   const createsubtask = () => {
     if (subTaskText.length > 0 && subTaskText.length < 50) {
@@ -20,7 +20,7 @@ const AddSubtask = (props) => {
         .then((response) => {
           props.refresh();
           swal(
-            "Sub tarea agregada correctamente",
+            "Subtarea agregada correctamente",
             "Recuerda que los estados de la tarea dependen de la subtarea"
           );
           setSubTaskText("");
@@ -29,7 +29,7 @@ const AddSubtask = (props) => {
           swal({
             icon: 'error',
             title: "Error agregando subtarea",
-            text: "no hemos podido crear la subtarea, intenta mas tarde",
+            text: "No hemos podido crear la subtarea, intenta mas tarde",
             footer: '<a href="">Why do I have this issue?</a>'
           })
         });
@@ -38,18 +38,25 @@ const AddSubtask = (props) => {
       setSubTaskTextError(true)
     }
   }
+  const validate = () => {
+ 
+  }
   return (
     <div className={AddSubTaskStyle.container}>
+      <p className={AddSubTaskStyle.descriptionStyle}>Descripción</p>
       {
         subTaskTextError ?
-          <p style={{ color: "red" }}>Debes escribir una descripción de la subtarea y que sea menor a 50 caracteres</p> :
+          <p style={{ color: "rgb(189, 5, 5)" }}>Debes escribir una descripción y que sea menor a 50 caracteres</p> :
           null
       }
-      <textarea className={AddSubTaskStyle.textareaStyle}
+      <textarea className={`${AddSubTaskStyle.textareaStyle} ${
+        subTaskTextError ? AddSubTaskStyle.notValid : null
+      }`} 
         value={subTaskText}
         onChange={(e) => {
           setSubTaskTextError(false);
           setSubTaskText(e.target.value);
+          
         }}
       />
       <div className={AddSubTaskStyle.buttonCancel}>

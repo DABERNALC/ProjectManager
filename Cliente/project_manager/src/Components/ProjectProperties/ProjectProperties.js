@@ -8,8 +8,8 @@ export const ProjectProperties = (props) => {
     const params = new URLSearchParams();
     params.append("projectId", props.projectId);
     swal({
-      title: "Esta seguro que quiere eliminar este proyecto?",
-      text: "Una vez borrado no podrás recuperarlo!",
+      title: "¿Estás seguro que quieres eliminar este proyecto?",
+      text: "¡Una vez borrado no podrás recuperarlo!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -19,7 +19,7 @@ export const ProjectProperties = (props) => {
           .post(`/projects/delete`, params)
           .then((respose) => {
             console.log(respose.data);
-            swal("el proyecto se elimino con exito!", {
+            swal("¡El proyecto se eliminó con éxito!", {
               icon: "success",
             });
             
@@ -29,12 +29,14 @@ export const ProjectProperties = (props) => {
             swal({
               icon: "error",
               title: "Oops...",
-              text: "No puedes eliminar un proyecto que tiene tareas!",
+              text: "¡No puedes eliminar un proyecto que tenga tareas!",
             });
             console.log(e.response);
           });
       } else {
-        swal("No se elimino la tarea!");
+        swal("¡No se elimino el proyecto!", {
+          icon: "error",
+        });
       }
     });
   };

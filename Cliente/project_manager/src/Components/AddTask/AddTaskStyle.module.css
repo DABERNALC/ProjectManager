@@ -1,7 +1,11 @@
 * {
     font-family: Sansita;
     font-style: normal;
-    
+}
+
+.recomendationStyle{
+text-align: center;
+margin-bottom: 2px;
 }
 
 .container {
@@ -23,7 +27,6 @@
     color: #050038;
     font-weight: bold;
     margin-bottom: 0;
-    
 }
 
 .descInput {
@@ -139,5 +142,6 @@ select {
 }
 
 .notValid {
-    background-color: red;
+    border: 5;
+    border-color: rgb(182, 37, 37);
 }

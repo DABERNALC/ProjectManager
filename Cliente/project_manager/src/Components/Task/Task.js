@@ -68,7 +68,7 @@ const Task = (props) => {
             refresh={props.refresh}
           />
           <div onClick={ deleteTask}>
-            <FaTrashAlt size="25px"></FaTrashAlt>
+            <FaTrashAlt className={TaskStyle.trashStyle} size="25px"></FaTrashAlt>
           </div>
         </>
       ) : (

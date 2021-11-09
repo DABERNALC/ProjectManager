@@ -97,8 +97,8 @@ export const ProjectZoomIn = (props) => {
                 {update ? (
                   <>
                     {nameError ? (
-                      <p style={{ color: "red" }}>
-                        Debes ingresar un nombre y que sea menor a 30 caracters
+                      <p style={{ color: "rgb(182, 37, 37)" }}>
+                        Debes ingresar un nombre y que sea menor a 30 caracteres
                       </p>
                     ) : null}
                     <input className={ProjectZoomInStyle.inputStyle}
@@ -117,7 +117,7 @@ export const ProjectZoomIn = (props) => {
                 {update ? (
                   <>
                     {descriptionError ? (
-                      <p style={{ color: "red" }}>
+                      <p style={{ color: "rgb(182, 37, 37)" }}>
                         Debes ingresar una descripción y que sea menor a 50
                         caracteres
                       </p>
@@ -145,9 +145,9 @@ export const ProjectZoomIn = (props) => {
                 {update ? (
                   <>
                     {customerNameError ? (
-                      <p style={{ color: "red" }}>
+                      <p style={{ color: "rgb(182, 37, 37)" }}>
                         debes ingresar un nombre de cliente y que sea menor a 30
-                        caracters
+                        caracteres
                       </p>
                     ) : null}
 

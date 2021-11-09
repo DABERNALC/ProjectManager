@@ -68,7 +68,7 @@ const BiggerLogSignIn = (props) => {
                     <div className={BiggerLogSignInStyle.formStyle}>
                         {
                             props.error != "" ?
-                                <p style={{ color: "red" }}>{props.error}</p>
+                                <p style={{ color: "rgb(182, 37, 37)" }}>{props.error}</p>
                                 :
                                 null
                         }
@@ -134,7 +134,7 @@ const BiggerLogSignIn = (props) => {
 
                                         }
                                     }}
-                                > {props.mode == "signUp" ? "Registrarse" : "Iniciar sesion"}</button>
+                                > {props.mode == "signUp" ? "Registrarse" : "Iniciar sesión"}</button>
                         }
 
                     </div>

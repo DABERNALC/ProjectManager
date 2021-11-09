@@ -48,7 +48,7 @@ export const AddParticipant = (props) => {
     <div className={AddParticipantStyle.grayContainer}>
         {
             participantIdError ? 
-            <p style={{color:"rgb(182, 37, 37);"}}>Debes ingresar un ID valido</p>
+            <p style={{color:"rgb(182, 37, 37)"}}>Debes ingresar un ID valido</p>
             :null
         }
       <div className={AddParticipantStyle.inputContainer}>

@@ -71,13 +71,13 @@ const AddTask = (props) => {
     setpriorityRecomendation("");
     if(alta.some(el => sentence.includes(el)))
     {
-      setpriorityRecomendation("te recomiento alta prioridad");
+      setpriorityRecomendation("Prioridad recomendada: ALTA");
     }else if(media.some(el => sentence.includes(el)))
     {
-      setpriorityRecomendation("te recomiento  prioridad media");
+      setpriorityRecomendation("Prioridad recomendada: MEDIA");
     }else if(description.length > 6)
     {
-      setpriorityRecomendation("te recomiento prioridad baja");
+      setpriorityRecomendation("Prioridad recomendada: BAJA");
     }
 
 
@@ -145,7 +145,7 @@ const AddTask = (props) => {
       <p className={AddTaskStyle.descriptionStyle}>Descripción</p>
       <form>
         {
-          priorityRecomendationText != "" ? <p style={{color:"Teal"}}>{priorityRecomendationText} !!!</p>:null
+          priorityRecomendationText != "" ? <p className={AddTaskStyle.recomendationStyle} style={{color:"Teal"}}>{priorityRecomendationText}</p>:null
         }
         <textarea
           className={`${AddTaskStyle.descInput}   ${
@@ -236,7 +236,7 @@ const AddTask = (props) => {
                 updateTask();
               }}
             >
-              modificar
+              Modificar
             </button>
           )}
 
