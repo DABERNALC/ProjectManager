@@ -1,7 +1,7 @@
 import { IDbConection } from "../IDbConection";
 import { DbConnection } from "../DbConnection";
 import Teams from "../teamsComponent/Teams";
-
+//DBC was here!
 export default class ProjectsComponent {
   instance: any;
   teams: any;
